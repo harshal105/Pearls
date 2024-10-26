@@ -35,18 +35,18 @@ body {
 
 
 nav {
+    width: 100%;
     background-color: rgba(129, 154, 161, 0.631);
-    color:  #F9F9F9;
     padding: 10px 0;
+    align-items: center;
+    
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    width: 100%;
 }
 
 .nav-links {
@@ -64,6 +64,12 @@ nav {
 
 .nav-right {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    justify-content: flex-end;
+    align-content: centre;
+    flex-shrink: 0;
+    
+}
+
+#filter-icon {
+    margin-right: 10px;
 }
