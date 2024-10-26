@@ -1,4 +1,4 @@
-/* General Styling */
+
 body {
     font-family: 'Inria Serif', serif;
     margin: 0;
@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative; /* Allows us to use absolute positioning for centering */
+    position: relative; 
 }
 
 .top-bar h1 {
@@ -22,7 +22,7 @@ body {
     color: #F9F9F9;
     position: absolute;
     left: 50%;
-    transform: translateX(-50%); /* This will center the text horizontally */
+    transform: translateX(-50%);
     margin: 0;
 }
 
@@ -33,11 +33,6 @@ body {
     cursor: pointer;
 }
 
-/* h1, h2 {
-    margin: 0;
-    padding: 20px 0;
-    text-align: center;
-} */
 
 nav {
     background-color: rgba(129, 154, 161, 0.631);
