@@ -25,6 +25,14 @@ const menuItems = [
         imageUrl: 'food-images/chicken-pasta.png'
     },
     {
+        section: 'Specials',
+        name: 'Ahi Tuna Poke Bowl',
+        description: 'Some yummy description',
+        ingredients: 'ingredient, ingredient, ingredient, ingredient, ingredient',
+        price: 21.99, //change
+        imageUrl: 'food-images/tuna-poke.png'
+    },
+    {
         section: 'Appetizers',
         name: 'Calamari',
         description: 'Some yummy description',
