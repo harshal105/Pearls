@@ -39,35 +39,19 @@
     <!-- Specials -->
     <section id="specials" class="menu-section">
         <h2>Specials</h2>
-        <div class="menu-items">
-            <div class="menu-item">
-                <a href="#"><img src="food-images/pizza.png" alt="Mushroom Pizza"></a>
-                <div class="item-info">
-                    <h3>Mushroom Pizza</h3>
-                    <span class="price">22.99</span>
-                    <p>sautéed mushrooms, mozzarella, marinara on a golden crust.</p>
-                    <button class="add-btn">+</button>
-                </div>
-            </div>
-            <div class="menu-item">
-                <a href="#"><img src="food-images/tomato-soup.png" alt="Tomato Bisque"></a>
-                <div class="item-info">
-                    <h3>Tomato Bisque</h3>
-                    <span class="price">18.99</span>
-                    <p>ripe tomatoes, garlic, basil, and cream. Served with garlic bread.</p>
-                    <button class="add-btn">+</button>
-                </div>
-            </div>
-            <div class="menu-item">
-                <a href="#"><img src="food-images/chicken-pasta.png" alt="Grilled Chicken Picatta"></a>
-                <div class="item-info">
-                    <h3>Grilled Chicken Picatta</h3>
-                    <span class="price">21.99</span>
-                    <p>grilled chicken, penne, lemon-butter sauce with capers.</p>
-                    <button class="add-btn">+</button>
-                </div>
+        <div class="menu-items" id="menu-items">
+            <!-- Menu items will be dynamically inserted here -->
+        </div>
+
+        
+        <!-- Empty pop-up that will be filled dynamically -->
+        <div class="popup" id="dynamic-popup">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <!-- Content will be dynamically added here -->
             </div>
         </div>
+
     </section>
 
 
@@ -95,6 +79,7 @@
         <h2>Drinks</h2>
     </section>
 
+    <script src="scripts.js"></script>
 
 </body>
 </html>
