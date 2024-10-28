@@ -202,3 +202,55 @@ nav {
     cursor: pointer;
     color: #333;
 }
+
+
+/* Filter Panel */
+.filter-panel {
+    display: none; /* Panel is not visible */
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: rgba(129, 154, 161, 0.8);
+    box-shadow: -2px 0px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+}
+
+/* When the filter is open */
+.filter-panel.open {
+    display: block; /* Show the panel */
+}
+
+/* Close filter button styling */
+.close-filter-btn {
+    position: absolute;
+    top: 20px;
+    left: -40px;
+    background-color: #003349;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Filter sections styling */
+.filter-category, .filter-palette, .filter-include, .filter-exclude {
+    margin-bottom: 20px;
+}
+
+/* Filter buttons */
+.filter-panel button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    background-color: #003349;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

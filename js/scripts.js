@@ -48,7 +48,7 @@ const menuItems = [
         price: 21.99, //change
         imageUrl: 'food-images/fries.png'
     },
-    // Gotta add more menu items 
+    //To Do: Gotta add more menu items 
 ];
 
 
@@ -90,7 +90,7 @@ function displayMenuItems() {
     // Containers for each section
     const specialsMenu = document.querySelector('#specials .menu-items');
     const appetizerMenu = document.querySelector('#appetizers .menu-items');
-    // Add the rest
+    // To Do: Add the rest
 
     // Loop through each menu item
     menuItems.forEach((item, index) => {
@@ -147,4 +147,22 @@ window.addEventListener('click', (e) => {
     if (e.target.classList.contains('popup')) {
         e.target.classList.remove('show');
     }
+});
+
+
+// Filter panel JS
+
+// Get elements
+const filterPanel = document.getElementById('filter-panel');
+const filterIcon = document.getElementById('filter-icon');
+const closeFilterBtn = document.getElementById('close-filter');
+
+// Open the filter panel when the filter icon is clicked
+filterIcon.addEventListener('click', () => {
+    filterPanel.classList.add('open');
+});
+
+// Close the filter panel when the ">" button is clicked
+closeFilterBtn.addEventListener('click', () => {
+    filterPanel.classList.remove('open');
 });
