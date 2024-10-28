@@ -90,7 +90,9 @@ function displayMenuItems() {
     // Containers for each section
     const specialsMenu = document.querySelector('#specials .menu-items');
     const appetizerMenu = document.querySelector('#appetizers .menu-items');
-    // To Do: Add the rest
+    const dessertsMenu = document.querySelector('#desserts .menu-items');
+    const drinksMenu = document.querySelector('#drinks .menu-items');
+
 
     // Loop through each menu item
     menuItems.forEach((item, index) => {
@@ -102,8 +104,11 @@ function displayMenuItems() {
             specialsMenu.innerHTML += menuItemHTML;
         } else if (item.section === 'Appetizers') {
             appetizerMenu.innerHTML += menuItemHTML;
+        } else if (item.section == 'Desserts') {
+            dessertsMenu.innerHTML += menuItemHTML;
+        } else if (item.section == 'Drinks'){
+            drinksMenu.innerHTML += menuItemHTML;
         }
-        // Add more else-if bocks for the other sections
     });
 
 }
