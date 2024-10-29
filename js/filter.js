@@ -17,8 +17,10 @@ closeFilterBtn.addEventListener('click', () => {
 
 // Store selected filters
 let filters = {
-    include: '',
-    exclude: '',
+    include: [],
+    exclude: [],
+
+    //TODO: add funcitonality for the buttons
     dietarypPref: [],
     palette: []
 };
@@ -29,20 +31,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const includeInput = document.getElementById('includeInput'); // Assuming these are the IDs
     const excludeInput = document.getElementById('excludeInput');
 
-    // Buttons for Category and Palette
-    // const categoryButtons = document.querySelectorAll('.category-button');
-    // const paletteButtons = document.querySelectorAll('.palette-button');
+    // TO DO: Add the Buttons for Dietary Pref and Palette
+    // const dietaryPrefButton = document.querySelectorAll('????');
+    // const paletteButtons = document.querySelectorAll('???');
 
 
     // Listen to ingredient input changes
-    includeInput.addEventListener('input', (e) => {
-        filters.include = e.target.value.toLowerCase();
-        applyFilters();
+    includeInput.addEventListener('keydown', (e) => {
+        // filters.include = e.target.value.toLowerCase();
+        // applyFilters();
+        if (e.key === 'Enter' && includeInput.value) {
+            const value = includeInput.value.trim().toLowerCase();
+            filters.include.push(value); // Add to filters
+            //addFilterTag('Include', value); // Add to UI
+            includeInput.value = ''; // Clear the input
+            applyFilters();
+        }
     });
 
-    excludeInput.addEventListener('input', (e) => {
-        filters.exclude = e.target.value.toLowerCase();
-        applyFilters();
+    excludeInput.addEventListener('keydown', (e) => {
+        // filters.exclude = e.target.value.toLowerCase();
+        // applyFilters();
+        if (e.key === 'Enter' && excludeInput.value) {
+            const value = excludeInput.value.trim().toLowerCase();
+            filters.exclude.push(value); // Add to filters
+            //addFilterTag('Exclude', value); // Add to UI
+            excludeInput.value = ''; // Clear the input
+            applyFilters();
+        }
     });
 
     //TODO: Listen to category button clicks
@@ -66,10 +82,19 @@ function applyFilters() {
         //TO DO: filter functionality for the buttons in the filter
 
         // Filter by ingredients in include and exclude
-        if (filters.include && !item.ingredients.toLowerCase().includes(filters.include)) {
+        // if (filters.include && !item.ingredients.toLowerCase().includes(filters.include)) {
+        //     return false;
+        // }
+        // if (filters.exclude && item.ingredients.toLowerCase().includes(filters.exclude)) {
+        //     return false;
+        // }
+          // Include filter
+          if (filters.include.length > 0 && !filters.include.every(ing => item.ingredients.toLowerCase().includes(ing))) {
             return false;
         }
-        if (filters.exclude && item.ingredients.toLowerCase().includes(filters.exclude)) {
+
+        // Exclude filter
+        if (filters.exclude.length > 0 && filters.exclude.some(ing => item.ingredients.toLowerCase().includes(ing))) {
             return false;
         }
 
