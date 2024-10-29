@@ -1,2 +1,8 @@
+.nav-container {
+    justify-content: flex-start;
+}
 
-
+.nav-links {
+    margin-left: 0px;
+    gap: 0;  
+}
