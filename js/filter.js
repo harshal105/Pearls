@@ -26,6 +26,7 @@ let filters = {
 };
 
 
+// Filter Funcitonality
 document.addEventListener('DOMContentLoaded', () => {
     // Text fields for ingredient filters
     const includeInput = document.getElementById('includeInput');

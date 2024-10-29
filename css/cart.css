@@ -1,16 +1,4 @@
 nav {
-    background-color: rgba(129, 154, 161, 0.631); /* Your background color */
-    padding: 20px 0;
-    height: auto; /* Let it adjust to content */
-    align-items: center;
-    color: #F9F9F9;;
-}
-
-.title-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    height: 35px; 
-    font-size: 1.5em;
+    padding: 1px 0;
+    font-size: 1.5rem;
 }
