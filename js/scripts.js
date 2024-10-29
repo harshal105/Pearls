@@ -3,7 +3,7 @@ function fetchMenuItems() {
     fetch('js/menuItems.json')
         .then(response => response.json())
         .then(data => {
-            // Store data in localStorage for other parts of the app (like filters.js)
+            // Store data in localStorage
             localStorage.setItem('menuItems', JSON.stringify(data));
 
             // Display items on the page
@@ -56,10 +56,10 @@ function displayMenuItems(items) {
     const dessertsMenu = document.querySelector('#desserts .menu-items');
     const drinksMenu = document.querySelector('#drinks .menu-items');
 
-    // specialsMenu.innerHTML = '';
-    // appetizerMenu.innerHTML = '';
-    // dessertsMenu.innerHTML = '';
-    // drinksMenu.innerHTML = '';
+    specialsMenu.innerHTML = '';
+    appetizerMenu.innerHTML = '';
+    dessertsMenu.innerHTML = '';
+    drinksMenu.innerHTML = '';
 
     // Loop through each menu item
     items.forEach((item, index) => {
