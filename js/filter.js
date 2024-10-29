@@ -36,6 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // const dietaryPrefButton = document.querySelectorAll('????');
     // const paletteButtons = document.querySelectorAll('???');
 
+    function toggleFilterVisibility() {
+        // Show #active-filters only if there are tags
+        if (activeFiltersContainer.querySelectorAll('.filter-tag').length > 0) {
+            activeFiltersContainer.style.display = 'flex';
+        } else {
+            activeFiltersContainer.style.display = 'none';
+        }
+    }
 
     // Function to create filter tag HTML and add it to active filters section
     function addFilterTag(type, value) {
@@ -44,12 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
         filterTag.innerHTML = `${type}: ${value} <button class="remove-filter" data-type="${type}" data-value="${value}">&times;</button>`;
         
         activeFiltersContainer.appendChild(filterTag);
+        toggleFilterVisibility();
 
         // Add event listener to remove filter on button click
         filterTag.querySelector('.remove-filter').addEventListener('click', (e) => {
             removeFilter(type, value);
             filterTag.remove();
             applyFilters();
+            toggleFilterVisibility();
         });
     }
 
