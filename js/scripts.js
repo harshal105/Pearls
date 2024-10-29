@@ -1,55 +1,18 @@
-const menuItems = [
-    {
-        section: 'Specials',
-        name: 'Mushroom Pizza',
-        description: 'A savory medley of sautéed mushrooms, melted mozzarella, and rich marinara sauce on a crispy, golden crust. \
-        Topped with a sprinkle of fresh herbs for a perfectly earthy and flavorful bite',
-        ingredients: 'sautéed mushrooms, mozzarella, marinara, garlic, parsley, milk, whole wheat flour',
-        price: 22.99, // change
-        imageUrl: 'food-images/pizza.png'
-    },
-    {
-        section: 'Specials',
-        name: 'Tomato Bisque',
-        description: 'Some yummy description',
-        ingredients: 'Tomatoes, garlic, basil, cream, garlic bread',
-        price: 18.99, // change
-        imageUrl: 'food-images/tomato-soup.png'
-    },
-    {
-        section: 'Specials',
-        name: 'Grilled Chicken Picatta',
-        description: 'Some yummy description',
-        ingredients: 'Chicken breast, penne, lemon butter, capers, parsley',
-        price: 21.99, //change
-        imageUrl: 'food-images/chicken-pasta.png'
-    },
-    {
-        section: 'Specials',
-        name: 'Ahi Tuna Poke Bowl',
-        description: 'Some yummy description',
-        ingredients: 'ingredient, ingredient, ingredient, ingredient, ingredient',
-        price: 21.99, //change
-        imageUrl: 'food-images/tuna-poke.png'
-    },
-    {
-        section: 'Appetizers',
-        name: 'Calamari',
-        description: 'Some yummy description',
-        ingredients: 'ingredient, ingredient, ingredient, ingredient, ingredient',
-        price: 21.99, //change
-        imageUrl: 'food-images/calamari.png'
-    },
-    {
-        section: 'Appetizers',
-        name: 'Truffle Fries',
-        description: 'Some yummy description',
-        ingredients: 'ingredient, ingredient, ingredient, ingredient, ingredient',
-        price: 21.99, //change
-        imageUrl: 'food-images/fries.png'
-    },
-    //To Do: Gotta add more menu items 
-];
+// Fetch menuItems from menuItems.json and display them on the page
+function fetchMenuItems() {
+    fetch('js/menuItems.json')
+        .then(response => response.json())
+        .then(data => {
+            // Store data in localStorage for other parts of the app (like filters.js)
+            localStorage.setItem('menuItems', JSON.stringify(data));
+
+            // Display items on the page
+            displayMenuItems(data); // Use the data from the fetch
+            setupPopupListeners();
+
+        })
+        .catch(error => console.error('Error loading menu items:', error));
+}
 
 
 // Function to generate menu item HTML
@@ -85,7 +48,7 @@ function generatePopupContent(item) {
 }
 
 // Dynamically insert the menu items into the DOM
-function displayMenuItems() {
+function displayMenuItems(items) {
 
     // Containers for each section
     const specialsMenu = document.querySelector('#specials .menu-items');
@@ -93,9 +56,13 @@ function displayMenuItems() {
     const dessertsMenu = document.querySelector('#desserts .menu-items');
     const drinksMenu = document.querySelector('#drinks .menu-items');
 
+    // specialsMenu.innerHTML = '';
+    // appetizerMenu.innerHTML = '';
+    // dessertsMenu.innerHTML = '';
+    // drinksMenu.innerHTML = '';
 
     // Loop through each menu item
-    menuItems.forEach((item, index) => {
+    items.forEach((item, index) => {
         // Generate the HTML for the menu item
         const menuItemHTML = generateMenuItem(item, index);
 
@@ -119,7 +86,7 @@ function setupPopupListeners() {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             const itemId = button.getAttribute('data-item');  // Get the item index
-            const itemData = menuItems[itemId];  // Get the corresponding item data
+            const itemData = JSON.parse(localStorage.getItem('menuItems'))[itemId];  // Get the corresponding item data
             
             const popup = document.getElementById('dynamic-popup');
             const popupContent = popup.querySelector('.popup-content');
@@ -141,13 +108,10 @@ function setupPopupListeners() {
     });
 }
 
-// Initialize the menu and pop-up functionality
-document.addEventListener('DOMContentLoaded', () => {
-    displayMenuItems();  // Display all menu items
-    setupPopupListeners();  // Set up the pop-up functionality
-});
+// Initialize menu items and pop-up functionality
+document.addEventListener('DOMContentLoaded', fetchMenuItems);
 
-// // Close the popup if the user clicks outside the content
+// Close the popup if the user clicks outside the content
 window.addEventListener('click', (e) => {
     if (e.target.classList.contains('popup')) {
         e.target.classList.remove('show');

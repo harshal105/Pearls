@@ -1,0 +1,50 @@
+[
+    {
+        "section": "Specials",
+        "name": "Mushroom Pizza",
+        "description": "A savory medley of sautéed mushrooms, melted mozzarella, and rich marinara sauce on a crispy, golden crust. Topped with a sprinkle of fresh herbs for a perfectly earthy and flavorful bite",
+        "ingredients": "sautéed mushrooms, mozzarella, marinara, garlic, parsley, milk, whole wheat flour",
+        "price": 22.99, 
+        "imageUrl": "food-images/pizza.png"
+    },
+    {
+        "section": "Specials",
+        "name": "Tomato Bisque",
+        "description": "Some yummy description",
+        "ingredients": "Tomatoes, garlic, basil, cream, garlic bread",
+        "price": 18.99, 
+        "imageUrl": "food-images/tomato-soup.png"
+    },
+    {
+        "section": "Specials",
+        "name": "Grilled Chicken Picatta",
+        "description": "Some yummy description",
+        "ingredients": "Chicken breast, penne, lemon butter, capers, parsley",
+        "price": 21.99, 
+        "imageUrl": "food-images/chicken-pasta.png"
+    },
+    {
+        "section": "Specials",
+        "name": "Ahi Tuna Poke Bowl",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/tuna-poke.png"
+    },
+    {
+        "section": "Appetizers",
+        "name": "Calamari",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/calamari.png"
+    },
+    {
+        "section": "Appetizers",
+        "name": "Truffle Fries",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/fries.png"
+    }
+]
