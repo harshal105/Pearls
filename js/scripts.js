@@ -117,3 +117,63 @@ window.addEventListener('click', (e) => {
         e.target.classList.remove('show');
     }
 });
+
+
+//Adding stuff to cart functionality
+
+// Initialize the cart in localStorage if it doesn't already exist
+function initializeCart() {
+    if (!localStorage.getItem('cart')) {
+        localStorage.setItem('cart', JSON.stringify([]));
+    }
+}
+
+// Function to add an item to the cart
+function addToCart(itemId) {
+    // Get the current cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart'));
+
+    // Find the item in the menuItems by its ID
+    const menuItems = JSON.parse(localStorage.getItem('menuItems'));
+    const item = menuItems[itemId];
+
+    // Check if the item is already in the cart
+    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+    if (existingItem) {
+        // If it's already in the cart, increase the quantity
+        existingItem.quantity += 1;
+    } else {
+        // If it's not in the cart, add it with a quantity of 1
+        cart.push({ ...item, quantity: 1 });
+    }
+
+    // Save the updated cart back to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    console.log(`Added ${item.name} to cart.`, cart); // Log the updated cart for debugging
+}
+
+// Attach the addToCart function to the add button in each menu item
+function setupAddToCartButtons() {
+    document.querySelectorAll('.add-btn').forEach((button, index) => {
+        button.addEventListener('click', () => addToCart(index));
+    });
+}
+
+// Modify fetchMenuItems to call setupAddToCartButtons after displaying menu items
+function fetchMenuItems() {
+    fetch('js/menuItems.json')
+        .then(response => response.json())
+        .then(data => {
+            localStorage.setItem('menuItems', JSON.stringify(data));
+            displayMenuItems(data);
+            setupPopupListeners();
+            setupAddToCartButtons(); // Set up the add-to-cart buttons
+        })
+        .catch(error => console.error('Error loading menu items:', error));
+}
+
+// Initialize the cart when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initializeCart();
+    fetchMenuItems();
+});

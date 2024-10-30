@@ -1,5 +1,6 @@
 [
     {
+        "id":1,
         "section": "Specials",
         "name": "Mushroom Pizza",
         "description": "A savory medley of sautéed mushrooms, melted mozzarella, and rich marinara sauce on a crispy, golden crust. Topped with a sprinkle of fresh herbs for a perfectly earthy and flavorful bite",
@@ -8,6 +9,7 @@
         "imageUrl": "food-images/pizza.png"
     },
     {
+        "id":2,
         "section": "Specials",
         "name": "Tomato Bisque",
         "description": "Some yummy description",
@@ -16,6 +18,7 @@
         "imageUrl": "food-images/tomato-soup.png"
     },
     {
+        "id":3,
         "section": "Specials",
         "name": "Grilled Chicken Picatta",
         "description": "Some yummy description",
@@ -24,6 +27,7 @@
         "imageUrl": "food-images/chicken-pasta.png"
     },
     {
+        "id":4,
         "section": "Specials",
         "name": "Ahi Tuna Poke Bowl",
         "description": "Some yummy description",
@@ -32,6 +36,7 @@
         "imageUrl": "food-images/tuna-poke.png"
     },
     {
+        "id":5,
         "section": "Appetizers",
         "name": "Calamari",
         "description": "Some yummy description",
@@ -40,6 +45,7 @@
         "imageUrl": "food-images/calamari.png"
     },
     {
+        "id":6,
         "section": "Appetizers",
         "name": "Truffle Fries",
         "description": "Some yummy description",
