@@ -6,3 +6,33 @@
     margin-left: 0px;
     gap: 0;  
 }
+
+
+/* Button styling */
+.button-container {
+    display: flex;
+    justify-content: center; /* Center buttons */
+    gap: 500px; /* Space between buttons */
+    margin-top: 20px; /* Add spacing above buttons */
+}
+
+.button {
+    text-decoration: none;
+    background-color: #003349;
+    color: #F9F9F9;
+    padding: 20px 50px; /* padding for size */
+    border: none; 
+    border-radius: 8px; 
+    font-size: 1.5rem;
+    cursor: pointer; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15); /* shadow */
+}
+
+
+.button:hover {
+    transform: translateY(-2px); 
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+
