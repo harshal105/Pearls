@@ -30,8 +30,8 @@ function generateMenuItem(item, index) {
     `;
 }
 
-// Function to generate pop-up content not done yet
-function generatePopupContent(item) {
+// Function to generate pop-up
+function generatePopupContent(item, index) {
     return `
         <img src="${item.imageUrl}" alt="${item.name}">
         <div class="popup-info">
@@ -41,7 +41,7 @@ function generatePopupContent(item) {
             <p>${item.ingredients}</p>
             <div class="price-add">
                 <span class="price">${item.price}</span>
-                <button class="add-btn">+</button>
+                <button class="add-btn" data-index="${index}">+</button>
             </div>
         </div>
     `;
@@ -94,11 +94,15 @@ function setupPopupListeners() {
             // Inject the generated content into the pop-up
             popupContent.innerHTML = `
                 <span class="close-popup">&times;</span>
-                ${generatePopupContent(itemData)}
+                ${generatePopupContent(itemData, itemId)}
             `;
             
             // Show the pop-up
             popup.classList.add('show');
+
+            // Attach addToCart to the Add to Cart button inside the popup
+            const addToCartBtn = popup.querySelector('.add-btn');
+            addToCartBtn.addEventListener('click', () => addToCart(itemId));
             
             // Add close functionality
             popup.querySelector('.close-popup').addEventListener('click', () => {
