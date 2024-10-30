@@ -12,15 +12,18 @@
 .button-container {
     display: flex;
     justify-content: center; /* Center buttons */
-    gap: 500px; /* Space between buttons */
+    gap: 400px; /* Space between buttons */
     margin-top: 20px; /* Add spacing above buttons */
 }
 
+
 .button {
+    width: 250px; /* Set this to your preferred width */
+    text-align: center;
     text-decoration: none;
     background-color: #003349;
     color: #F9F9F9;
-    padding: 20px 50px; /* padding for size */
+    padding: 20px; /* padding for size */
     border: none; 
     border-radius: 8px; 
     font-size: 1.5rem;
