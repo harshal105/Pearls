@@ -150,41 +150,6 @@ function makeNavbarFixedOnScroll(navbarSelector) {
 // Call the function with the selector of your navbar
 makeNavbarFixedOnScroll('nav');
 
-// // Function to highlight the active section in the navbar
-// function highlightActiveSection(navbarSelector) {
-//     const navbar = document.querySelector(navbarSelector);
-//     const links = document.querySelectorAll('.nav-links a'); // Get all navigation links
-//     const sections = document.querySelectorAll('section');    // Get all sections
-
-//     // Function to handle scroll event
-//     function handleScroll() {
-//         let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
-
-//         sections.forEach((section) => {
-//             const sectionTop = section.offsetTop; // Get the top position of the section
-//             const sectionHeight = section.clientHeight; // Get the height of the section
-
-//             // Check if the current scroll position is within the section
-//             if (
-//                 scrollPosition >= sectionTop - navbar.clientHeight &&
-//                 scrollPosition < sectionTop + sectionHeight
-//             ) {
-//                 // Remove active class from all links
-//                 links.forEach((link) => link.classList.remove('active'));
-//                 // Add active class to the corresponding link
-//                 const activeLink = document.querySelector(`.nav-links a[href="#${section.id}"]`);
-//                 if (activeLink) {
-//                     activeLink.classList.add('active');
-//                 }
-//             }
-//         });
-//     }
-//     // Add scroll event listener
-//     window.addEventListener('scroll', handleScroll);
-// }
-
-// highlightActiveSection('nav');
-
 // Function to highlight the active section in the navbar
 function highlightActiveSection(navbarSelector) {
     const navbar = document.querySelector(navbarSelector);

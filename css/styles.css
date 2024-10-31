@@ -56,7 +56,6 @@ nav {
     width: 100%;
 }
 
-
 .nav-links {
     display: flex;
     gap: 150px;
@@ -93,13 +92,6 @@ nav {
     left: 0; /* Stay at the left position */
 }
 
-/* .nav-links a.active {
-    text-decoration: underline;
-    font-weight: bold;
-    color: #FFD700;
-} 
-*/
-
 .nav-right {
     position: absolute;  
     right: 10px; /* Align it to the right edge of the container */
@@ -109,10 +101,6 @@ nav {
     align-items: center;
  
 }
-
-/* #filter-icon {
-    margin-right: 10px;
-} */
 
 /*  Menu Stuff */
 
