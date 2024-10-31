@@ -124,6 +124,98 @@ window.addEventListener('click', (e) => {
     }
 });
 
+// Function to make the navbar fixed at the top on scroll
+function makeNavbarFixedOnScroll(navbarSelector) {
+    const navbar = document.querySelector(navbarSelector);
+    const originalOffsetTop = navbar.offsetTop; // Get the original position of the navbar
+
+    // Set initial styles for the navbar
+    navbar.style.transition = 'top 0.3s'; // Add transition for smooth effect
+
+    // Function to handle scroll event
+    function handleScroll() {
+        if (window.scrollY > originalOffsetTop) {
+            navbar.style.position = 'fixed'; // Fix navbar at the top
+            navbar.style.top = '0';          // Align it to the top
+        } else {
+            navbar.style.position = 'relative'; // Reset to relative when at the top
+            navbar.style.top = '';              // Reset the top value
+        }
+    }
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+}
+
+// Call the function with the selector of your navbar
+makeNavbarFixedOnScroll('nav');
+
+// // Function to highlight the active section in the navbar
+// function highlightActiveSection(navbarSelector) {
+//     const navbar = document.querySelector(navbarSelector);
+//     const links = document.querySelectorAll('.nav-links a'); // Get all navigation links
+//     const sections = document.querySelectorAll('section');    // Get all sections
+
+//     // Function to handle scroll event
+//     function handleScroll() {
+//         let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+
+//         sections.forEach((section) => {
+//             const sectionTop = section.offsetTop; // Get the top position of the section
+//             const sectionHeight = section.clientHeight; // Get the height of the section
+
+//             // Check if the current scroll position is within the section
+//             if (
+//                 scrollPosition >= sectionTop - navbar.clientHeight &&
+//                 scrollPosition < sectionTop + sectionHeight
+//             ) {
+//                 // Remove active class from all links
+//                 links.forEach((link) => link.classList.remove('active'));
+//                 // Add active class to the corresponding link
+//                 const activeLink = document.querySelector(`.nav-links a[href="#${section.id}"]`);
+//                 if (activeLink) {
+//                     activeLink.classList.add('active');
+//                 }
+//             }
+//         });
+//     }
+//     // Add scroll event listener
+//     window.addEventListener('scroll', handleScroll);
+// }
+
+// highlightActiveSection('nav');
+
+// Function to highlight the active section in the navbar
+function highlightActiveSection(navbarSelector) {
+    const navbar = document.querySelector(navbarSelector);
+    const links = document.querySelectorAll('.nav-links a'); // Get all navigation links
+    const sections = document.querySelectorAll('section');    // Get all sections
+
+    function handleScroll() {
+        let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop; // Get the top position of the section
+            const sectionHeight = section.clientHeight; // Get the height of the section
+
+            if (
+                scrollPosition >= sectionTop - navbar.clientHeight &&
+                scrollPosition < sectionTop + sectionHeight
+            ) {
+                links.forEach((link) => link.classList.remove('active'));
+                const activeLink = document.querySelector(`.nav-links a[href="#${section.id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+}
+
+// Call the function with the selector of your navbar
+highlightActiveSection('nav');
 
 //Adding stuff to cart functionality
 

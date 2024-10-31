@@ -21,6 +21,7 @@ body {
 .top-bar h1 {
     font-family: 'Inria Serif', serif;
     font-size: 3.5rem;
+    font-weight: bold;
     color: #F9F9F9;
     position: absolute;
     left: 50%;
@@ -38,33 +39,66 @@ body {
 
 nav {
     width: 100%;
-    background-color: rgba(129, 154, 161, 0.631);
-    padding: 10px 0;
-    align-items: center;
+    background-color: #819AA1;
+    padding: 10px 0;              /* Padding for overall nav bar */
+    align-items: center;          /* Center items vertically */
     color: #F9F9F9;
-    
+    position: fixed;              /* Start as fixed */
+    z-index: 1000;                /* Ensure it appears on top */
+    transition: top 0.3s ease;    /* Smooth transition effect */
 }
 
 .nav-container {
     display: flex;
-    justify-content: center;
+    justify-content: center;      /* Center nav items */
     position: relative;
+    font-weight: bold;
     width: 100%;
 }
 
+
 .nav-links {
     display: flex;
-    gap: 100px;
+    gap: 150px;
     list-style: none;
     margin-left: -90px;
 }
 
-.nav-links a {
-    color:  #F9F9F9;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 1.7rem;
+.nav-links {
+    position: relative; /* Required for the absolute positioning of the pseudo-element */
 }
+
+.nav-links a {
+    color: #F9F9F9; /* Original color */
+    text-decoration: none; /* Remove default underline */
+    padding: 10px;
+    font-size: 2rem;
+    position: relative; /* Required for the positioning of the pseudo-element */
+}
+
+.nav-links a::after {
+    content: ''; /* Create an empty pseudo-element */
+    display: block; /* Make it a block element */
+    width: 0; /* Start with width 0 */
+    height: 4px; /* Set the height of the underline */
+    background-color: #F9F9F9; /* Color of the underline */
+    position: absolute; /* Position relative to the parent */
+    left: 0; /* Start from the left */
+    bottom: -5px; /* Adjust the vertical position */
+    transition: width 0.3s ease, left 0.3s ease; /* Smooth transition for width and position */
+}
+
+.nav-links a.active::after {
+    width: 100%; /* Expand to full width when active */
+    left: 0; /* Stay at the left position */
+}
+
+/* .nav-links a.active {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #FFD700;
+} 
+*/
 
 .nav-right {
     position: absolute;  
