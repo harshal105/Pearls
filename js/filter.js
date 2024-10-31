@@ -17,6 +17,7 @@ closeFilterBtn.addEventListener('click', () => {
 
 // Store selected filters
 let filters = {
+    search: '',
     include: [],
     exclude: [],
 
@@ -113,6 +114,12 @@ function applyFilters() {
     const filteredItems = menuItems.filter(item => {
         
         //TO DO: filter functionality for the buttons in the filter
+
+        // Search term filtering
+        if (filters.search && !item.name.toLowerCase().includes(filters.search.toLowerCase()) &&
+            !item.description.toLowerCase().includes(filters.search.toLowerCase())) {
+            return false;
+        }
 
         // Include filter
         if (filters.include.length > 0 && !filters.include.every(ing => item.ingredients.toLowerCase().includes(ing))) {

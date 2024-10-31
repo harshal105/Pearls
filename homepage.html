@@ -14,7 +14,7 @@
         <h1>Pearl's</h1>
         <div>
             <!-- <input type="text" placeholder="Search..."> -->
-            <img src="icons/search-icon.png" alt="Search Icon" class="icon">
+            <img src="icons/search-icon.png" alt="Search Icon" class="icon" id="search-icon">
             <!-- making shopping cart clickable -->
             <a href="cart.html">
                 <img src="icons/cart-icon.png" alt="Cart Icon" class="icon">
@@ -47,6 +47,15 @@
         <!-- Filter tags will be dynamically added here -->
     </div>
     
+
+    <div id="filter-tags"></div>
+
+
+    <!-- Search Container -->
+    <div id="search-container" class="search-container">
+        <input type="text" id="search-input" placeholder="Search..." />
+    </div>
+
 
     <!-- Specials -->
     <section id="specials" class="menu-section">
@@ -130,6 +139,7 @@
     </div>
     <script src="js/scripts.js"></script>
     <script src="js/filter.js"></script>
+    <script src="js/search.js"></script>
 
 </body>
 </html>
