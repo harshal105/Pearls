@@ -30,19 +30,22 @@
         </nav>
     </header>
 
-    <main id="content">
-        <!-- Shopping cart items will be displayed here -->
-        
-        <div id="cart-items-container"></div>
-
+    <main id="cart-content">
+        <!-- Container for cart items with an empty message by default -->
+        <div id="cart-items-container">
+            <p class="empty-cart-message" id="empty-cart-message">No items added yet.</p>
+        </div>
+    
         <!-- Total Price Section -->
         <div id="total-price"></div>
     </main>
-
+    
+    <!-- Button container with fixed positioning at the bottom -->
     <div class="button-container">
         <a href="homepage.html" class="button">Back to Menu</a>
         <a href="checkout.html" class="button">Place Order</a>
     </div>
+    
 
     <script src="js/cart.js" defer></script>
 

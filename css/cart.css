@@ -1,50 +1,62 @@
+/* Making the bigger screen fixed */
+html, body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+}
+
+/* Navigation */
 .nav-container {
     justify-content: flex-start;
 }
 
 .nav-links {
     margin-left: 0px;
-    gap: 0;  
+    gap: 0;
 }
 
+/* Main content padding to adjust for header */
 main#content {
     padding-top: 110px; /* Adjust based on combined height of top-bar and navbar */
 }
 
 /* Button styling */
 .button-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: flex;
-    justify-content: center; /* Center buttons */
-    gap: 400px; /* Space between buttons */
-    margin-top: 20px; /* Add spacing above buttons */
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+    /* background-color: #003349; */
 }
 
-
+/* Individual button styling */
 .button {
-    width: 250px; /* Set this to your preferred width */
+    width: 150px; /* Set to fit two buttons in button container */
     text-align: center;
     text-decoration: none;
-    background-color: #003349;
+    background-color: #005577;
     color: #F9F9F9;
-    padding: 20px; /* padding for size */
-    border: none; 
-    border-radius: 8px; 
-    font-size: 1.5rem;
-    cursor: pointer; 
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover effect */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15); /* shadow */
+    padding: 15px; /* Padding for button size */
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
 }
 
-
 .button:hover {
-    transform: translateY(-2px); 
+    transform: translateY(-2px);
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-
-/* cart.css  */
+/* Cart item styling */
 .cart-item {
-    margin-top: 100px;
     border: 1px solid #ccc;
     padding: 15px;
     margin-bottom: 10px;
@@ -52,7 +64,42 @@ main#content {
     background-color: #f9f9f9;
 }
 
+/* Main cart container with fixed height */
+#cart-content {
+    padding-top: 200px; /* Adjust based on combined height of top-bar and navbar */
+    display: flex;
+    flex-direction: column;
+    height: 75vh; /* Adjust height to fit below top-bar */
+    max-width: 100%; /* Adjust width as needed */
+    margin: 0 auto;
+    padding-bottom: 60px; /* Space for button container */
+    overflow: hidden;
+}
+
+/* Scrollable area for cart items */
+#cart-items-container {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Message for an empty cart */
+.empty-cart-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    display: none; /* Hidden initially */
+}
+
+/* Total price styling */
 #total-price {
+    padding: 10px 20px;
+    font-size: 1.2rem;
     font-weight: bold;
-    margin-top: 20px;
+    text-align: right;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
 }
