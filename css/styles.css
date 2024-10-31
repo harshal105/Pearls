@@ -103,6 +103,10 @@ nav {
     align-items: center;
 }
 
+.spacer {
+    width: 100%;
+    height: 200px; 
+}
 /*  Menu Stuff */
 
 .menu-section {
