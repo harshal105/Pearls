@@ -129,32 +129,6 @@ window.addEventListener('click', (e) => {
     }
 });
 
-// Function to make the navbar fixed at the top on scroll
-function makeNavbarFixedOnScroll(navbarSelector) {
-    const navbar = document.querySelector(navbarSelector);
-    const originalOffsetTop = navbar.offsetTop; // Get the original position of the navbar
-
-    // Set initial styles for the navbar
-    navbar.style.transition = 'top 0.3s'; // Add transition for smooth effect
-
-    // Function to handle scroll event
-    function handleScroll() {
-        if (window.scrollY > originalOffsetTop) {
-            navbar.style.position = 'fixed'; // Fix navbar at the top
-            navbar.style.top = '0';          // Align it to the top
-        } else {
-            navbar.style.position = 'relative'; // Reset to relative when at the top
-            navbar.style.top = '';              // Reset the top value
-        }
-    }
-
-    // Add scroll event listener
-    window.addEventListener('scroll', handleScroll);
-}
-
-// Call the function with the selector of your navbar
-makeNavbarFixedOnScroll('nav');
-
 // Function to highlight the active section in the navbar
 function highlightActiveSection(navbarSelector) {
     const navbar = document.querySelector(navbarSelector);

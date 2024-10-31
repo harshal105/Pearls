@@ -9,13 +9,15 @@ body {
 /* Top Bar and Nav Bar stuff */
 
 .top-bar {
+    width: 100%;
     background-color: #003349;
     color: #F9F9F9;
     padding: 16px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    position: relative; 
+    position: fixed;
+    z-index: 1000; /* Ensure it appears on top */
 }
 
 .top-bar h1 {
@@ -23,16 +25,16 @@ body {
     font-size: 3.5rem;
     font-weight: bold;
     color: #F9F9F9;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     margin: 0;
+    text-align: center; 
+    flex-grow: 1;
 }
 
 .icon {
     width: 50px;
     height: 50px;
     margin-left: 10px;
+    margin-right: 20px; /* Space to the right of the icon */
     cursor: pointer;
 }
 
@@ -40,17 +42,17 @@ body {
 nav {
     width: 100%;
     background-color: #819AA1;
-    padding: 10px 0;              /* Padding for overall nav bar */
-    align-items: center;          /* Center items vertically */
+    padding: 10px 0; /* Padding for overall nav bar */
+    align-items: center; 
     color: #F9F9F9;
-    position: fixed;              /* Start as fixed */
-    z-index: 1000;                /* Ensure it appears on top */
-    transition: top 0.3s ease;    /* Smooth transition effect */
+    position: fixed;
+    z-index: 1000; 
+    top: 100px;
 }
 
 .nav-container {
     display: flex;
-    justify-content: center;      /* Center nav items */
+    justify-content: center; /* Center nav items */
     position: relative;
     font-weight: bold;
     width: 100%;
@@ -100,6 +102,11 @@ nav {
     display: flex;
     align-items: center;
  
+}
+
+.spacer {
+    width: 100%;
+    height: 200px; 
 }
 
 /*  Menu Stuff */
