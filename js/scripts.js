@@ -55,10 +55,12 @@ function displayMenuItems(items) {
     // Containers for each section
     const specialsMenu = document.querySelector('#specials .menu-items');
     const appetizerMenu = document.querySelector('#appetizers .menu-items');
+    const entréesMenu = document.querySelector('#entrées .menu-items');
     const dessertsMenu = document.querySelector('#desserts .menu-items');
     const drinksMenu = document.querySelector('#drinks .menu-items');
 
     specialsMenu.innerHTML = '';
+    entréesMenu.innerHTML = '';
     appetizerMenu.innerHTML = '';
     dessertsMenu.innerHTML = '';
     drinksMenu.innerHTML = '';
@@ -73,6 +75,9 @@ function displayMenuItems(items) {
             specialsMenu.innerHTML += menuItemHTML;
         } else if (item.section === 'Appetizers') {
             appetizerMenu.innerHTML += menuItemHTML;
+        }
+        else if (item.section === 'Entrées') {
+            entréesMenu.innerHTML += menuItemHTML;
         } else if (item.section == 'Desserts') {
             dessertsMenu.innerHTML += menuItemHTML;
         } else if (item.section == 'Drinks'){

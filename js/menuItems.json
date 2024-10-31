@@ -52,5 +52,158 @@
         "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
         "price": 21.99, 
         "imageUrl": "food-images/fries.png"
+    },
+    {
+        "id":7,
+        "section": "Entrées",
+        "name": "Chicken Marsala",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/chicken-marsala.png"
+    },
+    {
+        "id":8,
+        "section": "Entrées",
+        "name": "Oven Roasted Salmon",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/oven-roasted-salmon.png"
+    },
+    {
+        "id":9,
+        "section": "Entrées",
+        "name": "Lobster Tail Dinner",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/lobster-tail-dinner.png"
+    },
+    {
+        "id":10,
+        "section": "Entrées",
+        "name": "BBQ Pork Ribs",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/bbq-pork-ribs.png"
+    },
+    {
+        "id":11,
+        "section": "Entrées",
+        "name": "Top Sirlion",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/top-sirloin.png"
+    },
+    {
+        "id":12,
+        "section": "Entrées",
+        "name": "Coconut Rice Bowl",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/coconut-rice-bowl.png"
+    },
+    {
+        "id":13,
+        "section": "Entrées",
+        "name": "Lentil Bolognese",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/lentil-bolognese.png"
+    },
+    {
+        "id":14,
+        "section": "Entrées",
+        "name": "Tomato Pasta",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/tomato-pasta.png"
+    },
+    {
+        "id":15,
+        "section": "Entrées",
+        "name": "Gluten-Free Pizza",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/gluten-free-pizza.png"
+    },
+    {
+        "id":16,
+        "section": "Desserts",
+        "name": "Chocolate Lava Cake",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/chocolate-lava-cake.png"
+    },
+    {
+        "id":16,
+        "section": "Desserts",
+        "name": "Pecan Pie",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/pecan-pie.png"
+    },
+    {
+        "id":16,
+        "section": "Desserts",
+        "name": "Classic Cheescake",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/cheescake.png"
+    },
+    {
+        "id":16,
+        "section": "Drinks",
+        "name": "Fountain Drink",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/fountain-drink.png"
+    },
+    {
+        "id":16,
+        "section": "Drinks",
+        "name": "Lemonade",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/lemonade.png"
+    },
+    {
+        "id":16,
+        "section": "Drinks",
+        "name": "Margarita",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/margarita.png"
+    },
+    {
+        "id":16,
+        "section": "Drinks",
+        "name": "Strawberry Smoothie",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/strawberry-smoothie.png"
+    },
+    {
+        "id":16,
+        "section": "Drinks",
+        "name": "Red Wine",
+        "description": "Some yummy description",
+        "ingredients": "ingredient, ingredient, ingredient, ingredient, ingredient",
+        "price": 21.99, 
+        "imageUrl": "food-images/red-wine.png"
     }
 ]
