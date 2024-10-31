@@ -10,6 +10,8 @@ searchIcon.addEventListener('click', (e) => {
     e.stopPropagation(); // Prevent closing the search container immediately
     searchContainer.style.display = 'block';
     searchInput.focus(); // Focus on the input field for convenience
+    console.log("Search icon clicked"); // Add this line to confirm the event is firing
+
 });
 
 // Hide the search container when clicking outside
@@ -52,6 +54,7 @@ function addFilterTag(type, value) {
     // Update filters.search if this is a search tag
     if (type === 'Search') {
         filters.search = value;
+        applyFilters(); // Trigger filtering after updating search
     }
     
     const removeIcon = document.createElement('button');
