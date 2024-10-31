@@ -23,6 +23,8 @@ function generateMenuItem(item, index) {
             <div class="item-info">
                 <h3>${item.name}</h3>
                 <span class="price">${item.price}</span>
+            </div>
+        <div class="item-action">
                 <p>${item.description}</p>
                 <button class="add-btn">+</button>
             </div>

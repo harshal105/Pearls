@@ -68,8 +68,8 @@ nav {
 
 .nav-right {
     position: absolute;  
-    right: 10px;          /* Align it to the right edge of the container */
-    top: 50%;             /* Center vertically */
+    right: 10px; /* Align it to the right edge of the container */
+    top: 50%;    /* Center vertically */
     transform: translateY(-50%);  /* Adjust for perfect vertical centering */
     display: flex;
     align-items: center;
@@ -89,6 +89,8 @@ nav {
 
 .menu-heading{
     padding-left: 4%;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .menu-items {
@@ -99,9 +101,11 @@ nav {
     flex-wrap: wrap;  /* Allow items to wrap into new rows */
     padding-left: 3%;
     padding-right: 3%;
+    font-weight: normal;
 }
 
 .menu-item {
+    position: relative;
     background-color: #f0f0f0;
     padding: 20px;
     /* width: 30%;   Each item takes up 30% of the container */
@@ -112,7 +116,6 @@ nav {
     text-align: center;
     transition: transform 0.2s ease;
     box-sizing: border-box;  /* Ensures padding is included within the width */
-
 }
 
 .menu-item:hover {
@@ -126,24 +129,42 @@ nav {
     cursor: pointer;
 }
 
+.item-info {
+    display: flex;  /* Use flexbox for layout */
+    justify-content: space-between; /* Space between h3 and price */
+    align-items: center; /* Center items vertically */
+}
+
 .item-info h3 {
     font-size: 1.5rem;
-    margin: 10px 0;
+    margin: 10px 0; /* Keep margins for spacing */
+    margin-top: 20px;
 }
 
 .item-info .price {
     font-size: 1.2rem;
     font-weight: bold;
-    float: right;  /* Align price to the right */
+    margin-top: 10px; /* Margin for spacing */
+}
+
+/* Add a wrapper for p and add-btn to align them */
+.item-action {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    text-align: left; /* Ensure text is left-aligned */
+    gap: 20px;
 }
 
 .item-info p {
     font-size: 0.9rem;
-    margin-bottom: 10px;
+    margin-right: 20px; /* Increased space between p and button */
+    margin-bottom: 0; /* Reset bottom margin */
+    flex-grow: 1; /* Allow p to take available space */
 }
 
 .add-btn {
-    display: inline-block;
+    margin-left: auto; /* Push button to the right */
+    display: inline-block; /* Keep it inline */
     background-color: #003349;
     color: white;
     border: none;
