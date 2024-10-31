@@ -10,6 +10,8 @@ function loadCart() {
 
     // Loop through each item in the cart
     cart.forEach(item => {
+        console.log("Rendering item:", item); // Check if each item, including "Tomato Bisque," appears here
+
         const itemTotal = item.price * item.quantity;
         totalPrice += itemTotal;
 

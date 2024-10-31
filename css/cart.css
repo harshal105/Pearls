@@ -7,6 +7,9 @@
     gap: 0;  
 }
 
+main#content {
+    padding-top: 110px; /* Adjust based on combined height of top-bar and navbar */
+}
 
 /* Button styling */
 .button-container {
@@ -41,6 +44,7 @@
 
 /* cart.css  */
 .cart-item {
+    margin-top: 100px;
     border: 1px solid #ccc;
     padding: 15px;
     margin-bottom: 10px;

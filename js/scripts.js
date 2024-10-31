@@ -179,6 +179,13 @@ function addToCart(itemId) {
     const menuItems = JSON.parse(localStorage.getItem('menuItems'));
     const item = menuItems[itemId];
 
+    // Check if item exists before proceeding
+    if (!item) {
+        console.error(`Item with ID ${itemId} not found in menuItems.`);
+        return; // Exit if item is undefined
+    }
+    
+
     // Check if the item is already in the cart
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
     if (existingItem) {
