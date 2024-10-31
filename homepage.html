@@ -44,9 +44,6 @@
         <!-- Filter tags will be dynamically added here -->
     </div>
 
-    <header class="spacer">
-    </header>
-
     <!-- Specials -->
     <section id="specials" class="menu-section">
         <h2 class="menu-heading">Specials</h2>
@@ -97,33 +94,36 @@
     </section>
 
     <div id="filter-panel" class="filter-panel">
-        <button id="close-filter" class="close-filter-btn">&gt;</button>
-        <h2>Filter Results</h2>
+        <div class="filter-header">
+            <button id="close-filter" class="icon-button" aria-label="Close">
+                <img src="icons/arrow-forward-icon.png" alt="Arrow Icon" class="icon">
+            </button>
+            <h2>Filter Results</h2>
+        </div>
         <div class="filter-category">
             <h3>Category</h3>
-            <button>Specials</button>
-            <button>Appetizers</button>
-            <button>Entrées</button>
-            <button>Desserts</button>
-            <button>Drinks</button>
+            <button class="filter-option">Specials</button>
+            <button class="filter-option">Appetizers</button>
+            <button class="filter-option">Entrées</button>
+            <button class="filter-option">Desserts</button>
+            <button class="filter-option">Drinks</button>
         </div>
         <div class="filter-palette">
             <h3>Palette</h3>
-            <button>Sweet</button>
-            <button>Savoury</button>
-            <button>Salty</button>
-            <button>Spicy</button>
+            <button class="filter-option">Sweet</button>
+            <button class="filter-option">Savoury</button>
+            <button class="filter-option">Salty</button>
+            <button class="filter-option">Spicy</button>
         </div>
         <div class="filter-include">
             <h3>Include</h3>
-            <input type="text" id="includeInput" placeholder="Ex. Peanuts">
+            <input type="text" id="includeInput" class="filter-input" placeholder="Ex. Peanuts">
         </div>
         <div class="filter-exclude">
             <h3>Exclude</h3>
-            <input type="text" id="excludeInput" placeholder="Ex. Peanuts">
+            <input type="text" id="excludeInput" class="filter-input" placeholder="Ex. Peanuts">
         </div>
     </div>
-
     <script src="js/scripts.js"></script>
     <script src="js/filter.js"></script>
 

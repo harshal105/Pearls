@@ -9,6 +9,7 @@ body {
 /* Top Bar and Nav Bar stuff */
 
 .top-bar {
+    top: 0;
     width: 100%;
     background-color: #003349;
     color: #F9F9F9;
@@ -37,7 +38,6 @@ body {
     margin-right: 20px; /* Space to the right of the icon */
     cursor: pointer;
 }
-
 
 nav {
     width: 100%;
@@ -101,12 +101,6 @@ nav {
     transform: translateY(-50%);  /* Adjust for perfect vertical centering */
     display: flex;
     align-items: center;
- 
-}
-
-.spacer {
-    width: 100%;
-    height: 200px; 
 }
 
 /*  Menu Stuff */
@@ -260,19 +254,19 @@ nav {
     color: #333;
 }
 
-
-/* Filter Panel */
 .filter-panel {
     display: none; /* Panel is not visible */
     position: fixed;
-    right: 0;
     top: 0;
-    width: 300px;
+    right: 0;
+    width: 800px;
     height: 100%;
-    background-color: rgba(129, 154, 161, 0.8);
+    background-color: #D9D9D9;
     box-shadow: -2px 0px 8px rgba(0, 0, 0, 0.2);
     padding: 20px;
     z-index: 1000;
+    font-size: 24px;
+    font-weight: bold;
 }
 
 /* When the filter is open */
@@ -280,19 +274,12 @@ nav {
     display: block; /* Show the panel */
 }
 
-/* Close filter button styling */
-.close-filter-btn {
-    position: absolute;
-    top: 20px;
-    left: -40px;
-    background-color: #003349;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 1.5rem;
-    cursor: pointer;
+/* Filter header styling */
+.filter-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;           /* Optional spacing between button and header */
+    margin-bottom: 20px; /* Space below the header section */
 }
 
 /* Filter sections styling */
@@ -300,18 +287,28 @@ nav {
     margin-bottom: 20px;
 }
 
-/* Filter buttons */
-.filter-panel button {
+/* Style only .filter-option buttons in filter-panel */
+.filter-panel .filter-option {
     display: inline-block;
     margin: 5px;
     padding: 10px;
-    background-color: #003349;
+    background-color: #819AA1;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 20px;
+    font-family: 'Inria Serif', serif;
 }
 
+/* Style for the icon button */
+.icon-button {
+    background: none;          /* Remove background */
+    border: none;              /* Remove border */
+    padding: 0;                /* Remove padding */
+    cursor: pointer;           /* Pointer cursor */
+    outline: none;             /* Remove focus outline */
+}
 
 /* Filter Tag Section */
 #active-filters {
@@ -338,4 +335,22 @@ nav {
     margin-left: 8px;
     cursor: pointer;
     font-size: 1rem;
+}
+
+.filter-input {
+    width: 90%;                   /* Full width of the container */
+    padding: 10px;                 /* Padding inside the input */
+    font-size: 1rem;               /* Adjust font size */
+    font-family: 'Inria Serif', serif;  /* Consistent font with other elements */
+    color: #333;                   /* Text color */
+    background-color: #F9F9F9;     /* Light background color */
+    border: 1px solid #ccc;        /* Subtle border */
+    border-radius: 5px;            /* Rounded corners */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
+}
+
+.filter-input:focus {
+    outline: none;                 /* Remove default outline */
+    border-color: #819AA1;         /* Highlight border color on focus */
+    box-shadow: 0 0 5px rgba(129, 154, 161, 0.5); /* Soft glow on focus */
 }
