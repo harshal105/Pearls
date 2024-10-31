@@ -219,7 +219,7 @@ nav {
     background-color: rgba(0, 0, 0, 0.5); /* Dim background */
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
-    z-index: 1000; /* Ensure it appears on top */
+    z-index: 2000; /* Ensure it appears on top */
 }
 
 /* When the pop-up is active */
