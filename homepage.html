@@ -12,14 +12,17 @@
     <header>
         <!-- Top Bar  -->
         <div class="top-bar">
-            <div><img src="icons/help-icon.png" alt="Help Icon" class="icon"></div>
+            <div><img src="icons/help-icon.png" alt="Help Icon" class="icon" id="help-icon">
+            <span id="help-message">A server is on the way!</span>
+        </div>
             <h1>Pearl's</h1>
             <div>
 
                 <img src="icons/search-icon.png" alt="Search Icon" class="icon" id="search-icon">
                 <!-- making shopping cart clickable -->
-                <a href="cart.html">
+                <a href="cart.html" class="cart-container">
                     <img src="icons/cart-icon.png" alt="Cart Icon" class="icon">
+                    <span id="cart-count-badge" class="cart-badge">0</span> <!-- Badge for item count -->
                 </a>
             </div>
         </div>

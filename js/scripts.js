@@ -75,8 +75,7 @@ function displayMenuItems(items) {
             specialsMenu.innerHTML += menuItemHTML;
         } else if (item.section === 'Appetizers') {
             appetizerMenu.innerHTML += menuItemHTML;
-        }
-        else if (item.section === 'Entrées') {
+        }else if (item.section === 'Entrées') {
             entréesMenu.innerHTML += menuItemHTML;
         } else if (item.section == 'Desserts') {
             dessertsMenu.innerHTML += menuItemHTML;
@@ -184,7 +183,6 @@ function addToCart(itemId) {
         console.error(`Item with ID ${itemId} not found in menuItems.`);
         return; // Exit if item is undefined
     }
-    
 
     // Check if the item is already in the cart
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
@@ -198,6 +196,7 @@ function addToCart(itemId) {
 
     // Save the updated cart back to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
     console.log(`Added ${item.name} to cart.`, cart); // Log the updated cart for debugging
 }
 
@@ -225,4 +224,34 @@ function fetchMenuItems() {
 document.addEventListener('DOMContentLoaded', () => {
     initializeCart();
     fetchMenuItems();
+});
+
+function updateCartCount() {
+    // Get the current cart from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    // Calculate the total count by summing up the quantity of each cart item
+    const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    // Update the badge with the current count
+    const cartBadge = document.getElementById('cart-count-badge');
+    cartBadge.textContent = cartCount;
+
+    // Hide the badge if there are no items in the cart
+    cartBadge.style.display = cartCount > 0 ? 'inline' : 'none';
+}
+
+// Initialize the cart counterwhen the page loads
+document.addEventListener('DOMContentLoaded', updateCartCount);
+
+// Select the help icon and the message span
+const helpIcon = document.getElementById('help-icon');
+const helpMessage = document.getElementById('help-message');
+
+// Add an event listener to the help icon
+helpIcon.addEventListener('click', () => {
+    // Show the message when clicked
+    helpMessage.style.display = 'inline';
+    // Hide the message after 6 seconds
+    setTimeout(() => {
+        helpMessage.style.display = 'none';
+    }, 6000);
 });

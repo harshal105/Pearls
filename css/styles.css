@@ -364,3 +364,31 @@ nav {
     font-size: 1rem;
     padding: 8px;
 }
+
+.cart-container {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: 16px;
+    background-color: white;
+    color: #003349;
+    border-radius: 50%;
+    padding: 3px 3px;
+    font-size: 15px;
+    min-width: 18px;
+    text-align: center;
+}
+
+#help-message {
+    display: none;
+    position: absolute;
+    font-size: 25px;
+    top: 30px;
+    margin-left: 10px;
+    padding: 5px;
+    z-index: 1000;
+}
