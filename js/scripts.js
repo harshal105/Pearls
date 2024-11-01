@@ -129,10 +129,10 @@ window.addEventListener('click', (e) => {
 });
 
 // Function to highlight the active section in the navbar
-function highlightActiveSection(navbarSelector) {
+function highlightActiveSection(navbarSelector, offset = 200) { // Default offset of 200px
     const navbar = document.querySelector(navbarSelector);
     const links = document.querySelectorAll('.nav-links a'); // Get all navigation links
-    const sections = document.querySelectorAll('section');    // Get all sections
+    const sections = document.querySelectorAll('section'); // Get all sections
 
     function handleScroll() {
         let scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
@@ -142,8 +142,8 @@ function highlightActiveSection(navbarSelector) {
             const sectionHeight = section.clientHeight; // Get the height of the section
 
             if (
-                scrollPosition >= sectionTop - navbar.clientHeight &&
-                scrollPosition < sectionTop + sectionHeight
+                scrollPosition >= sectionTop - offset && 
+                scrollPosition < sectionTop + sectionHeight - offset
             ) {
                 links.forEach((link) => link.classList.remove('active'));
                 const activeLink = document.querySelector(`.nav-links a[href="#${section.id}"]`);
@@ -153,9 +153,9 @@ function highlightActiveSection(navbarSelector) {
             }
         });
     }
-
     window.addEventListener('scroll', handleScroll);
 }
+
 
 // Call the function with the selector of your navbar
 highlightActiveSection('nav');
