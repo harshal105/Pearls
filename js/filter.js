@@ -4,15 +4,32 @@
 const filterPanel = document.getElementById('filter-panel');
 const filterIcon = document.getElementById('filter-icon');
 const closeFilterBtn = document.getElementById('close-filter');
+const backdrop = document.querySelector('.filter-panel-backdrop');
 
 // Open the filter panel when the filter icon is clicked
 filterIcon.addEventListener('click', () => {
     filterPanel.classList.add('open');
+    
+    const isOpen = filterPanel.style.display === 'block';
+    if (!isOpen) {
+        filterPanel.style.display = 'block';
+        backdrop.style.display = 'block';
+    } else {
+        filterPanel.style.display = 'none';
+        backdrop.style.display = 'none';
+    }
+});
+
+backdrop.addEventListener('click', function() {
+    document.querySelector('.filter-panel').style.display = 'none';
+    this.style.display = 'none';
 });
 
 // Close the filter panel when the ">" button is clicked
 closeFilterBtn.addEventListener('click', () => {
     filterPanel.classList.remove('open');
+    filterPanel.style.display = 'none';
+    backdrop.style.display = 'none';
 });
 
 // Store selected filters
