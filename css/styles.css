@@ -96,7 +96,7 @@ nav {
 
 .nav-right {
     position: absolute;  
-    right: 10px; /* Align it to the right edge of the container */
+    right: 1%; /* Align it to the right edge of the container */
     top: 50%;    /* Center vertically */
     transform: translateY(-50%);  /* Adjust for perfect vertical centering */
     display: flex;
