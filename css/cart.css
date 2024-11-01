@@ -56,13 +56,25 @@ main#content {
 }
 
 /* Cart item styling */
+.item-details {
+    flex-grow: 1;
+}
+
 .cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border: 1px solid #ccc;
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 8px;
     background-color: #f9f9f9;
+    position: relative;
+
+    /* alight remove button to the left */
+    flex-direction: row;
 }
+
 
 /* Main cart container with fixed height */
 #cart-content {
@@ -102,4 +114,26 @@ main#content {
     text-align: right;
     border-top: 1px solid #ddd;
     background-color: #fff;
+}
+
+
+
+.remove-btn {
+    margin-left: 10px;
+    margin-right: 15px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+}
+
+
+.remove-icon {
+    width: 24px; 
+    height: 24px;
+}
+
+.remove-btn:hover .remove-icon {
+    filter: brightness(0.8); /* Slight darken effect on hover */
 }
