@@ -56,3 +56,17 @@ function removeFromCart(index) {
 
 // Run loadCart function when the page loads
 document.addEventListener('DOMContentLoaded', loadCart);
+
+// Select the help icon and the message span
+const helpIcon = document.getElementById('help-icon');
+const helpMessage = document.getElementById('help-message');
+
+// Add an event listener to the help icon
+helpIcon.addEventListener('click', () => {
+    // Show the message when clicked
+    helpMessage.style.display = 'inline';
+    // Hide the message after 6 seconds
+    setTimeout(() => {
+        helpMessage.style.display = 'none';
+    }, 6000);
+});

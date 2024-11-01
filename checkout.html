@@ -7,8 +7,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&display=swap" rel="stylesheet">
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Cart-specific stylesheet -->
+    <link rel="stylesheet" href="css/cart.css">
+    <style>
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <!-- Top Bar  -->
+        <div class="top-bar">
+            <div><img src="icons/help-icon.png" alt="Help Icon" class="icon" id="help-icon">
+            <span id="help-message">A server is on the way!</span>
+        </div>
+            <h1>Pearl's</h1>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav>
+            <div>
+                <ul class="nav-links">
+                    <li><a></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 style="
+            position: absolute;
+            width: 990px;
+            height: 258px;
+            font-size: 120px;
+            line-height: 140px;
+            text-align: center;
+            color: #003349;
+        ">We are preparing your order!</h1>
+    </main>
+
+    <!-- Button container with fixed positioning at the bottom -->
+    <div class="button-container">
+        <a href="homepage.html" class="button">Order More</a>
+        <a href="checkout.html" class="button">Call Server</a>
+    </div>
+    
 
 
     
