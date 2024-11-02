@@ -101,6 +101,7 @@ function setupPopupListeners() {
             popupContent.innerHTML = `
                 <span class="close-popup">&times;</span>
                 ${generatePopupContent(itemData, itemId)}
+                ${createQuantityDropdown(itemId)}
             `;
             
             // Show the pop-up
@@ -108,7 +109,15 @@ function setupPopupListeners() {
 
             // Attach addToCart to the Add to Cart button inside the popup
             const addToCartBtn = popup.querySelector('.add-btn');
-            addToCartBtn.addEventListener('click', () => addToCart(itemId));
+            addToCartBtn.addEventListener('click', () => {
+                
+                const quantityDropdown = popup.querySelector(`#itemCount-${itemId}`);
+                const selectedQuantity = parseInt(quantityDropdown.value, 10)
+                addToCart(itemId, selectedQuantity);
+                
+                // Close the popup
+                popup.classList.remove('show');
+            });
             
             // Add close functionality
             popup.querySelector('.close-popup').addEventListener('click', () => {
@@ -116,6 +125,18 @@ function setupPopupListeners() {
             });
         });
     });
+}
+
+// Creates a dropdown menu
+function createQuantityDropdown(itemId) {
+    let dropdownHTML = `
+        <select id="itemCount-${itemId}">
+    `;
+    for (let i = 1; i <= 9; i++) {
+        dropdownHTML += `<option value="${i}">${i}</option>`;
+    }
+    dropdownHTML += '</select>';
+    return dropdownHTML;
 }
 
 // Initialize menu items and pop-up functionality
@@ -170,7 +191,7 @@ function initializeCart() {
 }
 
 // Function to add an item to the cart
-function addToCart(itemId) {
+function addToCart(itemId, quantityNum) {
     // Get the current cart from localStorage
     let cart = JSON.parse(localStorage.getItem('cart'));
 
@@ -188,22 +209,22 @@ function addToCart(itemId) {
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
     if (existingItem) {
         // If it's already in the cart, increase the quantity
-        existingItem.quantity += 1;
+        existingItem.quantity += quantityNum;
     } else {
-        // If it's not in the cart, add it with a quantity of 1
-        cart.push({ ...item, quantity: 1 });
+        // If it's not in the cart, add it with the quantity given
+        cart.push({ ...item, quantity: quantityNum });
     }
 
     // Save the updated cart back to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
-    console.log(`Added ${item.name} to cart.`, cart); // Log the updated cart for debugging
+    console.log(`Added ${item.quantity} ${item.name} to cart.`, cart); // Log the updated cart for debugging
 }
 
 // Attach the addToCart function to the add button in each menu item
 function setupAddToCartButtons() {
     document.querySelectorAll('.add-btn').forEach((button, index) => {
-        button.addEventListener('click', () => addToCart(index));
+        button.addEventListener('click', () => addToCart(index, 1));
     });
 }
 
