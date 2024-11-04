@@ -156,6 +156,7 @@ function applyFilters() {
 
     displayMenuItems(filteredItems);  // Show only filtered items
     setupPopupListeners();
+    setupAddToCartButtons()
 
 }
 
