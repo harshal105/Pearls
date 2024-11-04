@@ -6,6 +6,9 @@ const filterIcon = document.getElementById('filter-icon');
 const closeFilterBtn = document.getElementById('close-filter');
 const backdrop = document.querySelector('.filter-panel-backdrop');
 
+
+//TO DO: add adding to cart functionality and image pop up
+
 // Open the filter panel when the filter icon is clicked
 filterIcon.addEventListener('click', () => {
     filterPanel.classList.add('open');
@@ -152,4 +155,8 @@ function applyFilters() {
     });
 
     displayMenuItems(filteredItems);  // Show only filtered items
+    setupPopupListeners();
+
 }
+
+
