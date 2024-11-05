@@ -19,14 +19,17 @@ function fetchMenuItems() {
 function generateMenuItem(item, index) {
     return `
         <div class="menu-item">
-            <a href="#" class="open-popup" data-item="${index}"><img src="${item.imageUrl}" alt="${item.name}"></a>
+            <a href="#" class="open-popup" data-item="${index}">
+                <img src="${item.imageUrl}" alt="${item.name}"></a>
             <div class="item-info">
                 <h3>${item.name}</h3>
                 <span class="price">${item.price}</span>
             </div>
-        <div class="item-action">
-                <p>${item.description}</p>
-                <button class="add-btn">+</button>
+            <div class="item-action">
+                <div class="description-wrapper">
+                    <p>${item.description}</p>
+                </div>
+                <button class="add-btn"></button>
             </div>
         </div>
     `;
