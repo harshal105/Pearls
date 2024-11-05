@@ -40,8 +40,8 @@ function loadCart() {
     document.getElementById('total-price').innerText = `Total Price: $${totalPrice.toFixed(2)}`;
 
 
-     // Attach event listeners to each remove button
-     document.querySelectorAll('.remove-btn').forEach(button => {
+    // Attach event listeners to each remove button
+    document.querySelectorAll('.remove-btn').forEach(button => {
         button.addEventListener('click', (e) => {
             const index = e.target.closest('.remove-btn').getAttribute('data-index');
             removeFromCart(index);
@@ -53,14 +53,14 @@ function loadCart() {
     const plusButtons = document.querySelectorAll('.plus-btn');
 
     minusButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const itemIndex = this.getAttribute('data-index');
             updateQuantity(itemIndex, -1); // Decrease quantity by 1
         });
     });
 
     plusButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const itemIndex = this.getAttribute('data-index');
             updateQuantity(itemIndex, 1); // Increase quantity by 1
         });
@@ -69,13 +69,13 @@ function loadCart() {
 
 function updateQuantity(index, change) {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
+
     if (change === -1 && cart[index].quantity > 1) {
         cart[index].quantity -= 1; // Decrease quantity if more than 1
     } else if (change === 1) {
         cart[index].quantity += 1; // Increase quantity
     }
-    
+
     // Update local storage
     localStorage.setItem('cart', JSON.stringify(cart));
 
@@ -110,3 +110,23 @@ helpIcon.addEventListener('click', () => {
         helpMessage.style.display = 'none';
     }, 6000);
 });
+
+function confirmOrder() {
+    const modal = document.getElementById("confirm-order-modal");
+    const closeButton = document.querySelector(".close-icon");
+
+    // Show the modal
+    modal.style.display = "block";
+
+    // Close the modal when the close button is clicked
+    closeButton.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // Close the modal when clicking outside of the modal content
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}

@@ -150,7 +150,8 @@ main#content {
     align-items: center;
     background: #D9D9D9;
     border-radius: 8px;
-    gap: 0.5vw; /* Space between buttons and quantity */
+    gap: 0.5vw;
+    /* Space between buttons and quantity */
     height: 5%;
     width: 6%;
     margin-left: 3%;
@@ -178,8 +179,12 @@ main#content {
     border-radius: 8px 0px 0px 8px;
     font-size: 1.5rem;
 }
+
 .quantity {
-    width: 40px; /* Fixed width for quantity display */
-    text-align: center; /* Center the quantity text */
-    font-size: 1.2rem; /* Adjust size as needed */
+    width: 40px;
+    /* Fixed width for quantity display */
+    text-align: center;
+    /* Center the quantity text */
+    font-size: 1.2rem;
+    /* Adjust size as needed */
 }
