@@ -114,9 +114,10 @@ helpIcon.addEventListener('click', () => {
 function confirmOrder() {
     const modal = document.getElementById("confirm-order-modal");
     const closeButton = document.querySelector(".close-icon");
+    const editOrderButton = document.querySelector(".small-button1");
 
     // Show the modal
-    modal.style.display = "block";
+    modal.style.display = "flex";
 
     // Close the modal when the close button is clicked
     closeButton.onclick = function () {
@@ -128,5 +129,9 @@ function confirmOrder() {
         if (event.target == modal) {
             modal.style.display = "none";
         }
+    }
+
+    editOrderButton.onclick = function () {
+        modal.style.display = "none";
     }
 }
