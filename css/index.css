@@ -5,38 +5,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Top Bar and Nav Bar stuff */
-
-.top-bar {
-    top: 0;
-    width: 100%;
-    height: 100px;
-    background-color: #003349;
-    color: #F9F9F9;
-    padding: 16px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    z-index: 1000;
-    box-sizing: border-box;
-}
-
-.top-bar h1 {
-    font-family: 'Inria Serif', serif;
-    font-size: 3.5rem;
-    font-weight: bold;
-    color: #F9F9F9;
-    margin: 0;
-    text-align: center;
-    position: absolute;
-    /* Center h1 independently */
-    left: 50%;
-    /* Move h1 to the center horizontally */
-    transform: translateX(-50%);
-    /* Adjust for centering */
-}
-
 .icon {
     width: 50px;
     height: 50px;
@@ -403,8 +371,10 @@ nav {
 }
 
 .filter-panel .filter-option.active {
-    background-color: #003349; /* Highlight color */
-    color: #FFFFFF; /* Text color for better contrast */
+    background-color: #003349;
+    /* Highlight color */
+    color: #FFFFFF;
+    /* Text color for better contrast */
 }
 
 .filter-input {
@@ -519,20 +489,6 @@ nav {
     text-align: center;
 }
 
-#help-message {
-    display: none;
-    position: absolute;
-    font-size: 25px;
-    top: 30px;
-    margin-left: 10px;
-    padding: 5px;
-    z-index: 1000;
-}
-
-#help-div {
-    padding-left: 3%;
-}
-
 /* Modal (background) */
 .modal {
     display: none;
@@ -548,8 +504,4 @@ nav {
 
     /* black background */
     background-color: rgba(0, 0, 0, 0.4);
-}
-
-.button {
-    font-family: 'Inria Serif', serif;
 }
