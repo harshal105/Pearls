@@ -78,11 +78,11 @@ function displayMenuItems(items) {
             specialsMenu.innerHTML += menuItemHTML;
         } else if (item.section === 'Appetizers') {
             appetizerMenu.innerHTML += menuItemHTML;
-        }else if (item.section === 'Entrées') {
+        } else if (item.section === 'Entrées') {
             entréesMenu.innerHTML += menuItemHTML;
         } else if (item.section == 'Desserts') {
             dessertsMenu.innerHTML += menuItemHTML;
-        } else if (item.section == 'Drinks'){
+        } else if (item.section == 'Drinks') {
             drinksMenu.innerHTML += menuItemHTML;
         }
     });
@@ -96,32 +96,32 @@ function setupPopupListeners() {
             e.preventDefault();
             const itemId = button.getAttribute('data-item');  // Get the item index
             const itemData = JSON.parse(localStorage.getItem('menuItems'))[itemId];  // Get the corresponding item data
-            
+
             const popup = document.getElementById('dynamic-popup');
             const popupContent = popup.querySelector('.popup-content');
-            
+
             // Inject the generated content into the pop-up
             popupContent.innerHTML = `
                 <span class="close-popup">&times;</span>
                 ${generatePopupContent(itemData, itemId)}
                 ${createQuantityDropdown(itemId)}
             `;
-            
+
             // Show the pop-up
             popup.classList.add('show');
 
             // Attach addToCart to the Add to Cart button inside the popup
             const addToCartBtn = popup.querySelector('.add-btn');
             addToCartBtn.addEventListener('click', () => {
-                
+
                 const quantityDropdown = popup.querySelector(`#itemCount-${itemId}`);
                 const selectedQuantity = parseInt(quantityDropdown.value, 10)
                 addToCart(itemId, selectedQuantity);
-                
+
                 // Close the popup
                 popup.classList.remove('show');
             });
-            
+
             // Add close functionality
             popup.querySelector('.close-popup').addEventListener('click', () => {
                 popup.classList.remove('show');
@@ -166,7 +166,7 @@ function highlightActiveSection(navbarSelector, offset = 200) { // Default offse
             const sectionHeight = section.clientHeight; // Get the height of the section
 
             if (
-                scrollPosition >= sectionTop - offset && 
+                scrollPosition >= sectionTop - offset &&
                 scrollPosition < sectionTop + sectionHeight - offset
             ) {
                 links.forEach((link) => link.classList.remove('active'));
@@ -266,16 +266,16 @@ function updateCartCount() {
 // Initialize the cart counterwhen the page loads
 document.addEventListener('DOMContentLoaded', updateCartCount);
 
-// Select the help icon and the message span
-const helpIcon = document.getElementById('help-icon');
-const helpMessage = document.getElementById('help-message');
+function callHelp() {
+    // Select the help icon and the message span
+    const helpIcon = document.getElementById('help-icon');
+    const helpMessage = document.getElementById('help-message');
 
-// Add an event listener to the help icon
-helpIcon.addEventListener('click', () => {
     // Show the message when clicked
     helpMessage.style.display = 'inline';
     // Hide the message after 6 seconds
     setTimeout(() => {
         helpMessage.style.display = 'none';
     }, 6000);
-});
+
+}

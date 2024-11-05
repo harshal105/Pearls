@@ -1,12 +1,3 @@
-.frame-child {
-    position: absolute;
-    top: 103px;
-    left: 371px;
-    width: 1px;
-    height: 5px;
-    overflow: hidden;
-}
-
 .we-are-preparing {
     font-size: 96px;
     display: inline-block;
@@ -35,8 +26,7 @@
     width: 100%;
 }
 
-.large-button,
-.large-button1 {
+.large-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +38,6 @@
     border-radius: 8px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-
 
 .background-parent {
     position: flex;
@@ -73,8 +62,7 @@
     font-family: 'Inria Serif';
 }
 
-.large-button:hover,
-.large-button1:hover {
+.large-button:hover {
     transform: translateY(-2px);
     box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
 }
