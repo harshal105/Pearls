@@ -247,6 +247,7 @@ main#content {
     position: absolute;
     top: 12%;
     left: 6.78%;
+    color: #f9f9f9;
 }
 
 .small-button {
@@ -290,5 +291,5 @@ main#content {
     position: relative;
     text-align: left;
     font-size: 32px;
-    color: #fff9f9;
+    color: #f9f9f9;
 }
