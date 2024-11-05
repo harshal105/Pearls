@@ -10,7 +10,7 @@ function loadCart() {
 
     // Loop through each item in the cart
     cart.forEach((item, index) => {
-        console.log("Rendering item:", item); // Check if each item, including "Tomato Bisque," appears here
+        console.log("Rendering item:", item); // Debugging line
 
         const itemTotal = item.price * item.quantity;
         totalPrice += itemTotal;
@@ -23,9 +23,13 @@ function loadCart() {
                 <img src="icons/delete-icon.png" alt="Remove Item" class="remove-icon">
             </button>
             <div class="item-details">
+            <div class="quantity-controls">
+                    <button class="minus-btn" data-index="${index}">-</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button class="plus-btn" data-index="${index}">+</button>
+                </div>
                 <h3>${item.name}</h3>
                 <p>Price: $${item.price.toFixed(2)}</p>
-                <p>Quantity: ${item.quantity}</p>
                 <p>Total: $${itemTotal.toFixed(2)}</p>
             </div>
         `;
@@ -33,8 +37,8 @@ function loadCart() {
     });
 
     // Display the total price
-    const totalPriceElement = document.getElementById('total-price');
-    totalPriceElement.innerHTML = `<h3>Total Price: $${totalPrice.toFixed(2)}</h3>`;
+    document.getElementById('total-price').innerText = `Total Price: $${totalPrice.toFixed(2)}`;
+
 
      // Attach event listeners to each remove button
      document.querySelectorAll('.remove-btn').forEach(button => {
@@ -43,6 +47,40 @@ function loadCart() {
             removeFromCart(index);
         });
     });
+
+    // Add event listeners to quantity buttons
+    const minusButtons = document.querySelectorAll('.minus-btn');
+    const plusButtons = document.querySelectorAll('.plus-btn');
+
+    minusButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemIndex = this.getAttribute('data-index');
+            updateQuantity(itemIndex, -1); // Decrease quantity by 1
+        });
+    });
+
+    plusButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const itemIndex = this.getAttribute('data-index');
+            updateQuantity(itemIndex, 1); // Increase quantity by 1
+        });
+    });
+}
+
+function updateQuantity(index, change) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    if (change === -1 && cart[index].quantity > 1) {
+        cart[index].quantity -= 1; // Decrease quantity if more than 1
+    } else if (change === 1) {
+        cart[index].quantity += 1; // Increase quantity
+    }
+    
+    // Update local storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Reload the cart to reflect changes
+    loadCart();
 }
 
 // Function to remove an item from the cart by its index
@@ -52,6 +90,8 @@ function removeFromCart(index) {
     localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
     loadCart(); // Reload the cart display
 }
+
+
 
 
 // Run loadCart function when the page loads
