@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
     <header>
         <!-- Top Bar  -->
         <div class="top-bar">
-            <div id="help-div"><img src="icons/help-icon.png" alt="Help Icon" class="icon" id="help-icon">
-            <span id="help-message">A server is on the way!</span>
-        </div>
+            <div id="help-div" onclick="callHelp()">
+                <img src="icons/help-icon.png" alt="Help Icon" class="icon" id="help-icon">
+                <span id="help-message">A server is on the way!</span>
+            </div>
             <h1>Pearl's</h1>
             <div class="top-nav-right-div">
 
@@ -44,7 +47,7 @@
         </nav>
     </header>
 
-   
+
     <header class="spacer">
     </header>
 
@@ -57,7 +60,7 @@
         <h3>Filtering by:</h3>
         <!-- Filter tags will be dynamically added here -->
     </div>
-    
+
 
     <div id="filter-tags"></div>
 
@@ -67,7 +70,7 @@
         <div class="menu-items" id="specials-menu">
             <!-- Menu items will be dynamically inserted here -->
         </div>
-        
+
         <!-- Empty pop-up that will be filled dynamically -->
         <div class="popup" id="dynamic-popup">
             <div class="popup-content">
@@ -148,4 +151,5 @@
     <script src="js/search.js"></script>
 
 </body>
+
 </html>
