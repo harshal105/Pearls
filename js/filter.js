@@ -40,9 +40,7 @@ let filters = {
     search: '',
     include: [],
     exclude: [],
-
-    //TODO: add funcitonality for the buttons
-    dietarypPref: [],
+    dietaryPreferences: [],
     palette: []
 };
 
@@ -53,11 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const includeInput = document.getElementById('includeInput');
     const excludeInput = document.getElementById('excludeInput');
     const activeFiltersContainer = document.getElementById('active-filters');
-
-    // TO DO: Add the Buttons for Dietary Pref and Palette
-    // const dietaryPrefButton = document.querySelectorAll('????');
-    // const paletteButtons = document.querySelectorAll('???');
-
+    const dietaryButtons = document.querySelectorAll('.filter-dietary');
+    const paletteButtons = document.querySelectorAll('.filter-palette');
+    
     function toggleFilterVisibility() {
         // Show #active-filters only if there are tags
         if (activeFiltersContainer.querySelectorAll('.filter-tag').length > 0) {
@@ -90,9 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
             filters.include = filters.include.filter(item => item !== value);
         } else if (type === 'Exclude') {
             filters.exclude = filters.exclude.filter(item => item !== value);
+        } else if (type === 'Palette') {
+            filters.palette = filters.palette.filter(item => item !== value);
+        }else if (type === 'Dietary Preferences') {
+            filters.dietaryPreferences = filters.dietaryPreferences.filter(item => item !== value);
         }
+                
+        // Remove the active state from the corresponding button
+        const buttons = document.querySelectorAll(`[data-value="${value}"]`);
+        buttons.forEach(button => {
+            button.classList.remove('active'); // Remove the active class from the button
+        });
     }
-
 
     // Listen to ingredient input changes
     includeInput.addEventListener('keydown', (e) => {
@@ -115,9 +120,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    //TODO: Listen to category button clicks
+    // Event listeners for dietary buttons
+    dietaryButtons.forEach(button => {
+        button.addEventListener('click', (e) => handleButtonToggle(e.target, 'dietaryPreferences', "Dietary Preferences"));
+    });
 
-    fetchMenuItems();  // Load and display initial menu items
+    paletteButtons.forEach(button => {
+        button.addEventListener('click', (e) => handleButtonToggle(e.target, 'palette', "Palette"));
+    });
+
+    // Function to handle button toggle
+    function handleButtonToggle(button, filterType, description) {
+        const value = button.dataset.value; // Get the value from the button's data attribute
+    
+        if (button.classList.contains('active')) {
+            // If it's active, remove it from the filter
+            filters[filterType] = filters[filterType].filter(item => item !== value);
+            button.classList.remove('active');
+    
+            // Remove the filter tag from the UI
+            const filterTags = activeFiltersContainer.querySelectorAll('.filter-tag');
+            filterTags.forEach(tag => {
+                if (tag.innerText.includes(value)) {
+                    tag.remove(); // Remove the corresponding filter tag
+                }
+            });
+        } else {
+            // If it's not active, add it to the filter
+            filters[filterType].push(value);
+            button.classList.add('active');
+    
+            // Add filter tag to UI
+            addFilterTag(description, value);
+        }
+    
+        applyFilters(); // Call apply filters after the change
+    }
+    
+    
 });
 
 // Helper function to add/remove filter value
@@ -132,13 +172,26 @@ function toggleFilter(filterArray, value) {
 function applyFilters() {
     const menuItems = JSON.parse(localStorage.getItem('menuItems')) || [];
     const filteredItems = menuItems.filter(item => {
-        
-        //TO DO: filter functionality for the buttons in the filter
-
-        // Search term filtering
         if (filters.search && !item.name.toLowerCase().includes(filters.search.toLowerCase()) &&
             !item.description.toLowerCase().includes(filters.search.toLowerCase())) {
             return false;
+        }
+        // Dietary Preferences filter
+        if (filters.dietaryPreferences.length > 0) {
+            // Split the dietary preferences string into an array
+            const itemDietaryPreferences = item.dietaryPreferences.split(',').map(pref => pref.trim());
+            // Check if all selected dietary preferences are included in the item's dietary preferences
+            if (!filters.dietaryPreferences.every(pref => itemDietaryPreferences.includes(pref))) {
+                return false;
+            }
+        }
+        
+         // Palette filter
+         if (filters.palette.length > 0) {
+            const itemPalette = item.palette.split(',').map(palette => palette.trim());
+            if (!filters.palette.every(palette => itemPalette.includes(palette))) {
+                return false;
+            }
         }
 
         // Include filter
