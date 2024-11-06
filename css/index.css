@@ -1,46 +1,4 @@
-nav {
-    width: 100%;
-    background-color: #819AA1;
-    padding: 10px 0;
-    /* Padding for overall nav bar */
-    align-items: center;
-    color: #F9F9F9;
-    position: fixed;
-    z-index: 1000;
-    top: 100px;
-}
 
-.nav-container {
-    display: flex;
-    justify-content: space-evenly;
-    /* Center nav items */
-    position: relative;
-    font-weight: bold;
-    width: 100%;
-}
-
-.nav-links {
-    display: flex;
-    gap: 150px;
-    list-style: none;
-    margin-left: -90px;
-}
-
-.nav-links {
-    position: relative;
-    /* Required for the absolute positioning of the pseudo-element */
-}
-
-.nav-links a {
-    color: #F9F9F9;
-    /* Original color */
-    text-decoration: none;
-    /* Remove default underline */
-    padding: 10px;
-    font-size: 2rem;
-    position: relative;
-    /* Required for the positioning of the pseudo-element */
-}
 
 .nav-links a::after {
     content: '';
@@ -229,11 +187,6 @@ nav {
     .description-wrapper {
         font-size: 0.8rem;
         margin-top: -11px;
-    }
-
-    .nav-links {
-        gap: 65px;
-        margin-left: -115px;
     }
 }
 

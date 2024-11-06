@@ -7,38 +7,65 @@ function loadCart() {
     cartContainer.innerHTML = '';
 
     let totalPrice = 0;
+    let totalPriceFinal = 0;
+    if (cart.length != 0) {
+        // Loop through each item in the cart
+        cart.forEach((item, index) => {
+            console.log("Rendering item:", item); // Debugging line
 
-    // Loop through each item in the cart
-    cart.forEach((item, index) => {
-        console.log("Rendering item:", item); // Debugging line
+            const itemTotal = item.price * item.quantity;
+            totalPrice += itemTotal;
 
-        const itemTotal = item.price * item.quantity;
-        totalPrice += itemTotal;
-
-        // Create HTML for each cart item
-        const itemElement = document.createElement('div');
-        itemElement.classList.add('cart-item');
-        itemElement.innerHTML = `
+            // Create HTML for each cart item
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
             <button class="remove-btn" data-index="${index}">
                 <img src="icons/delete-icon.png" alt="Remove Item" class="remove-icon">
             </button>
-            <div class="item-details">
             <div class="quantity-controls">
                     <button class="minus-btn" data-index="${index}">-</button>
                     <span class="quantity">${item.quantity}</span>
                     <button class="plus-btn" data-index="${index}">+</button>
+            </div>
+            <div class="item-details">
+                <div class="line-item">
+                    <span class="label">${item.name}</span>
+                    <span class="dots"></span>
+                    <span class="amount">$${itemTotal.toFixed(2)}</span>
                 </div>
-                <h3>${item.name}</h3>
-                <p>Price: $${item.price.toFixed(2)}</p>
-                <p>Total: $${itemTotal.toFixed(2)}</p>
             </div>
         `;
-        cartContainer.appendChild(itemElement);
-    });
+            cartContainer.appendChild(itemElement);
+        });
 
+        const taxAmount = totalPrice * 0.05;
+        const totalElement = document.createElement('div');
+        totalElement.classList.add('totalAndTax');
+        totalElement.innerHTML = `
+        <div class="line-item">
+        <span class="label">Subtotal</span>
+        <span class="dots"></span>
+        <span class="amount">$${totalPrice.toFixed(2)}</span>
+    </div>
+    <div class="line-item">
+        <span class="label">GST(5%)</span>
+        <span class="dots"></span>
+        <span class="amount">$${taxAmount.toFixed(2)}</span>
+    </div>
+    `;
+
+        cartContainer.appendChild(totalElement);
+        totalPriceFinal = totalPrice + taxAmount;
+    }
+    else {
+        const totalElement = document.createElement('div');
+        totalElement.classList.add('empty-cart-message');
+        totalElement.innerHTML = `<p class="empty-cart-message" id="empty-cart-message">The cart is empty.</p>`;
+        cartContainer.appendChild(totalElement);
+    }
     // Display the total price
-    document.getElementById('total-price').innerText = `Total Price: $${totalPrice.toFixed(2)}`;
-
+    document.getElementById('total-price').innerText = `Total: $${totalPriceFinal.toFixed(2)}`;
 
     // Attach event listeners to each remove button
     document.querySelectorAll('.remove-btn').forEach(button => {
@@ -96,6 +123,9 @@ function removeFromCart(index) {
 document.addEventListener('DOMContentLoaded', loadCart);
 
 function confirmOrder() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length == 0) { return; }
+
     const modal = document.getElementById("confirm-order-modal");
     const closeButton = document.querySelector(".close-icon");
     const editOrderButton = document.querySelector(".small-button1");
