@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pearl's Restaurant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/homepage/filter.css">
+</head>
+
+<body>
+
+    <header>
+        <!-- Top Bar  -->
+        <div class="top-bar">
+            <div id="help-div" onclick="callHelp()">
+                <img src="icons/help-icon.png" alt="Help Icon" class="icon" id="help-icon">
+                <span id="help-message">A server is on the way!</span>
+            </div>
+            <h1>Pearl's</h1>
+            <div class="top-nav-right-div">
+                <img src="icons/search-icon.png" alt="Search Icon" class="icon" id="search-icon">
+
+                <!-- making shopping cart clickable -->
+                <a href="cart.html" class="cart-container">
+                    <img src="icons/cart-icon.png" alt="Cart Icon" class="icon" id="cart-icon">
+                    <span id="cart-count-badge" class="cart-badge">0</span> <!-- Badge for item count -->
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#specials">Specials</a></li>
+                    <li><a href="#appetizers">Appetizers</a></li>
+                    <li><a href="#entrées">Entrées</a></li>
+                    <li><a href="#desserts">Desserts</a></li>
+                    <li><a href="#drinks">Drinks</a></li>
+                </ul>
+                <div class="nav-right">
+                    <img src="icons/filter-icon.png" alt="Filter Icon" id="filter-icon" class="icon"
+                        onclick="openFilterMenu()">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <header class="spacer">
+        </header>
+
+        <div id="search-container" class="search-container">
+            <input type="text" id="search-input" placeholder="Search..." />
+        </div>
+
+        <!-- Filter Tag Section -->
+        <div id="active-filters">
+            <h3>Filtering by:</h3>
+            <!-- Filter tags will be dynamically added here -->
+        </div>
+
+
+        <div id="filter-tags"></div>
+
+        <!-- Specials -->
+        <section id="specials" class="menu-section">
+            <h2 class="menu-heading">Specials</h2>
+            <div class="menu-items" id="specials-menu">
+                <!-- Menu items will be dynamically inserted here -->
+            </div>
+
+            <!-- Empty pop-up that will be filled dynamically -->
+            <div class="popup" id="dynamic-popup">
+                <div class="popup-content">
+                    <span class="close-popup">&times;</span>
+                    <!-- Content will be dynamically added here -->
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Appetizers -->
+        <section id="appetizers" class="menu-section">
+            <h2 class="menu-heading">Appetizers</h2>
+            <div class="menu-items" id="appetizers-menu">
+                <!-- Menu items will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Entrees -->
+        <section id="entrées" class="menu-section">
+            <h2 class="menu-heading">Entrées</h2>
+            <div class="menu-items" id="entrées-menu">
+                <!-- Menu items will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Desserts -->
+        <section id="desserts" class="menu-section">
+            <h2 class="menu-heading">Desserts</h2>
+            <div class="menu-items" id="desserts-menu">
+                <!-- Menu items will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Drinks -->
+        <section id="drinks" class="menu-section">
+            <h2 class="menu-heading">Drinks</h2>
+            <div class="menu-items" id="drinks-menu">
+                <!-- Menu items will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <div class="modal" id="filter-modal">
+            <div id="filter-panel" class="filter-panel">
+                <div class="filter-header">
+                    <button id="close-filter" class="icon-button" aria-label="Close">
+                        <img src="icons/arrow-forward-icon.png" alt="Arrow Icon" class="icon">
+                    </button>
+                    <h2>Filter Results</h2>
+                </div>
+                <div class="filter-dietary-preferences">
+                    <h3>Dietary Preferences</h3>
+                    <button class="filter-option filter-dietary" data-value="gluten-free">Gluten Free</button>
+                    <button class="filter-option filter-dietary" data-value="vegan">Vegan</button>
+                    <button class="filter-option filter-dietary" data-value="vegetarian">Vegetarian</button>
+                    <button class="filter-option filter-dietary" data-value="dairy-free">Dairy Free</button>
+                    <button class="filter-option filter-dietary" data-value="nut-free">Nut Free</button>
+                </div>
+                <div class="filter-palette-options">
+                    <h3>Palette</h3>
+                    <button class="filter-option filter-palette" data-value="sweet">Sweet</button>
+                    <button class="filter-option filter-palette" data-value="savoury">Savoury</button>
+                    <button class="filter-option filter-palette" data-value="salty">Salty</button>
+                    <button class="filter-option filter-palette" data-value="spicy">Spicy</button>
+                </div>
+                <div class="filter-include">
+                    <h3>Include</h3>
+                    <input type="text" id="includeInput" class="filter-input" placeholder="Ex. Peanuts">
+                </div>
+                <div class="filter-exclude">
+                    <h3>Exclude</h3>
+                    <input type="text" id="excludeInput" class="filter-input" placeholder="Ex. Peanuts">
+                </div>
+            </div>
+        </div>
+
+        <script src="js/scripts.js"></script>
+        <script src="js/filter.js"></script>
+        <script src="js/search.js"></script>
+        <script src="js/index.js"></script>
+    </main>
+</body>
+
+</html>
