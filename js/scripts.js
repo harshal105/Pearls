@@ -35,17 +35,24 @@ function generateMenuItem(item, index) {
 // Function to generate pop-up
 function generatePopupContent(item, index) {
     return `
-        <img src="${item.imageUrl}" alt="${item.name}">
-        <div class="popup-info">
-            <h3>${item.name}</h3>
-            <p>${item.description}</p>
-            <h4>Ingredients</h4>
-            <p>${item.ingredients}</p>
-            <div class="price-add">
-                <span class="price">${item.price}</span>
-                <button class="add-btn" data-index="${index}">+</button>
+        <!-- Modal Structure -->
+        <div class="modal" id="myModal">
+            <div class="modal-content popup-container">    
+                <!-- Left Section: Image and Ingredients -->
+                <div class="img-left-div">
+                    <img src="${item.imageUrl}" alt="${item.name}" class="popup-image">
+                </div>
+                <div class="dish-description">
+                    <h2>${item.name}</h2>
+                    <h3>$${item.price}</h3>
+                    <p class="dish-description-paragraph">${item.description}</p>
+                </div>  
             </div>
-        </div>
+            <div class="ingredients-div">
+                <h3>Ingredients</h3>
+                <p>${item.ingredients}</p>
+            </div>
+        </div> 
     `;
 }
 
@@ -101,8 +108,11 @@ function setupPopupListeners() {
             popupContent.innerHTML = `
                 <span class="close-popup">&times;</span>
                 ${generatePopupContent(itemData, itemId)}
-                ${createQuantityDropdown(itemId)}
+                
             `;
+            
+            //Removed below line from code ---->
+            // ${createQuantityDropdown(itemId)}
             
             // Show the pop-up
             popup.classList.add('show');

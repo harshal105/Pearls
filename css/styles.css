@@ -232,10 +232,11 @@ nav {
 
 /* When the pop-up is active */
 .popup-content img {
+    margin-top: 4%;
+    margin-bottom: 4%;
     width: 100%; /* image fills width of pop up will change later */
-
     height: auto; /* Maintain aspect ratio of the image */
-    max-height: 300px; /* Limit the height to a reasonable size */
+    max-height: 200px; /* Limit the height to a reasonable size */
     object-fit: cover; /* Ensures the image covers the available space without distortion */
     border-radius: 8px; /* added Rounding to the image corners */
 }
@@ -260,8 +261,8 @@ nav {
 .close-popup {
     position: absolute;
     top: 10px;
-    right: 10px;
-    font-size: 1.5rem;
+    right: 20px;
+    font-size: 2rem;
     cursor: pointer;
     color: #333;
 }
@@ -429,6 +430,32 @@ nav {
     padding-left: 3%;
 }
 
+
+.modal-content{
+    flex-wrap: 1;
+}
+
+.img-left-div{
+    float: left;
+    padding-right: 5%;
+    width: 50%
+    
+}
+
+.dish-description-paragraph{
+    font-size: 14px;
+}
+
+.modal{
+    display:flex;
+    flex-direction: column;
+}
+
+
+
+.ingredients-div{
+    padding-bottom: 2%;
+}
 
 
 
