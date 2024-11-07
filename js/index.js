@@ -1,3 +1,20 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('a');
+    console.log("navLinks:", navLinks);
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            console.log("Clicked on link:", this);
+
+            // Remove 'active' class from all links
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Add 'active' class to the clicked link
+            this.classList.add('active');
+        });
+    });
+});
+
 // Fetch menuItems from menuItems.json and display them on the page
 function fetchMenuItems() {
     fetch('js/menuItems.json')

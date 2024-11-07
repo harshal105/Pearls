@@ -41,6 +41,7 @@ main {
     height: 20px;
 }
 
+/* Nav Bar */
 .nav-links {
     display: flex;
     justify-content: space-evenly;
@@ -57,8 +58,23 @@ main {
     padding: 10px;
 
     font-size: 25px;
+    transition: color 0.3s ease;
+    position: relative;
 }
 
 .nav-links a::after {
-    text-decoration: underline;
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #F9F9F9;
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
 }
