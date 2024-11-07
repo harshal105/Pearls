@@ -39,8 +39,10 @@ function generateMenuItem(item, index) {
             <a href="#" class="open-popup" data-item="${index}">
                 <img src="${item.imageUrl}" alt="${item.name}"></a>
             <div class="item-info">
-                <h3>${item.name}</h3>
-                <span class="price">${item.price}</span>
+                <div class="item-header">
+                    <h3>${item.name}</h3>
+                    <span class="price">${item.price}</span>
+                </div>
                 <div class="item-action">
                     <span class="item-description">
                         ${item.description}

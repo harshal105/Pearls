@@ -27,7 +27,7 @@
         "name": "Grilled Chicken Piccata",
         "description": "Juicy grilled chicken served with penne pasta, tossed in a zesty lemon butter sauce with capers and fresh parsley.",
         "ingredients": "chicken breast, penne pasta, lemon, butter, capers, garlic, parsley, olive oil, salt, pepper",
-        "price": 23.50,
+        "price": 23.59,
         "imageUrl": "food-images/specials/chicken-pasta.png",
         "dietaryPreferences": "nut-free",
         "palette": "savoury"
@@ -181,7 +181,7 @@
         "name": "Pecan Pie",
         "description": "A sweet, nutty pecan pie with a flaky crust, served with whipped cream.",
         "ingredients": "pecans, butter, sugar, eggs, flour, whipped cream",
-        "price": 7.50,
+        "price": 7.59,
         "imageUrl": "food-images/desserts/pecan-pie.png",
         "dietaryPreferences": "vegetarian",
         "palette": "sweet, savoury"
@@ -247,7 +247,7 @@
         "name": "Red Wine",
         "description": "A glass of fine red wine with notes of dark fruit and a smooth finish, perfect for pairing with dinner.",
         "ingredients": "grapes",
-        "price": 7.50,
+        "price": 7.59,
         "imageUrl": "food-images/drinks/red-wine.png",
         "dietaryPreferences": "gluten-free, vegan, vegetarian, nut-free",
         "palette": "sweet, savoury"
@@ -324,7 +324,7 @@
         "name": "Carrot Cake",
         "description": "A moist carrot cake with cream cheese frosting and a hint of cinnamon.",
         "ingredients": "carrots, flour, sugar, cream cheese, cinnamon, eggs",
-        "price": 7.50,
+        "price": 7.59,
         "imageUrl": "food-images/desserts/carrot-cake.png",
         "dietaryPreferences": "vegetarian, nut-free",
         "palette": "sweet, spicy"
@@ -335,7 +335,7 @@
         "name": "Apple Pie",
         "description": "A classic apple pie with a flaky crust, served with vanilla icecream.",
         "ingredients": "apples, flour, sugar, butter, vanilla, icecream",
-        "price": 8.50,
+        "price": 8.59,
         "imageUrl": "food-images/desserts/apple-pie.png",
         "dietaryPreferences": "vegetarian, nut-free",
         "palette": "sweet"

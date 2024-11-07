@@ -138,12 +138,20 @@ main {
 .item-info h3 {
     font-size: 32px;
     margin-bottom: 5px;
-    margin-top: 15px
+    margin-top: 10px
 }
 
 .item-info .price {
     font-size: 24px;
     font-weight: bold;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: last baseline;
+
+    padding-right: 15px;
 }
 
 .item-action {
@@ -161,7 +169,7 @@ main {
     background-image: url('../icons/add-icon.png');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     background-color: transparent;
     min-width: 65px;
     min-height: 65px;
