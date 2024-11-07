@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('a');
-    console.log("navLinks:", navLinks);
 
     navLinks.forEach(link => {
         link.addEventListener('click', function () {
-            console.log("Clicked on link:", this);
-
             // Remove 'active' class from all links
             navLinks.forEach(link => link.classList.remove('active'));
 
@@ -34,6 +31,7 @@ function fetchMenuItems() {
 
 // Function to generate menu item HTML
 function generateMenuItem(item, index) {
+    // console.log(item);
     return `
         <div class="menu-item">
             <a href="#" class="open-popup" data-item="${index}">
@@ -47,7 +45,7 @@ function generateMenuItem(item, index) {
                     <span class="item-description">
                         ${item.description}
                     </span>
-                    <button class="add-button"></button>
+                    <button class="add-button" onclick="addToCart(${index}, 1)"></button>
                 </div>
             </div>
         </div>
