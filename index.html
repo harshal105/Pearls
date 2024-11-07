@@ -33,7 +33,7 @@
         <!-- Navigation bar -->
         <nav>
             <ul class="nav-links">
-                <li><a href="#specials" class='active'>Specials</a></li>
+                <li><a href="#specials">Specials</a></li>
                 <li><a href="#appetizers">Appetizers</a></li>
                 <li><a href="#entrées">Entrées</a></li>
                 <li><a href="#desserts">Desserts</a></li>
@@ -49,21 +49,17 @@
 
     <main>
 
+        <!-- detail view popup -->
+        <div class="modal" id="detail-view-popup">
+            <!-- content will be dynamically loaded -->
+        </div>
+
         <!-- Specials -->
         <section id="specials" class="menu-section">
             <h2 class="menu-heading">Specials</h2>
             <div class="menu-items" id="specials-menu">
                 <!-- Menu items will be dynamically inserted here -->
             </div>
-
-            <!-- Empty pop-up that will be filled dynamically -->
-            <div class="popup" id="dynamic-popup">
-                <div class="popup-content">
-                    <span class="close-popup">&times;</span>
-                    <!-- Content will be dynamically added here -->
-                </div>
-            </div>
-
         </section>
 
         <!-- Appetizers -->

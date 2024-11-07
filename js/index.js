@@ -34,8 +34,7 @@ function generateMenuItem(item, index) {
     // console.log(item);
     return `
         <div class="menu-item">
-            <a href="#" class="open-popup" data-item="${index}">
-                <img src="${item.imageUrl}" alt="${item.name}"></a>
+            <img src="${item.imageUrl}" alt="${item.name}" onclick="createPopup(${index})">
             <div class="item-info">
                 <div class="item-header">
                     <h3>${item.name}</h3>
@@ -50,6 +49,43 @@ function generateMenuItem(item, index) {
             </div>
         </div>
     `;
+}
+
+function createPopup(index) {
+    console.log('Popup created');
+
+    // Get the item from localStorage
+    const menuItems = JSON.parse(localStorage.getItem('menuItems'));
+    const item = menuItems[index];
+    console.log(item);
+
+    const modal = document.getElementById('detail-view-popup');
+    modal.style.display = 'flex';
+
+    modal.innerHTML = `
+        <div class="popup-content">
+            <div class="top-popup-section">
+                <div class="img-wrapper"><img src="${item.imageUrl}" alt="${item.name}"></div>
+                <div class="dish-info">
+                    <h3>${item.name}</h3>
+                    <h4>${item.price}</h4>
+                    <p>${item.description}</p>
+                </div>
+            </div>
+            <div class="ingredients">
+                <h4>Ingredients</h4>
+                <p>${item.ingredients}</p>
+            </div>
+            <button class="add-btn" data-index="${index}">+</button>
+        </div>
+    `;
+
+    // close the modal when clicking outside of the modal content
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
 }
 
 // Function to generate pop-up
@@ -170,7 +206,7 @@ window.addEventListener('click', (e) => {
 });
 
 // Function to highlight the active section in the navbar
-function highlightActiveSection(navbarSelector, offset = 200) { // Default offset of 200px
+function highlightActiveSection(navbarSelector, offset = 0) { // Default offset of 200px
     const navbar = document.querySelector(navbarSelector);
     const links = document.querySelectorAll('.nav-links a'); // Get all navigation links
     const sections = document.querySelectorAll('section'); // Get all sections
