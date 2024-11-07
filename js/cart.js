@@ -115,7 +115,7 @@ function confirmOrder() {
         }
     }
 
-    editOrderButton.onclick = function () {
-        modal.style.display = "none";
-    }
+        .onclick = function () {
+            modal.style.display = "none";
+        }
 }

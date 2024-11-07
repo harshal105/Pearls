@@ -6,35 +6,6 @@ const filterIcon = document.getElementById('filter-icon');
 const closeFilterBtn = document.getElementById('close-filter');
 const backdrop = document.querySelector('.filter-panel-backdrop');
 
-
-//TO DO: add adding to cart functionality and image pop up
-
-// Open the filter panel when the filter icon is clicked
-filterIcon.addEventListener('click', () => {
-    filterPanel.classList.add('open');
-    
-    const isOpen = filterPanel.style.display === 'block';
-    if (!isOpen) {
-        filterPanel.style.display = 'block';
-        backdrop.style.display = 'block';
-    } else {
-        filterPanel.style.display = 'none';
-        backdrop.style.display = 'none';
-    }
-});
-
-backdrop.addEventListener('click', function() {
-    document.querySelector('.filter-panel').style.display = 'none';
-    this.style.display = 'none';
-});
-
-// Close the filter panel when the ">" button is clicked
-closeFilterBtn.addEventListener('click', () => {
-    filterPanel.classList.remove('open');
-    filterPanel.style.display = 'none';
-    backdrop.style.display = 'none';
-});
-
 // Store selected filters
 let filters = {
     search: '',
@@ -53,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeFiltersContainer = document.getElementById('active-filters');
     const dietaryButtons = document.querySelectorAll('.filter-dietary');
     const paletteButtons = document.querySelectorAll('.filter-palette');
-    
+
     function toggleFilterVisibility() {
         // Show #active-filters only if there are tags
         if (activeFiltersContainer.querySelectorAll('.filter-tag').length > 0) {
@@ -68,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const filterTag = document.createElement('span');
         filterTag.className = 'filter-tag';
         filterTag.innerHTML = `${type}: ${value} <button class="remove-filter" data-type="${type}" data-value="${value}">&times;</button>`;
-        
+
         activeFiltersContainer.appendChild(filterTag);
         toggleFilterVisibility();
 
@@ -88,10 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
             filters.exclude = filters.exclude.filter(item => item !== value);
         } else if (type === 'Palette') {
             filters.palette = filters.palette.filter(item => item !== value);
-        }else if (type === 'Dietary Preferences') {
+        } else if (type === 'Dietary Preferences') {
             filters.dietaryPreferences = filters.dietaryPreferences.filter(item => item !== value);
         }
-                
+
         // Remove the active state from the corresponding button
         const buttons = document.querySelectorAll(`[data-value="${value}"]`);
         buttons.forEach(button => {
@@ -132,12 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to handle button toggle
     function handleButtonToggle(button, filterType, description) {
         const value = button.dataset.value; // Get the value from the button's data attribute
-    
+
         if (button.classList.contains('active')) {
             // If it's active, remove it from the filter
             filters[filterType] = filters[filterType].filter(item => item !== value);
             button.classList.remove('active');
-    
+
             // Remove the filter tag from the UI
             const filterTags = activeFiltersContainer.querySelectorAll('.filter-tag');
             filterTags.forEach(tag => {
@@ -149,15 +120,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // If it's not active, add it to the filter
             filters[filterType].push(value);
             button.classList.add('active');
-    
+
             // Add filter tag to UI
             addFilterTag(description, value);
         }
-    
+
         applyFilters(); // Call apply filters after the change
     }
-    
-    
+
+
 });
 
 // Helper function to add/remove filter value
@@ -185,9 +156,9 @@ function applyFilters() {
                 return false;
             }
         }
-        
-         // Palette filter
-         if (filters.palette.length > 0) {
+
+        // Palette filter
+        if (filters.palette.length > 0) {
             const itemPalette = item.palette.split(',').map(palette => palette.trim());
             if (!filters.palette.every(palette => itemPalette.includes(palette))) {
                 return false;
@@ -213,4 +184,24 @@ function applyFilters() {
 
 }
 
+function openFilterMenu() {
+    console.log("Opening filter menu");
+    const modal = document.getElementById('filter-modal');
+    const closeButton = document.getElementById('close-filter');
 
+
+    // Show the modal
+    modal.style.display = 'flex';
+
+    // close modal when button clicked
+    closeButton.onclick = function () {
+        modal.style.display = 'none';
+    }
+
+    // close modal when clicked outside of the modal
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}

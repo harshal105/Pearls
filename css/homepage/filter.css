@@ -1,10 +1,21 @@
+.modal {
+    flex-direction: column;
+    align-items: flex-end;
+
+}
+
+
 .filter-panel {
-    display: none;
-    position: fixed;
-    top: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    width: 33%;
+
+    /* top: 190px;
     right: 0;
     width: 800px;
-    height: calc(100% - 110px);
+    height: calc(100% - 110px); */
     /* Adjust height to fill remaining space */
     background-color: #D9D9D9;
     box-shadow: -2px 0px 8px rgba(0, 0, 0, 0.2);
