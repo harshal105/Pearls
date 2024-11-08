@@ -254,7 +254,7 @@ main {
 /* search bar */
 .search-container {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 60px;
     /* Adjust based on your header height */
     left: 50%;

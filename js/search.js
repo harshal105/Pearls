@@ -32,10 +32,10 @@ document.addEventListener('keydown', (e) => {
 searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && searchInput.value.trim() !== '') {
         const searchTerm = searchInput.value.trim();
-        
+
         // Add the search term as a tag in the filter area
         addFilterTag('Search', searchTerm);
-        
+
         // Apply filtering function if necessary
         applyFilters();
 
@@ -47,6 +47,7 @@ searchInput.addEventListener('keydown', (e) => {
 
 // Function to add a filter tag with "x" for removal
 function addFilterTag(type, value) {
+    console.log("searching for: " + value);
     const tag = document.createElement('span');
     tag.className = 'filter-tag';
     tag.textContent = `${type}: ${value}`;
@@ -56,7 +57,7 @@ function addFilterTag(type, value) {
         filters.search = value;
         applyFilters(); // Trigger filtering after updating search
     }
-    
+
     const removeIcon = document.createElement('button');
     removeIcon.textContent = '×';
     removeIcon.className = 'remove-tag';
@@ -69,7 +70,7 @@ function addFilterTag(type, value) {
 
         applyFilters();
     });
-    
+
     tag.appendChild(removeIcon);
     filterTagsContainer.appendChild(tag);
     applyFilters();
