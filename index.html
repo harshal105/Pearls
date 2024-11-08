@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index2.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/homepage/filter.css">
 </head>
 
 <body>
@@ -48,7 +49,6 @@
     </header>
 
     <main>
-
         <!-- search container popup -->
         <div id="search-container" class="search-container">
             <input type="text" id="search-input" placeholder="Search..." />
@@ -99,6 +99,42 @@
                 <!-- Menu items will be dynamically inserted here -->
             </div>
         </section>
+
+
+        <!-- Filter menu -->
+        <div class="modal" id="filter-modal">
+            <div id="filter-panel" class="filter-panel">
+                <div class="filter-header">
+                    <button id="close-filter" class="icon-button" aria-label="Close">
+                        <img src="icons/arrow-forward-icon.png" alt="Arrow Icon" class="icon">
+                    </button>
+                    <h2>Filter Results</h2>
+                </div>
+                <div class="filter-selection">
+                    <h3>Dietary Preferences</h3>
+                    <button class="filter-option filter-dietary" data-value="gluten-free">Gluten Free</button>
+                    <button class="filter-option filter-dietary" data-value="vegan">Vegan</button>
+                    <button class="filter-option filter-dietary" data-value="vegetarian">Vegetarian</button>
+                    <button class="filter-option filter-dietary" data-value="dairy-free">Dairy Free</button>
+                    <button class="filter-option filter-dietary" data-value="nut-free">Nut Free</button>
+                </div>
+                <div class="filter-selection">
+                    <h3>Palette</h3>
+                    <button class="filter-option filter-palette" data-value="sweet">Sweet</button>
+                    <button class="filter-option filter-palette" data-value="savoury">Savoury</button>
+                    <button class="filter-option filter-palette" data-value="salty">Salty</button>
+                    <button class="filter-option filter-palette" data-value="spicy">Spicy</button>
+                </div>
+                <div class="filter-include">
+                    <h3>Include</h3>
+                    <input type="text" id="includeInput" class="filter-input" placeholder="Ex. Peanuts">
+                </div>
+                <div class="filter-exclude">
+                    <h3>Exclude</h3>
+                    <input type="text" id="excludeInput" class="filter-input" placeholder="Ex. Peanuts">
+                </div>
+            </div>
+        </div>
     </main>
 
     <script src="js/index.js"></script>

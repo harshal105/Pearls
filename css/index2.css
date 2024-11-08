@@ -15,8 +15,9 @@ header {
 }
 
 main {
-    margin-top: 160px;
+    margin-top: 170px;
     flex: 1;
+    position: relative;
 }
 
 /* top bar */
