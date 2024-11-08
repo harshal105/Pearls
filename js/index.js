@@ -16,11 +16,12 @@ function fetchMenuItems() {
 
 
 // Function to generate menu item HTML
-function generateMenuItem(item, index) {
+function generateMenuItem(item) {
     return `
         <div class="menu-item">
-            <a href="#" class="open-popup" data-item="${index}">
-                <img src="${item.imageUrl}" alt="${item.name}"></a>
+            <a href="#" class="open-popup" data-item-id="${item.id}">
+                <img src="${item.imageUrl}" alt="${item.name}">
+            </a>
             <div class="item-info">
                 <h3>${item.name}</h3>
                 <span class="price">${item.price}</span>
@@ -29,7 +30,7 @@ function generateMenuItem(item, index) {
                 <div class="description-wrapper">
                     <p>${item.description}</p>
                 </div>
-                <button class="add-btn"></button>
+                <button class="add-btn" data-item-id="${item.id}"></button>
             </div>
         </div>
     `;
@@ -46,6 +47,18 @@ function generatePopupContent(item, index) {
             <p>${item.ingredients}</p>
             <div class="price-add">
                 <span class="price">${item.price}</span>
+                <select id="itemCount-${index}">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <!-- Add more options if needed -->
+                </select>
                 <button class="add-btn" data-index="${index}">+</button>
             </div>
         </div>
@@ -87,15 +100,21 @@ function displayMenuItems(items) {
         }
     });
 
+    setupPopupListeners();
 }
 
 // Handle pop-up functionality
 function setupPopupListeners() {
     document.querySelectorAll('.open-popup').forEach(button => {
         button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const itemId = button.getAttribute('data-item');  // Get the item index
-            const itemData = JSON.parse(localStorage.getItem('menuItems'))[itemId];  // Get the corresponding item data
+            const itemId = button.getAttribute('data-item-id');  
+            const items = JSON.parse(localStorage.getItem('menuItems'));
+
+            const itemData = items.find(item => item.id == itemId);
+            if (!itemData) {
+                console.error('Item not found:', itemId);
+                return;
+            }
 
             const popup = document.getElementById('dynamic-popup');
             const popupContent = popup.querySelector('.popup-content');
@@ -104,16 +123,13 @@ function setupPopupListeners() {
             popupContent.innerHTML = `
                 <span class="close-popup">&times;</span>
                 ${generatePopupContent(itemData, itemId)}
-                ${createQuantityDropdown(itemId)}
             `;
-
-            // Show the pop-up
+            
             popup.classList.add('show');
 
-            // Attach addToCart to the Add to Cart button inside the popup
+            // Attach addToCart functionality
             const addToCartBtn = popup.querySelector('.add-btn');
             addToCartBtn.addEventListener('click', () => {
-
                 const quantityDropdown = popup.querySelector(`#itemCount-${itemId}`);
                 const selectedQuantity = parseInt(quantityDropdown.value, 10)
                 addToCart(itemId, selectedQuantity);
@@ -122,7 +138,7 @@ function setupPopupListeners() {
                 popup.classList.remove('show');
             });
 
-            // Add close functionality
+            // Close popup functionality
             popup.querySelector('.close-popup').addEventListener('click', () => {
                 popup.classList.remove('show');
             });
@@ -196,11 +212,11 @@ function initializeCart() {
 // Function to add an item to the cart
 function addToCart(itemId, quantityNum) {
     // Get the current cart from localStorage
-    let cart = JSON.parse(localStorage.getItem('cart'));
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];  // Initialize with an empty array if cart is null
 
     // Find the item in the menuItems by its ID
     const menuItems = JSON.parse(localStorage.getItem('menuItems'));
-    const item = menuItems[itemId];
+    const item = menuItems.find(item => item.id == itemId);  // Find item by ID
 
     // Check if item exists before proceeding
     if (!item) {
@@ -214,20 +230,29 @@ function addToCart(itemId, quantityNum) {
         // If it's already in the cart, increase the quantity
         existingItem.quantity += quantityNum;
     } else {
-        // If it's not in the cart, add it with the quantity given
+        // If it's not in the cart, add it with the quantity
         cart.push({ ...item, quantity: quantityNum });
     }
 
     // Save the updated cart back to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
-    console.log(`Added ${item.quantity} ${item.name} to cart.`, cart); // Log the updated cart for debugging
+    console.log(`Added ${quantityNum} ${item.name} to cart.`, cart); // Log the updated cart for debugging
 }
+
+
 
 // Attach the addToCart function to the add button in each menu item
 function setupAddToCartButtons() {
-    document.querySelectorAll('.add-btn').forEach((button, index) => {
-        button.addEventListener('click', () => addToCart(index, 1));
+    // Listen for clicks on Add to Cart buttons within the menu
+    document.querySelectorAll('.add-btn').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const itemId = button.getAttribute('data-item-id');  // Get the item ID
+            const quantityNum = 1;  // Default quantity is 1 for the main menu
+
+            // Call the addToCart function for the item
+            addToCart(itemId, quantityNum);
+        });
     });
 }
 
