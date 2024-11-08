@@ -1,17 +1,23 @@
+main {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+}
+
 .we-are-preparing {
     font-size: 96px;
     display: flex;
     color: #003349;
     width: 829px;
-    height: 258px;
-
-    padding-top: 143px;
+    height: 66%;
 }
 
 .secondary-top-bar {
     background-color: #819AA1;
     color: #819aa1;
-    padding-top: 84px;
     height: 84px;
     width: 100%;
 }
@@ -19,11 +25,11 @@
 .button-group {
     display: flex;
     align-items: center;
+    gap: 100px;
     justify-content: center;
 
-    /* background-color: ; */
-    margin-top: 80px;
     width: 100%;
+    height: 100%;
     color: #f9f9f9
 }
 

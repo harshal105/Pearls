@@ -15,10 +15,10 @@
 
 <body>
     <header>
-        <!-- Top Bar  -->
+        <!-- Top bar -->
         <div class="top-bar">
-            <div id="help-div" onclick="callHelp()"><img src="icons/help-icon.png" alt="Help Icon" class="icon"
-                    id="help-icon">
+            <div class="help-div" onclick="callHelp()">
+                <img src="icons/help-icon.png" alt="Help Icon" class="icon" id="help-icon">
                 <span id="help-message">A server is on the way!</span>
             </div>
             <h1>Pearl's</h1>
@@ -45,7 +45,7 @@
             <button onclick="confirmOrder()" class="button">Place Order</button>
         </div>
 
-        <div class="modal" id="confirm-order-modal">
+        <div class="modal" style="display: flex;" id="confirm-order-modal">
             <div class="confirmation-popup">
                 <div class="confirmation-popup-child">
                 </div>

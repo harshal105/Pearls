@@ -94,6 +94,7 @@ function removeFromCart(index) {
 document.addEventListener('DOMContentLoaded', loadCart);
 
 function confirmOrder() {
+    console.log("Order confirmed");
     const modal = document.getElementById("confirm-order-modal");
     const closeButton = document.querySelector(".close-icon");
     const editOrderButton = document.querySelector(".small-button1");
