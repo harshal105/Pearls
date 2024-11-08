@@ -1,4 +1,4 @@
-.modal {
+#filter-modal {
     position: absolute;
     display: none;
     flex-direction: column;

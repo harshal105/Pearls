@@ -15,6 +15,7 @@ main {
     color: #003349;
     padding: 20px;
     padding-top: 0;
+    padding-bottom: 0;
 }
 
 /* top bar */
@@ -180,23 +181,18 @@ main {
     /* Space between description and button */
 }
 
-/* Pop up */
-.modal {
-    align-items: center;
-    justify-content: center;
-}
-
 .popup-content {
     background-color: #F9F9F9;
     padding: 16px;
-    width: 50%;
-    height: 533px;
+    width: 75%;
     max-width: 800px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    position: relative;
 }
 
 .top-popup-section {
@@ -212,7 +208,7 @@ main {
     flex: 1;
 }
 
-.popup-content img {
+.popup-content .popup-dish-image {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -249,6 +245,40 @@ main {
 
 .ingredients {
     flex: 1;
+}
+
+.ingredients h4 {
+    margin-bottom: 15px;
+}
+
+.bottom-section {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 15px;
+
+    gap: 20px;
+}
+
+.popup-content .add-button {
+    background-image: url('../icons/add-button.png');
+    min-width: 55px;
+    min-height: 55px;
+    margin: 0;
+}
+
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #003349;
+
+    width: 32px;
+    height: 32px;
 }
 
 /* search bar */

@@ -51,21 +51,28 @@ function generateMenuItem(item, index) {
     `;
 }
 
-function createPopup(index) {
-    console.log('Popup created');
+let numberToAdd = 1;
 
+
+function createPopup(index) {
     // Get the item from localStorage
     const menuItems = JSON.parse(localStorage.getItem('menuItems'));
     const item = menuItems[index];
-    console.log(item);
+
+    // get main to disable scrolling
+    const main = document.querySelector('main');
+    // main.style.overflowY = 'hidden';
 
     const modal = document.getElementById('detail-view-popup');
     modal.style.display = 'flex';
 
+
     modal.innerHTML = `
         <div class="popup-content">
+            <img class="close-icon" alt="" src="icons/close.svg">
+
             <div class="top-popup-section">
-                <div class="img-wrapper"><img src="${item.imageUrl}" alt="${item.name}"></div>
+                <div class="img-wrapper"><img class="popup-dish-image" src="${item.imageUrl}" alt="${item.name}"></div>
                 <div class="dish-info">
                     <h3>${item.name}</h3>
                     <h4>${item.price}</h4>
@@ -76,33 +83,50 @@ function createPopup(index) {
                 <h4>Ingredients</h4>
                 <p>${item.ingredients}</p>
             </div>
-            <button class="add-btn" data-index="${index}">+</button>
+            <div class="bottom-section">
+                <div class="quantity-controls">
+                    <button class="minus-btn">-</button>
+                    <span class="quantity">${numberToAdd}</span>
+                    <button class="plus-btn">+</button>
+                </div>
+                <button class="add-button" id="modal-add-button"></button>
+            </div>
         </div>
     `;
+
+    document.querySelector('.minus-btn').addEventListener('click', decrease);
+    document.querySelector('.plus-btn').addEventListener('click', increase);
+    document.getElementById('modal-add-button').addEventListener('click', function () {
+        console.log('Adding to cart');
+        addToCart(index, numberToAdd);
+    });
+
+    // close the modal when clicking the close icon
+    document.querySelector('.close-icon').addEventListener('click', function () {
+        modal.style.display = 'none';
+        main.style.overflowY = 'auto';
+    }
+    );
 
     // close the modal when clicking outside of the modal content
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = 'none';
+            main.style.overflowY = 'auto';
         }
     }
 }
 
-// Function to generate pop-up
-function generatePopupContent(item, index) {
-    return `
-        <img src="${item.imageUrl}" alt="${item.name}">
-        <div class="popup-info">
-            <h3>${item.name}</h3>
-            <p>${item.description}</p>
-            <h4>Ingredients</h4>
-            <p>${item.ingredients}</p>
-            <div class="price-add">
-                <span class="price">${item.price}</span>
-                <button class="add-btn" data-index="${index}">+</button>
-            </div>
-        </div>
-    `;
+function decrease() {
+    if (numberToAdd > 1) {
+        numberToAdd--;
+        document.querySelector('.quantity').textContent = numberToAdd;
+    }
+}
+
+function increase() {
+    numberToAdd++;
+    document.querySelector('.quantity').textContent = numberToAdd;
 }
 
 // Dynamically insert the menu items into the DOM
@@ -248,6 +272,8 @@ function initializeCart() {
 
 // Function to add an item to the cart
 function addToCart(itemId, quantityNum) {
+    console.log(`Adding item ${itemId} to cart with quantity ${quantityNum}`);
+
     // Get the current cart from localStorage
     let cart = JSON.parse(localStorage.getItem('cart'));
 
