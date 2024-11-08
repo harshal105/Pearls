@@ -4,16 +4,6 @@ body {
     flex-direction: column;
 }
 
-header {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-}
-
 main {
     margin-top: 170px;
     flex: 1;
@@ -22,6 +12,11 @@ main {
     color: #003349;
     padding: 20px;
     padding-top: 0;
+}
+
+nav {
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 /* top bar */
@@ -52,11 +47,12 @@ main {
 
 /* Nav Bar */
 .nav-links {
+    flex: 1;
     display: flex;
     justify-content: space-evenly;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding-left: 30px;
 
     flex: 1;
 }

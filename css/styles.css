@@ -5,16 +5,13 @@ body {
     box-sizing: border-box;
 }
 
-nav {
-    width: 100%;
-    background-color: #819AA1;
-    padding: 10px 0;
-    /* Padding for overall nav bar */
-    align-items: center;
-    color: #F9F9F9;
+header {
+    display: flex;
+    flex-direction: column;
+
     position: fixed;
     z-index: 1000;
-    top: 100px;
+    width: 100%;
 }
 
 .nav-container {
@@ -41,19 +38,24 @@ nav {
 @media (max-width: 1180px) {
     .nav-links {
         gap: 65px;
-        margin-left: -115px;
     }
 }
-.nav-links a {
+
+/* Nav bar */
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    background-color: #819AA1;
     color: #F9F9F9;
-    /* Original color */
-    text-decoration: none;
-    /* Remove default underline */
-    padding: 10px;
-    font-size: 2rem;
-    position: relative;
-    /* Required for the positioning of the pseudo-element */
+    padding: 15px;
+
+    height: 54px;
+    width: 100vw;
 }
+
 /* Top Bar */
 .top-bar {
     top: 0;
@@ -66,6 +68,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
+
 }
 
 h1 {
@@ -75,12 +78,6 @@ h1 {
     color: #F9F9F9;
     margin: 0;
     text-align: center;
-    position: absolute;
-    /* Center h1 independently */
-    left: 50%;
-    /* Move h1 to the center horizontally */
-    transform: translateX(-50%);
-    /* Adjust for centering */
 }
 
 button {
@@ -100,19 +97,6 @@ button {
     align-items: center;
 }
 
-/* Nav bar */
-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-
-    background-color: #819AA1;
-    color: #F9F9F9;
-    padding: 15px;
-
-    height: 54px;
-}
 
 .icon {
     width: 50px;
