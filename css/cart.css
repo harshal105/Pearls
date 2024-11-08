@@ -7,16 +7,20 @@ body {
 }
 
 /* Navigation */
-.nav-container {
-    justify-content: flex-start;
+nav {
+    height: 54px;
+    justify-content: start;
 }
 
-.nav-links {
-    margin-left: 0px;
-    gap: 0;
+nav span {
+    font-size: 28px;
 }
 
 /* Main content padding to adjust for header */
+main {
+    padding-top: 0px;
+}
+
 main#content {
     padding-top: 110px;
     /* Adjust based on combined height of top-bar and navbar */
@@ -39,7 +43,7 @@ main#content {
     text-align: center;
     text-decoration: none;
     background-color: #003349;
-    color: #F9F9F9;
+    color: #E9E9E9;
     border: none;
     border-radius: 8px;
     font-size: 32px;
@@ -68,24 +72,28 @@ main#content {
 }
 
 .cart-item {
-    left: 15%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border: 1px solid #ccc;
+    justify-content: start;
     padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
     position: relative;
     width: 70%;
     /* alight remove button to the left */
     flex-direction: row;
 }
 
+.cart-item h3 {
+    flex: 1;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.cart-item p {
+    padding-right: 10px;
+}
+
 /* Main cart container with fixed height */
 #cart-content {
-    padding-top: 200px;
     /* Adjust based on combined height of top-bar and navbar */
     display: flex;
     flex-direction: column;
@@ -103,9 +111,12 @@ main#content {
     padding: 20px;
     overflow-y: auto;
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
     border-radius: 8px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
 }
 
 /* Message for an empty cart */
@@ -150,45 +161,43 @@ main#content {
 .quantity-controls {
     display: flex;
     align-items: center;
+    justify-content: center;
     background: #D9D9D9;
     border-radius: 8px;
-    gap: 0.5vw;
-    /* Space between buttons and quantity */
-    height: 5%;
-    width: 6%;
-    margin-left: 3%;
+    height: 50%;
 }
 
 .plus-btn {
-    left: 100%;
-    right: -33.33%;
-    top: 100%;
-    bottom: -100%;
+    flex: 1;
     border: none;
-    background: #819AA1;
+    background-color: #819AA1;
     border-radius: 8px 0px 0px 8px;
     transform: rotate(-180deg);
     font-size: 1.5rem;
 }
 
 .minus-btn {
+    flex: 1;
     left: 100%;
     right: -33.33%;
     top: 100%;
     bottom: -100%;
     border: none;
-    background: #819AA1;
+    background-color: #819AA1;
     border-radius: 8px 0px 0px 8px;
     font-size: 1.5rem;
 }
 
 .quantity {
-    width: 40px;
-    /* Fixed width for quantity display */
+    flex: 1;
+    min-width: 30px;
+
     text-align: center;
+
     /* Center the quantity text */
     font-size: 1.2rem;
     /* Adjust size as needed */
+    border-radius: 0;
 }
 
 /* Confirmation popup styling */

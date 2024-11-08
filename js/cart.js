@@ -22,16 +22,14 @@ function loadCart() {
             <button class="remove-btn" data-index="${index}">
                 <img src="icons/delete-icon.png" alt="Remove Item" class="remove-icon">
             </button>
-            <div class="item-details">
             <div class="quantity-controls">
-                    <button class="minus-btn" data-index="${index}">-</button>
-                    <span class="quantity">${item.quantity}</span>
-                    <button class="plus-btn" data-index="${index}">+</button>
-                </div>
-                <h3>${item.name}</h3>
-                <p>Price: $${item.price.toFixed(2)}</p>
-                <p>Total: $${itemTotal.toFixed(2)}</p>
+                <button class="minus-btn" data-index="${index}">-</button>
+                <span class="quantity">${item.quantity}</span>
+                <button class="plus-btn" data-index="${index}">+</button>
             </div>
+            <h3>${item.name}</h3>
+            <p>Price: $${item.price.toFixed(2)}</p>
+            <p>Total: $${itemTotal.toFixed(2)}</p>
         `;
         cartContainer.appendChild(itemElement);
     });
