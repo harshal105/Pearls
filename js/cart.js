@@ -34,25 +34,6 @@ function loadCart() {
         `;
             cartContainer.appendChild(itemElement);
         });
-
-        const taxAmount = totalPrice * 0.05;
-        const totalElement = document.createElement('div');
-        totalElement.classList.add('totalAndTax');
-        totalElement.innerHTML = `
-        <div class="line-item">
-        <span class="label">Subtotal</span>
-        <span class="dots"></span>
-        <span class="amount">$${totalPrice.toFixed(2)}</span>
-    </div>
-    <div class="line-item">
-        <span class="label">GST(5%)</span>
-        <span class="dots"></span>
-        <span class="amount">$${taxAmount.toFixed(2)}</span>
-    </div>
-    `;
-
-        cartContainer.appendChild(totalElement);
-        totalPriceFinal = totalPrice + taxAmount;
     }
     else {
         const totalElement = document.createElement('div');
@@ -60,8 +41,44 @@ function loadCart() {
         totalElement.innerHTML = `<p class="empty-cart-message" id="empty-cart-message">The cart is empty.</p>`;
         cartContainer.appendChild(totalElement);
     }
-    // Display the total price
-    document.getElementById('total-price').innerText = `Total: $${totalPriceFinal.toFixed(2)}`;
+
+    const taxAmount = totalPrice * 0.05;
+    totalPriceFinal = totalPrice + taxAmount;
+
+    const priceDiv = document.querySelector('.price-section');
+    if (priceDiv.hasChildNodes()) {
+        console.log("Price div has children");
+
+        const subtotalSpan = document.getElementById('subtotal-amt');
+        const taxSpan = document.getElementById('tax-amt');
+        const totalSpan = document.getElementById('total-amt');
+
+        subtotalSpan.textContent = `$${totalPrice.toFixed(2)}`;
+        taxSpan.textContent = `$${taxAmount.toFixed(2)}`;
+        totalSpan.textContent = `$${totalPriceFinal.toFixed(2)}`;
+    } else {
+        const totalElement = document.createElement('div');
+        totalElement.classList.add('totalAndTax');
+        totalElement.innerHTML = `
+        <div class="line-item">
+            <span class="label">Subtotal</span>
+            <span class="dots"></span>
+            <span class="amount" id="subtotal-amt">$${totalPrice.toFixed(2)}</span>
+        </div>
+        <div class="line-item">
+            <span class="label">GST(5%)</span>
+            <span class="dots"></span>
+            <span class="amount" id="tax-amt">$${taxAmount.toFixed(2)}</span>
+        </div>
+        <div class="line-item">
+            <span class="label">Total</span>
+            <span class="dots"></span>
+            <span class="amount" id="total-amt">$${totalPriceFinal.toFixed(2)}</span>
+        </div>
+        `;
+
+        priceDiv.appendChild(totalElement);
+    }
 
     // Attach event listeners to each remove button
     document.querySelectorAll('.remove-btn').forEach(button => {

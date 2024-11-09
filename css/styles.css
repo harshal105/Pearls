@@ -74,6 +74,11 @@ nav {
 
 }
 
+main {
+    margin-top: 185px;
+    max-height: calc(100vh - 185px);
+}
+
 h1 {
     font-family: 'Inria Serif', serif;
     font-size: 3.5rem;

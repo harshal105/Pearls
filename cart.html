@@ -22,6 +22,7 @@
                 <span id="help-message">A server is on the way!</span>
             </div>
             <h1>Pearl's</h1>
+            <div class="dummy-item"></div>
         </div>
 
         <!-- Navigation Bar -->
@@ -30,41 +31,41 @@
         </nav>
     </header>
 
-    <main id="cart-content">
+    <main>
         <!-- Container for cart items with an empty message by default -->
         <div id="cart-items-container">
         </div>
 
         <!-- Total Price Section -->
-        <div id="total-price"></div>
+        <div class="price-section"></div>
 
         <!-- Button container with fixed positioning at the bottom -->
         <div class="button-container">
             <a href="index.html" class="button">Back to Menu</a>
             <button onclick="confirmOrder()" class="button">Place Order</button>
         </div>
+    </main>
 
-        <div class="modal" id="confirm-order-modal">
-            <div class="confirmation-popup">
-                <div class="confirmation-popup-child">
+    <div class="modal" id="confirm-order-modal">
+        <div class="confirmation-popup">
+            <div class="confirmation-popup-child">
+            </div>
+            <b class="are-you-sure">Are you sure you’re ready to order?</b>
+            <b class="once-you-confirm">Once you confirm, you cannot edit these items</b>
+            <img class="close-icon" alt="" src="icons/close.svg">
+            <a href="checkout.html" class="small-button">
+                <div class="small-button-child">
                 </div>
-                <b class="are-you-sure">Are you sure you’re ready to order?</b>
-                <b class="once-you-confirm">Once you confirm, you cannot edit these items</b>
-                <img class="close-icon" alt="" src="icons/close.svg">
-                <a href="checkout.html" class="small-button">
-                    <div class="small-button-child">
-                    </div>
-                    <b class="text">Place Order</b>
-                </a>
-                <div class="small-button1">
-                    <div class="small-button-child">
-                    </div>
-                    <b class="text1">Edit Order</b>
+                <b class="text">Place Order</b>
+            </a>
+            <div class="small-button1">
+                <div class="small-button-child">
                 </div>
+                <b class="text1">Edit Order</b>
             </div>
         </div>
+    </div>
 
-    </main>
 
     <script src="js/cart.js" defer></script>
     <script src="js/scripts.js" defer></script>

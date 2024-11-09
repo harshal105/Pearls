@@ -6,11 +6,9 @@ body {
 }
 
 main {
-    margin-top: 185px;
-    max-height: calc(100vh - 185px);
-    overflow-y: auto;
     flex: 1;
     position: relative;
+    overflow-y: auto;
 
     color: #003349;
     padding: 20px;

@@ -8,22 +8,12 @@ body {
 
 /* Navigation */
 nav {
-    height: 54px;
     justify-content: start;
 }
 
 nav span {
     font-size: 28px;
-}
-
-/* Main content padding to adjust for header */
-main {
-    padding-top: 0px;
-}
-
-main#content {
-    padding-top: 110px;
-    /* Adjust based on combined height of top-bar and navbar */
+    padding-left: 40px;
 }
 
 /* Button styling */
@@ -109,42 +99,34 @@ main#content {
 .cart-item {
     display: flex;
     align-items: center;
-    justify-content: start;
     padding: 15px;
     position: relative;
     width: 75%;
     align-items: center;
+
+    gap: 20px;
+    color: #003349;
 }
 
 .cart-item h3 {
     flex: 1;
+    margin: 0;
     padding-right: 10px;
     padding-left: 10px;
+    font-size: 26px;
 }
 
 .cart-item p {
     padding-right: 10px;
-}
-
-/* Main cart container with fixed height */
-#cart-content {
-    /* Adjust based on combined height of top-bar and navbar */
-    display: flex;
-    flex-direction: column;
-    height: 78vh;
-    /* Adjust height to fit below top-bar */
-    max-width: 100%;
-    /* Adjust width as needed */
-    margin: 0 auto;
-    overflow: hidden;
+    font-size: 20px;
 }
 
 /* Scrollable area for cart items */
 #cart-items-container {
-    flex: 1;
+    flex: 2;
+    height: 40vh;
     overflow-y: auto;
     background-color: #f9f9f9;
-    border-radius: 8px;
 
     display: flex;
     flex-direction: column;
@@ -160,7 +142,7 @@ main#content {
 }
 
 /* Total price styling */
-#total-price {
+.total-price {
     padding: 2vh;
     font-size: 1.7rem;
     font-weight: bold;
@@ -174,7 +156,6 @@ main#content {
     background: none;
     border: none;
     outline: none;
-    margin-left: 25%;
 }
 
 .remove-icon {
@@ -187,50 +168,6 @@ main#content {
     /* Slight darken effect on hover */
 }
 
-.quantity-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #D9D9D9;
-    border-radius: 8px;
-    height: 50%;
-}
-
-.plus-btn {
-    flex: 1;
-    border: none;
-    background: #819AA1;
-    border-radius: 8px;
-    font-size: 1.5rem;
-    padding: 5px;
-}
-
-.plus-btn {
-    border-radius: 0px 8px 8px 0px;
-}
-
-.minus-btn {
-    flex: 1;
-    left: 100%;
-    right: -33.33%;
-    top: 100%;
-    bottom: -100%;
-    border: none;
-    background-color: #819AA1;
-    border-radius: 8px 0px 0px 8px;
-}
-
-.quantity {
-    flex: 1;
-
-    text-align: center;
-    font-size: 1.2rem;
-    display: inline-block;
-    min-width: 30px;
-    /* Prevents shrinking below this width */
-    max-width: 60px;
-    /* Prevents expanding too much on large screens */
-}
 
 /* Confirmation popup styling */
 
