@@ -63,7 +63,6 @@ nav {
 
 /* Top Bar */
 .top-bar {
-    top: 0;
     width: 100%;
     flex: 1;
     background-color: #003349;
@@ -88,6 +87,7 @@ h1 {
     color: #F9F9F9;
     margin: 0;
     text-align: center;
+    flex: 1;
 }
 
 button {
@@ -105,8 +105,18 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex: 1;
 }
 
+.placeholder {
+    flex: 1;
+}
+
+.top-nav-right-div {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+}
 
 .icon {
     width: 50px;
