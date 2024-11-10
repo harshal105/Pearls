@@ -1,31 +1,27 @@
 main {
-    padding-top: 50px;
+    height: calc(100vh - 185px);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    gap: 50px;
+    justify-content: center;
 }
 
 .we-are-preparing {
     font-size: 96px;
     display: flex;
     color: #003349;
-    width: 829px;
+    width: 60%;
+    text-align: center;
     height: 66%;
-}
 
-.secondary-top-bar {
-    background-color: #819AA1;
-    color: #819aa1;
-    height: 84px;
-    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .button-group {
     display: flex;
     align-items: center;
-    gap: 100px;
+    gap: 20%;
     justify-content: center;
 
     width: 100%;
