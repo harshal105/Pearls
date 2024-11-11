@@ -324,11 +324,14 @@ main {
     background-color: #e0e0e0;
     border-radius: 8px;
     padding: 8px 12px;
-    font-size: 0.9rem;
     color: #003349;
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+.filter-type {
+    font-size: 18px;
 }
 
 .filter-tag button.remove-filter {
