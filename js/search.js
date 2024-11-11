@@ -34,7 +34,7 @@ searchInput.addEventListener('keydown', (e) => {
         const searchTerm = searchInput.value.trim();
 
         // Add the search term as a tag in the filter area
-        addFilterTag('Search', searchTerm);
+        addFilterTag(searchTerm);
 
         // Apply filtering function if necessary
         applyFilters();
@@ -46,33 +46,27 @@ searchInput.addEventListener('keydown', (e) => {
 });
 
 // Function to add a filter tag with "x" for removal
-function addFilterTag(type, value) {
+function addFilterTag(value) {
     console.log("searching for: " + value);
-    const tag = document.createElement('span');
-    tag.className = 'filter-tag';
-    tag.textContent = `${type}: ${value}`;
 
-    // Update filters.search if this is a search tag
-    if (type === 'Search') {
-        filters.search = value;
-        applyFilters(); // Trigger filtering after updating search
-    }
+    let titleCaseValue = toTitleCase(value);
+    filterTagsContainer.innerHTML = `
+        <span class="filter-type">Searching:</span>
+        <div class="filter-tag">
+            <span>${titleCaseValue}</span>
+            <button class="remove-tag" onclick="removeSearch()"></button>
+        </div>
+    `;
+}
 
-    const removeIcon = document.createElement('button');
-    removeIcon.textContent = '×';
-    removeIcon.className = 'remove-tag';
-    removeIcon.addEventListener('click', () => {
-        tag.remove();
-
-        if (type === 'Search') {
-            filters.search = '';
-        }
-
-        applyFilters();
-    });
-
-    tag.appendChild(removeIcon);
-    filterTagsContainer.appendChild(tag);
+function removeSearch() {
+    filterTagsContainer.innerHTML = '';
+    filters.search = '';
     applyFilters();
+}
 
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function (txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
 }
