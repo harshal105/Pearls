@@ -314,10 +314,12 @@ main {
 }
 
 #active-filters {
+    padding-top: 20px;
     display: none;
     gap: 10px;
     align-items: center;
     margin-bottom: 20px;
+    font-size: 18px;
 }
 
 .filter-tag {
@@ -328,22 +330,16 @@ main {
     display: flex;
     align-items: center;
     gap: 5px;
+    height: 20px;
 }
 
 .filter-type {
     font-size: 18px;
 }
 
-.filter-tag button.remove-filter {
-    background: none;
-    border: none;
-    color: #666;
-    margin-left: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-}
 
-.remove-tag {
+.remove-tag,
+.remove-filter {
     background-image: url('../icons/remove-filter-icon.png');
     background-size: contain;
     background-repeat: no-repeat;

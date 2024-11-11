@@ -38,7 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function addFilterTag(type, value) {
         const filterTag = document.createElement('span');
         filterTag.className = 'filter-tag';
-        filterTag.innerHTML = `${type}: ${value} <button class="remove-filter" data-type="${type}" data-value="${value}">&times;</button>`;
+        filterTag.innerHTML = `
+            <span>${type}: ${value}</span>
+            <button class="remove-filter" data-type="${type}" data-value="${value}">&times;</button>`;
 
         activeFiltersContainer.appendChild(filterTag);
         toggleFilterVisibility();
