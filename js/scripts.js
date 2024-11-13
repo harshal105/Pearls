@@ -98,44 +98,38 @@ function setupPopupListeners() {
     document.querySelectorAll('.open-popup').forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            const itemId = button.getAttribute('data-item');  // Get the item index
-            const itemData = JSON.parse(localStorage.getItem('menuItems'))[itemId];  // Get the corresponding item data
+            const itemId = button.getAttribute('data-item');
+            const itemData = JSON.parse(localStorage.getItem('menuItems'))[itemId];
             
             const popup = document.getElementById('dynamic-popup');
             const popupContent = popup.querySelector('.popup-content');
             
-            // Inject the generated content into the pop-up
             popupContent.innerHTML = `
                 <span class="close-popup">&times;</span>
                 ${generatePopupContent(itemData, itemId)}
-                
             `;
             
-            //Removed below line from code ---->
-            // ${createQuantityDropdown(itemId)}
-            
-            // Show the pop-up
             popup.classList.add('show');
 
-            // Attach addToCart to the Add to Cart button inside the popup
             const addToCartBtn = popup.querySelector('.add-btn');
             addToCartBtn.addEventListener('click', () => {
-                
                 const quantityDropdown = popup.querySelector(`#itemCount-${itemId}`);
-                const selectedQuantity = parseInt(quantityDropdown.value, 10)
+                const selectedQuantity = parseInt(quantityDropdown.value, 10);
                 addToCart(itemId, selectedQuantity);
-                
-                // Close the popup
-                popup.classList.remove('show');
-            });
-            
-            // Add close functionality
-            popup.querySelector('.close-popup').addEventListener('click', () => {
                 popup.classList.remove('show');
             });
         });
     });
+
+    // Attach the close-popup listener once, using event delegation
+    document.getElementById('dynamic-popup').addEventListener('click', (e) => {
+        if (e.target.classList.contains('close-popup')) {
+            e.target.closest('.popup').classList.remove('show');
+        }
+    });
 }
+
+
 
 // Creates a dropdown menu
 function createQuantityDropdown(itemId) {
