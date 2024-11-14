@@ -191,10 +191,9 @@ function openFilterMenu() {
     const modal = document.getElementById('filter-modal');
     const closeButton = document.getElementById('close-filter');
 
-
     // Show the modal
     modal.style.display = 'flex';
-
+    
     // close modal when button clicked
     closeButton.onclick = function () {
         modal.style.display = 'none';
@@ -205,5 +204,6 @@ function openFilterMenu() {
         if (event.target == modal) {
             modal.style.display = 'none';
         }
+
     }
 }

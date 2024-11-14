@@ -189,3 +189,14 @@ button {
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
 }
+
+.overlay{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100vw;
+    height:100vh;
+    display:none;
+    background-color:#000;
+    opacity:0.5;
+}
