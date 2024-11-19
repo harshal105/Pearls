@@ -41,22 +41,22 @@ document.addEventListener('DOMContentLoaded', () => {
         filterTag.innerHTML = `
             <span>${type}: ${value}</span>
             <button class="remove-filter" data-type="${type}" data-value="${value}">&times;</button>`;
-    
+
         activeFiltersContainer.appendChild(filterTag);
         toggleFilterVisibility();
-    
+
         // Add event listener to remove filter tag when its close button is clicked
         filterTag.querySelector('.remove-filter').addEventListener('click', () => {
             removeFilter(type, value); // Remove the filter from the array
             filterTag.remove(); // Remove the tag from the UI
-    
+
             // Uncheck or remove the corresponding checkbox in the filter panel
             const checkbox = document.getElementById(`${type}-${value}`);
             if (checkbox) {
                 checkbox.checked = false; // Uncheck the checkbox
                 checkbox.parentElement.remove(); // Optionally remove the checkbox
             }
-    
+
             applyFilters(); // Reapply filters
             toggleFilterVisibility();
         });
@@ -135,17 +135,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addCheckboxToFilterPanel(type, value) {
-        const filterSelectionContainer = type === "Include" 
-            ? document.querySelector('.filter-include') 
+        const filterSelectionContainer = type === "Include"
+            ? document.querySelector('.filter-include')
             : document.querySelector('.filter-exclude');
-    
+
         if (document.getElementById(`${type}-${value}`)) {
             return;
         }
-    
+
         const checkboxContainer = document.createElement('div');
         checkboxContainer.className = 'checkbox-container';
-    
+
         // Create the checkbox input
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -153,17 +153,17 @@ document.addEventListener('DOMContentLoaded', () => {
         checkbox.value = value;
         checkbox.checked = true; // Default to checked
         checkbox.className = 'filter-checkbox';
-    
+
         // Create the label for the checkbox
         const label = document.createElement('label');
         label.htmlFor = checkbox.id;
         label.textContent = value;
-    
+
         // Append the checkbox and label to the container
         checkboxContainer.appendChild(checkbox);
         checkboxContainer.appendChild(label);
         filterSelectionContainer.appendChild(checkboxContainer);
-    
+
         checkbox.addEventListener('change', (e) => {
             if (!e.target.checked) {
                 // Remove the filter from the filters object
@@ -180,8 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
-    
+
+
     function removeFilterTag(type, value) {
         const filterTags = activeFiltersContainer.querySelectorAll('.filter-tag');
         filterTags.forEach(tag => {
@@ -202,7 +202,7 @@ function toggleFilterVisibility() {
     if (filterTags.length > 0) {
         activeFiltersContainer.style.display = 'flex';
     } else {
-        activeFiltersContainer.style.display = 'none'; 
+        activeFiltersContainer.style.display = 'none';
     }
 }
 
@@ -214,6 +214,7 @@ function applyFilters() {
             !item.description.toLowerCase().includes(filters.search.toLowerCase())) {
             return false;
         }
+
         // Dietary Preferences filter
         if (filters.dietaryPreferences.length > 0) {
             // Split the dietary preferences string into an array
@@ -244,7 +245,7 @@ function applyFilters() {
 
         return true;  // Item matches all filters
     });
-    
+
     toggleFilterVisibility();
     displayMenuItems(filteredItems);  // Show only filtered items
     setupPopupListeners();
@@ -258,7 +259,7 @@ function openFilterMenu() {
 
     // Show the modal
     modal.style.display = 'flex';
-    
+
     // close modal when button clicked
     closeButton.onclick = function () {
         modal.style.display = 'none';

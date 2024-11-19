@@ -49,6 +49,8 @@ searchInput.addEventListener('keydown', (e) => {
 function addFilterTag(value) {
     console.log("searching for: " + value);
 
+    filters.search = value;
+
     let titleCaseValue = toTitleCase(value);
     filterTagsContainer.innerHTML = `
         <span class="filter-type">Searching:</span>
@@ -57,6 +59,8 @@ function addFilterTag(value) {
             <button class="remove-tag" onclick="removeSearch()"></button>
         </div>
     `;
+
+    applyFilters();
 }
 
 function removeSearch() {
