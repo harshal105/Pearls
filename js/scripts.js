@@ -1,6 +1,4 @@
 function callHelp() {
-    // Select the help icon and the message span
-    const helpIcon = document.getElementById('help-icon');
     const helpMessage = document.getElementById('help-message');
 
     // Show the message when clicked

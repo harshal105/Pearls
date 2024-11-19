@@ -25,6 +25,24 @@ nav span {
     margin-bottom: 50px;
 }
 
+/* Highlighting "Place Order" Button */
+.button-container .button:last-child {
+    background-color: #657D84; /* Main button color */
+    color: white; /* Text color for good contrast */
+    border: 2px solid #404f53; /* Slightly darker border */
+    box-shadow: 0px 4px 10px rgba(77, 99, 105, 0.4); /* Soft shadow */
+    font-size: 34px; /* Slightly larger font size */
+    font-weight: bold;
+    transform: scale(1.05); /* Subtle enlargement */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-container .button:last-child:hover {
+    background-color: #4D6369; /* Darker shade on hover */
+    box-shadow: 0px 6px 15px rgba(77, 99, 105, 0.6); /* More prominent shadow */
+    transform: scale(1.1); /* Slightly larger hover effect */
+}
+
 /* Individual button styling */
 .button {
     display: flex;
@@ -179,6 +197,23 @@ nav span {
     background-color: #e9e9e9;
     width: 674px;
     height: 395px;
+}
+
+.confirmation-popup .small-button .small-button-child  {
+    background-color: #657D84; /* Main button color */
+    color: white; /* Text color for good contrast */
+    border: 2px solid #404f53; /* Slightly darker border */
+    box-shadow: 0px 4px 10px rgba(57, 72, 77, 0.4); /* Soft shadow */
+    font-size: 34px; /* Slightly larger font size */
+    font-weight: bold;
+    transform: scale(1.05); /* Subtle enlargement */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.confirmation-popup-child .button:last-child:hover {
+    background-color: #4D6369; /* Darker shade on hover */
+    box-shadow: 0px 6px 15px rgba(77, 99, 105, 0.6); /* More prominent shadow */
+    transform: scale(1.1); /* Slightly larger hover effect */
 }
 
 .are-you-sure {
