@@ -89,3 +89,21 @@
 .filter-input:focus {
     outline: none;
 }
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-top: 16px; /* Space between checkboxes */
+    margin-left: 6px; /* Space between checkboxes */
+    margin-bottom: 8px; /* Space between checkboxes */
+}
+
+.filter-checkbox {
+    transform: scale(2); /* Increase the size */
+    margin-right: 20px; /* Space between checkbox and label */
+}
+
+.checkbox-container label {
+    font-size: 18px;
+    color:#003349; /* Label text color */
+}
