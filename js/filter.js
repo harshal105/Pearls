@@ -41,15 +41,23 @@ document.addEventListener('DOMContentLoaded', () => {
         filterTag.innerHTML = `
             <span>${type}: ${value}</span>
             <button class="remove-filter" data-type="${type}" data-value="${value}">&times;</button>`;
-
+    
         activeFiltersContainer.appendChild(filterTag);
         toggleFilterVisibility();
-
-        // Add event listener to remove filter on button click
-        filterTag.querySelector('.remove-filter').addEventListener('click', (e) => {
-            removeFilter(type, value);
-            filterTag.remove();
-            applyFilters();
+    
+        // Add event listener to remove filter tag when its close button is clicked
+        filterTag.querySelector('.remove-filter').addEventListener('click', () => {
+            removeFilter(type, value); // Remove the filter from the array
+            filterTag.remove(); // Remove the tag from the UI
+    
+            // Uncheck or remove the corresponding checkbox in the filter panel
+            const checkbox = document.getElementById(`${type}-${value}`);
+            if (checkbox) {
+                checkbox.checked = false; // Uncheck the checkbox
+                checkbox.parentElement.remove(); // Optionally remove the checkbox
+            }
+    
+            applyFilters(); // Reapply filters
             toggleFilterVisibility();
         });
     }
@@ -64,12 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (type === 'Dietary Preferences') {
             filters.dietaryPreferences = filters.dietaryPreferences.filter(item => item !== value);
         }
-
-        // Remove the active state from the corresponding button
-        const buttons = document.querySelectorAll(`[data-value="${value}"]`);
-        buttons.forEach(button => {
-            button.classList.remove('active'); // Remove the active class from the button
-        });
     }
 
     // Listen to ingredient input changes
@@ -77,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter' && includeInput.value) {
             const value = includeInput.value.trim().toLowerCase();
             filters.include.push(value); // Add to filters
+            addCheckboxToFilterPanel('Include', value);
             addFilterTag('Include', value); // Add to UI
             includeInput.value = ''; // Clear the input
             applyFilters();
@@ -87,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter' && excludeInput.value) {
             const value = excludeInput.value.trim().toLowerCase();
             filters.exclude.push(value); // Add to filters
+            addCheckboxToFilterPanel('Exclude', value); // Add checkbox
             addFilterTag('Exclude', value); // Add to UI
             excludeInput.value = ''; // Clear the input
             applyFilters();
@@ -130,8 +134,65 @@ document.addEventListener('DOMContentLoaded', () => {
         applyFilters(); // Call apply filters after the change
     }
 
+    function addCheckboxToFilterPanel(type, value) {
+        const filterSelectionContainer = type === "Include" 
+            ? document.querySelector('.filter-include') 
+            : document.querySelector('.filter-exclude');
+    
+        if (document.getElementById(`${type}-${value}`)) {
+            return;
+        }
+    
+        const checkboxContainer = document.createElement('div');
+        checkboxContainer.className = 'checkbox-container';
+    
+        // Create the checkbox input
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `${type}-${value}`;
+        checkbox.value = value;
+        checkbox.checked = true; // Default to checked
+        checkbox.className = 'filter-checkbox';
+    
+        // Create the label for the checkbox
+        const label = document.createElement('label');
+        label.htmlFor = checkbox.id;
+        label.textContent = value;
+    
+        // Append the checkbox and label to the container
+        checkboxContainer.appendChild(checkbox);
+        checkboxContainer.appendChild(label);
+        filterSelectionContainer.appendChild(checkboxContainer);
+    
+        checkbox.addEventListener('change', (e) => {
+            if (!e.target.checked) {
+                // Remove the filter from the filters object
+                if (type === "Include") {
+                    filters.include = filters.include.filter(item => item !== value);
+                } else if (type === "Exclude") {
+                    filters.exclude = filters.exclude.filter(item => item !== value);
+                }
 
+                removeFilterTag(type, value);
+                checkboxContainer.remove();
+
+                applyFilters();
+            }
+        });
+    }
+    
+    
+    function removeFilterTag(type, value) {
+        const filterTags = activeFiltersContainer.querySelectorAll('.filter-tag');
+        filterTags.forEach(tag => {
+            if (tag.innerText.includes(`${type}: ${value}`)) {
+                tag.remove(); // Remove the tag from the UI
+            }
+        });
+        toggleFilterVisibility();
+    }
 });
+
 
 // Helper function to add/remove filter value
 function toggleFilter(filterArray, value) {
@@ -187,7 +248,6 @@ function applyFilters() {
 }
 
 function openFilterMenu() {
-    console.log("Opening filter menu");
     const modal = document.getElementById('filter-modal');
     const closeButton = document.getElementById('close-filter');
 
