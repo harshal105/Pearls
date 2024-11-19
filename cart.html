@@ -9,7 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
     </style>
 
-    
+
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
     <!-- Cart-specific stylesheet -->
@@ -53,20 +53,12 @@
 
     <div class="modal" id="confirm-order-modal">
         <div class="confirmation-popup">
-            <div class="confirmation-popup-child">
-            </div>
-            <b class="are-you-sure">Are you sure you’re ready to order?</b>
-            <b class="once-you-confirm">Once you confirm, you cannot edit these items</b>
-            <img class="close-icon" alt="" src="icons/close.svg">
-            <a href="checkout.html" class="small-button">
-                <div class="small-button-child">
-                </div>
-                <b class="text">Place Order</b>
-            </a>
-            <div class="small-button1">
-                <div class="small-button-child">
-                </div>
-                <b class="text1">Edit Order</b>
+            <h1>Are you sure you’re ready to order?</h1>
+            <button class="close-button"></button>
+            <p>Once you confirm, you cannot edit these items</p>
+            <div class="small-button-container">
+                <button class="small-button" id="confirm-order">Place Order</button>
+                <button class="small-button" id="edit-order">Edit Order</button>
             </div>
         </div>
     </div>

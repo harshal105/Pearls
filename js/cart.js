@@ -1,3 +1,12 @@
+// // clear the cart on refresh
+// window.onload = function () {
+//     const entries = performance.getEntriesByType("navigation");
+//     if (entries.length > 0 && entries[0].type === "reload") {
+//         clearCart();
+//     }
+// }
+
+
 // Function to load and display cart items
 function loadCart() {
     const cartContainer = document.getElementById('cart-items-container');
@@ -131,6 +140,13 @@ function removeFromCart(index) {
     loadCart(); // Reload the cart display
 }
 
+function clearCart() {
+    console.log("Clearing cart");
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    loadCart();
+}
 
 // Run loadCart function when the page loads
 document.addEventListener('DOMContentLoaded', loadCart);
@@ -140,8 +156,10 @@ function confirmOrder() {
     if (cart.length == 0) { return; }
 
     const modal = document.getElementById("confirm-order-modal");
-    const closeButton = document.querySelector(".close-icon");
-    const editOrderButton = document.querySelector(".small-button1");
+    const closeButton = document.querySelector(".close-button");
+    const editOrderButton = document.getElementById("edit-order");
+
+    const confirmOrderButton = document.getElementById("confirm-order");
 
     // Show the modal
     modal.style.display = "flex";
@@ -161,4 +179,15 @@ function confirmOrder() {
     editOrderButton.onclick = function () {
         modal.style.display = "none";
     }
+
+    confirmOrderButton.onclick = function () {
+        placeOrder();
+
+        // redirect to place order page
+        // window.location.href = "checkout.html";
+    }
+}
+
+function placeOrder() {
+    console.log("Placing order");
 }
