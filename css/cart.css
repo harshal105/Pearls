@@ -227,7 +227,7 @@ h1 {
     padding-right: 15px;
 }
 
-p {
+.confirmation-popup p {
     color: #657D84;
     font-size: 32px;
     font-weight: bold;
