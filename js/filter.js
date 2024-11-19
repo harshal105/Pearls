@@ -195,13 +195,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Helper function to add/remove filter value
-function toggleFilter(filterArray, value) {
-    if (filterArray.includes(value)) {
-        filterArray.splice(filterArray.indexOf(value), 1);
+function toggleFilterVisibility() {
+    const activeFiltersContainer = document.getElementById('active-filters');
+    const filterTags = activeFiltersContainer.querySelectorAll('.filter-tag');
+
+    if (filterTags.length > 0) {
+        activeFiltersContainer.style.display = 'flex';
     } else {
-        filterArray.push(value);
+        activeFiltersContainer.style.display = 'none'; 
     }
 }
+
 
 function applyFilters() {
     const menuItems = JSON.parse(localStorage.getItem('menuItems')) || [];
@@ -240,7 +244,8 @@ function applyFilters() {
 
         return true;  // Item matches all filters
     });
-
+    
+    toggleFilterVisibility();
     displayMenuItems(filteredItems);  // Show only filtered items
     setupPopupListeners();
     setupAddToCartButtons()
