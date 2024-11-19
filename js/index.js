@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('a');
+    const main = document.querySelector('main'); 
+    const sections = document.querySelectorAll('section');
 
     navLinks.forEach(link => {
         link.addEventListener('click', function () {
@@ -10,6 +12,27 @@ document.addEventListener('DOMContentLoaded', function () {
             this.classList.add('active');
         });
     });
+
+    function highlightActiveSection(offset = -100) {
+        const scrollPosition = main.scrollTop; // Use the scroll position of the main container
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - main.offsetTop; // Adjust for the main container
+            const sectionHeight = section.clientHeight;
+
+            if (scrollPosition >= sectionTop - offset && scrollPosition < sectionTop + sectionHeight - offset) {
+                navLinks.forEach((link) => link.classList.remove('active'));
+                const activeLink = document.querySelector(`.nav-links a[href="#${section.id}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }
+
+    main.addEventListener('scroll', () => highlightActiveSection());
+
+    highlightActiveSection();
 });
 
 // Fetch menuItems from menuItems.json and display them on the page
@@ -232,8 +255,7 @@ window.addEventListener('click', (e) => {
 });
 
 // Function to highlight the active section in the navbar
-function highlightActiveSection(navbarSelector, offset = 0) { // Default offset of 200px
-    const navbar = document.querySelector(navbarSelector);
+function highlightActiveSection(offset = 200) { // Default offset of 200px
     const links = document.querySelectorAll('.nav-links a'); // Get all navigation links
     const sections = document.querySelectorAll('section'); // Get all sections
 
@@ -259,9 +281,7 @@ function highlightActiveSection(navbarSelector, offset = 0) { // Default offset 
     window.addEventListener('scroll', handleScroll);
 }
 
-
-// Call the function with the selector of your navbar
-highlightActiveSection('nav');
+highlightActiveSection();
 
 //Adding stuff to cart functionality
 
