@@ -88,7 +88,6 @@ function createPopup(index) {
     const modal = document.getElementById('detail-view-popup');
     modal.style.display = 'flex';
 
-
     modal.innerHTML = `
         <div class="popup-content">
             <img class="close-icon" alt="" src="icons/close.svg">
@@ -121,22 +120,25 @@ function createPopup(index) {
     document.getElementById('modal-add-button').addEventListener('click', function () {
         console.log('Adding to cart');
         addToCart(item.id, numberToAdd);
+
+        // Close the modal after adding to the cart
+        modal.style.display = 'none';
+        main.style.overflowY = 'auto';
     });
 
-    // close the modal when clicking the close icon
+    // Close the modal when clicking the close icon
     document.querySelector('.close-icon').addEventListener('click', function () {
         modal.style.display = 'none';
         main.style.overflowY = 'auto';
-    }
-    );
+    });
 
-    // close the modal when clicking outside of the modal content
+    // Close the modal when clicking outside of the modal content
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = 'none';
             main.style.overflowY = 'auto';
         }
-    }
+    };
 }
 
 function decrease() {
@@ -216,6 +218,7 @@ function setupPopupListeners() {
             // Attach addToCart functionality
             const addToCartBtn = popup.querySelector('.add-btn');
             addToCartBtn.addEventListener('click', () => {
+                console.log("hi");
                 const quantityDropdown = popup.querySelector(`#itemCount-${itemId}`);
                 const selectedQuantity = parseInt(quantityDropdown.value, 10)
                 addToCart(itemId, selectedQuantity);
