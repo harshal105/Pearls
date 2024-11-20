@@ -10,7 +10,6 @@ main {
     flex: 1;
     position: relative;
     overflow-y: auto;
-
     color: #003349;
     padding: 20px;
     padding-top: 0;
@@ -352,5 +351,8 @@ main {
 
     cursor: pointer;
     border: none;
+}
 
+.remove-scroll{
+    overflow-y: hidden;
 }
