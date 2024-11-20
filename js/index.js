@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('a');
-    const main = document.querySelector('main'); 
+    const main = document.querySelector('main');
     const sections = document.querySelectorAll('section');
 
     navLinks.forEach(link => {
@@ -83,7 +83,7 @@ function createPopup(index) {
 
     // get main to disable scrolling
     const main = document.querySelector('main');
-    // main.style.overflowY = 'hidden';
+    main.style.overflowY = 'hidden';
 
     const modal = document.getElementById('detail-view-popup');
     modal.style.display = 'flex';

@@ -260,20 +260,22 @@ function openFilterMenu() {
     // Show the modal
     modal.style.display = 'flex';
     const main = document.querySelector('main');
-    main.classList.add('remove-scroll');
+    main.style.overflowY = 'hidden';
 
 
     // close modal when button clicked
     closeButton.onclick = function () {
         modal.style.display = 'none';
-        main.classList.remove('remove-scroll');
+
+        main.style.overflowY = 'auto';
     }
 
     // close modal when clicked outside of the modal
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = 'none';
-            main.classList.remove('remove-scroll');
+
+            main.style.overflowY = 'auto';
         }
 
     }
