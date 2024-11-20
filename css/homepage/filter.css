@@ -12,7 +12,7 @@
 .filter-panel {
     display: flex;
     position: fixed;
-    padding-bottom: 10%;
+    padding-bottom: 20%;
     flex-direction: column;
     flex-grow: 1;
     max-height: 500px;
@@ -38,6 +38,7 @@
     justify-content: start;
     width: 100%;
     gap: 14px;
+    
 }
 
 /* Style for the icon button */
