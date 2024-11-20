@@ -314,17 +314,18 @@ function addToCart(itemId, quantityNum) {
 
     // Check if the item is already in the cart
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
-    if (existingItem) {
-        // If it's already in the cart, increase the quantity
+    if (existingItem && !existingItem.isOrdered) {
+        // If it's already in the cart and hasnt been ordered, increase the quantity
         existingItem.quantity += quantityNum;
     } else {
         // If it's not in the cart, add it with the quantity
-        cart.push({ ...item, quantity: quantityNum });
+        cart.push({ ...item, quantity: quantityNum, isOrdered: false });
     }
 
     // Save the updated cart back to localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
+    animateCartIcon();
     console.log(`Added ${quantityNum} ${item.name} to cart.`, cart); // Log the updated cart for debugging
 }
 
@@ -376,5 +377,15 @@ function updateCartCount() {
     cartBadge.style.display = cartCount > 0 ? 'inline' : 'none';
 }
 
-// Initialize the cart counterwhen the page loads
+// Initialize the cart counter when the page loads
 document.addEventListener('DOMContentLoaded', updateCartCount);
+
+function animateCartIcon() {
+    const cartIcon = document.querySelector('.cart-container');
+    // Add the animation class
+    cartIcon.classList.add('cart-bounce');
+    // Remove the animation class after the animation completes
+    cartIcon.addEventListener('animationend', () => {
+        cartIcon.classList.remove('cart-bounce');
+    }, { once: true });
+}

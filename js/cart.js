@@ -1,10 +1,10 @@
-// // clear the cart on refresh
-// window.onload = function () {
-//     const entries = performance.getEntriesByType("navigation");
-//     if (entries.length > 0 && entries[0].type === "reload") {
-//         clearCart();
-//     }
-// }
+ // clear the cart on refresh
+ window.onload = function () {
+     const entries = performance.getEntriesByType("navigation");
+     if (entries.length > 0 && entries[0].type === "reload") {
+         clearCart();
+     }
+ }
 
 
 // Function to load and display cart items
@@ -18,31 +18,86 @@ function loadCart() {
     let totalPrice = 0;
     let totalPriceFinal = 0;
     if (cart.length != 0) {
-        // Loop through each item in the cart
-        cart.forEach((item, index) => {
-            console.log("Rendering item:", item); // Debugging line
 
+        const orderedItems = [];
+        const notOrderedItems = [];
+        
+        // Loop through each item in the cart
+        cart.forEach((item, index) => {        
             const itemTotal = item.price * item.quantity;
             totalPrice += itemTotal;
-
-            // Create HTML for each cart item
+        
+            // Separate ordered and not-ordered items
+            if (item.isOrdered) {
+                orderedItems.push({ item, itemTotal, index });
+            } else {
+                notOrderedItems.push({ item, itemTotal, index });
+            }
+            console.log("Rendering item:", item, "Index: ", index); // Debugging line
+        });
+        if (orderedItems.length > 0) {
+            const titleElement = document.createElement('div');
+            titleElement.innerHTML = "<h3>Already Ordered:</h3>";
+            cartContainer.appendChild(titleElement);
+        
+            orderedItems.forEach(({ item, itemTotal }) => {
+                const orderedItemElem = document.createElement('div');
+                orderedItemElem.classList.add('totalAndTax');
+                orderedItemElem.innerHTML = `
+                    <div class="ordered-item">
+                        <span class="label">${item.name}</span>
+                        <span class="orderedDots"></span>
+                        <span class="amount">$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+                cartContainer.appendChild(orderedItemElem);
+            });
+            
+            // Add a line separator
+            const separator = document.createElement('hr');
+            separator.classList.add('separator');
+            cartContainer.appendChild(separator);
+        }
+        notOrderedItems.forEach(({ item, itemTotal, index }) => {
             const itemElement = document.createElement('div');
             itemElement.classList.add('cart-item');
             itemElement.innerHTML = `
-            <button class="remove-btn" data-index="${index}">
-                <img src="icons/delete-icon.png" alt="Remove Item" class="remove-icon">
-            </button>
-            <div class="quantity-controls">
-                <button class="minus-btn" data-index="${index}">-</button>
-                <span class="quantity">${item.quantity}</span>
-                <button class="plus-btn" data-index="${index}">+</button>
-            </div>
-            <h3>${item.name}</h3>
-            <p>Price: $${item.price.toFixed(2)}</p>
-            <p>Total: $${itemTotal.toFixed(2)}</p>
-        `;
+                <button class="remove-btn" data-index="${index}">
+                    <img src="icons/delete-icon.png" alt="Remove Item" class="remove-icon">
+                </button>
+                <div class="quantity-controls">
+                    <button class="minus-btn" data-index="${index}">-</button>
+                    <span class="quantity">${item.quantity}</span>
+                    <button class="plus-btn" data-index="${index}">+</button>
+                </div>
+                <div class="item-details">
+                    <div class="line-item">
+                        <span class="label">${item.name}</span>
+                        <span class="dots"></span>
+                        <span class="amount">$${itemTotal.toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
             cartContainer.appendChild(itemElement);
         });
+        
+        const taxAmount = totalPrice * 0.05;
+        const totalElement = document.createElement('div');
+        totalElement.classList.add('totalAndTax');
+        totalElement.innerHTML = `
+        <div class="line-item">
+    <span class="label">Subtotal</span>
+        <span class="dots"></span>
+        <span class="amount">$${totalPrice.toFixed(2)}</span>
+    </div>
+    <div class="line-item">
+        <span class="label">GST(5%)</span>
+        <span class="dots"></span>
+        <span class="amount">$${taxAmount.toFixed(2)}</span>
+    </div>
+    `;
+        cartContainer.appendChild(totalElement);
+        totalPriceFinal = totalPrice + taxAmount;
     }
     else {
         const totalElement = document.createElement('div');
@@ -50,44 +105,8 @@ function loadCart() {
         totalElement.innerHTML = `<p class="empty-cart-message" id="empty-cart-message">The cart is empty.</p>`;
         cartContainer.appendChild(totalElement);
     }
-
-    const taxAmount = totalPrice * 0.05;
-    totalPriceFinal = totalPrice + taxAmount;
-
-    const priceDiv = document.querySelector('.price-section');
-    if (priceDiv.hasChildNodes()) {
-        console.log("Price div has children");
-
-        const subtotalSpan = document.getElementById('subtotal-amt');
-        const taxSpan = document.getElementById('tax-amt');
-        const totalSpan = document.getElementById('total-amt');
-
-        subtotalSpan.textContent = `$${totalPrice.toFixed(2)}`;
-        taxSpan.textContent = `$${taxAmount.toFixed(2)}`;
-        totalSpan.textContent = `$${totalPriceFinal.toFixed(2)}`;
-    } else {
-        const totalElement = document.createElement('div');
-        totalElement.classList.add('totalAndTax');
-        totalElement.innerHTML = `
-        <div class="line-item">
-            <span class="label">Subtotal</span>
-            <span class="dots"></span>
-            <span class="amount" id="subtotal-amt">$${totalPrice.toFixed(2)}</span>
-        </div>
-        <div class="line-item">
-            <span class="label">GST(5%)</span>
-            <span class="dots"></span>
-            <span class="amount" id="tax-amt">$${taxAmount.toFixed(2)}</span>
-        </div>
-        <div class="line-item">
-            <span class="label">Total</span>
-            <span class="dots"></span>
-            <span class="amount" id="total-amt">$${totalPriceFinal.toFixed(2)}</span>
-        </div>
-        `;
-
-        priceDiv.appendChild(totalElement);
-    }
+    // Display the total price
+    document.getElementById('total-price').innerText = `Total: $${totalPriceFinal.toFixed(2)}`;
 
     // Attach event listeners to each remove button
     document.querySelectorAll('.remove-btn').forEach(button => {
@@ -182,12 +201,28 @@ function confirmOrder() {
 
     confirmOrderButton.onclick = function () {
         placeOrder();
-
         // redirect to place order page
-        // window.location.href = "checkout.html";
+        window.location.href = "checkout.html";
     }
 }
 
 function placeOrder() {
     console.log("Placing order");
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart = cart.filter((item, index) => {
+        if (!item.isOrdered) {
+            // Find an existing ordered version of the same item
+            const existingItem = cart.find(cartItem => cartItem.id === item.id && cartItem.isOrdered);
+            if (existingItem) {
+                existingItem.quantity += item.quantity;
+                return false;
+            } else {
+                item.isOrdered = true;
+                return true;
+            }
+        }
+        return true;
+    });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    console.log("Order placed successfully:", cart);
 }
