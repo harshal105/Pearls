@@ -108,6 +108,9 @@ h4 {
     /* Increase the size */
     margin-right: 20px;
     /* Space between checkbox and label */
+
+    cursor: pointer;
+    accent-color: #003349;
 }
 
 .checkbox-container label {
