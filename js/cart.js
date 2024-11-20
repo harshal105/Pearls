@@ -172,7 +172,11 @@ document.addEventListener('DOMContentLoaded', loadCart);
 
 function confirmOrder() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cart.length == 0) { return; }
+
+    const hasUnorderedItems = cart.some(item => !item.isOrdered); 
+    if (cart.length == 0 || !hasUnorderedItems) {
+        return; // Don't show the popup if cart is empty or all items are already ordered
+    }
 
     const modal = document.getElementById("confirm-order-modal");
     const closeButton = document.querySelector(".close-button");
