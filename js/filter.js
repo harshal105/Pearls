@@ -12,7 +12,7 @@ let filters = {
     include: [],
     exclude: [],
     dietaryPreferences: [],
-    palette: []
+    palate: []
 };
 
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const excludeInput = document.getElementById('excludeInput');
     const activeFiltersContainer = document.getElementById('active-filters');
     const dietaryButtons = document.querySelectorAll('.filter-dietary');
-    const paletteButtons = document.querySelectorAll('.filter-palette');
+    const palateButtons = document.querySelectorAll('.filter-palate');
 
     function toggleFilterVisibility() {
         // Show #active-filters only if there are tags
@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
             filters.include = filters.include.filter(item => item !== value);
         } else if (type === 'Exclude') {
             filters.exclude = filters.exclude.filter(item => item !== value);
-        } else if (type === 'Palette') {
-            filters.palette = filters.palette.filter(item => item !== value);
+        } else if (type === 'Palate') {
+            filters.palate = filters.palate.filter(item => item !== value);
         } else if (type === 'Dietary Preferences') {
             filters.dietaryPreferences = filters.dietaryPreferences.filter(item => item !== value);
         }
@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', (e) => handleButtonToggle(e.target, 'dietaryPreferences', "Dietary Preferences"));
     });
 
-    paletteButtons.forEach(button => {
-        button.addEventListener('click', (e) => handleButtonToggle(e.target, 'palette', "Palette"));
+    palateButtons.forEach(button => {
+        button.addEventListener('click', (e) => handleButtonToggle(e.target, 'palate', "Palate"));
     });
 
     // Function to handle button toggle
@@ -191,15 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 tag.remove(); // Remove the tag from the UI
             }
         });
-    
-        const buttonSelector = type === "Dietary Preferences" ? ".filter-dietary" : ".filter-palette";
+
+        const buttonSelector = type === "Dietary Preferences" ? ".filter-dietary" : ".filter-palate";
         const buttons = document.querySelectorAll(buttonSelector);
         buttons.forEach(button => {
             if (button.dataset.value === value && button.classList.contains('active')) {
                 button.classList.remove('active');
             }
         });
-    
+
         toggleFilterVisibility();
     }
 });
@@ -236,10 +236,10 @@ function applyFilters() {
             }
         }
 
-        // Palette filter
-        if (filters.palette.length > 0) {
-            const itemPalette = item.palette.split(',').map(palette => palette.trim());
-            if (!filters.palette.every(palette => itemPalette.includes(palette))) {
+        // Palate filter
+        if (filters.palate.length > 0) {
+            const itemPalate = item.palate.split(',').map(palate => palate.trim());
+            if (!filters.palate.every(palate => itemPalate.includes(palate))) {
                 return false;
             }
         }
@@ -281,7 +281,7 @@ function openFilterMenu() {
     // close modal when button clicked
     closeButton.onclick = function () {
         modal.style.display = 'none';
-        modal.style.overflowY='none'
+        modal.style.overflowY = 'none'
         main.style.overflowY = 'auto';
     }
 
@@ -289,7 +289,7 @@ function openFilterMenu() {
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = 'none';
-            modal.style.overflowY='none'
+            modal.style.overflowY = 'none'
             main.style.overflowY = 'auto';
         }
 
