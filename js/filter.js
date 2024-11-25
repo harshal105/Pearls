@@ -72,6 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (type === 'Dietary Preferences') {
             filters.dietaryPreferences = filters.dietaryPreferences.filter(item => item !== value);
         }
+
+        removeFilterTag(type, value);
+        applyFilters();
     }
 
     // Listen to ingredient input changes
@@ -181,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     function removeFilterTag(type, value) {
         const filterTags = activeFiltersContainer.querySelectorAll('.filter-tag');
         filterTags.forEach(tag => {
@@ -189,6 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 tag.remove(); // Remove the tag from the UI
             }
         });
+    
+        const buttonSelector = type === "Dietary Preferences" ? ".filter-dietary" : ".filter-palette";
+        const buttons = document.querySelectorAll(buttonSelector);
+        buttons.forEach(button => {
+            if (button.dataset.value === value && button.classList.contains('active')) {
+                button.classList.remove('active');
+            }
+        });
+    
         toggleFilterVisibility();
     }
 });
