@@ -73,12 +73,12 @@ function generateMenuItem(item, index) {
             <div class="item-info">
                 <div class="item-header">
                     <h3>${item.name}</h3>
-                    <span class="price">${item.price}</span>
-                </div>
-                <div class="item-action">
                     <span class="item-description">
                         ${item.description}
-                    </span>
+                    </span>  
+                </div>
+                <div class="item-action">
+                    <span class="price">${item.price}</span>
                     <button class="add-button" onclick="addToCart(${item.id}, 1)"></button>
                 </div>
             </div>
