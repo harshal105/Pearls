@@ -41,9 +41,11 @@ main {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.2);
     }
+
     100% {
         transform: scale(1);
     }
@@ -271,9 +273,8 @@ main {
 }
 
 .popup-content .add-button {
-    background-image: url('../icons/add-button.png');
-    min-width: 55px;
-    min-height: 55px;
+    width: 55px;
+    height: 55px;
     margin: 0;
 }
 
@@ -365,12 +366,14 @@ main {
     border: none;
 }
 
-.remove-scroll{
+.remove-scroll {
     overflow-y: hidden;
 }
 
 .spacer {
-    height: 20px; /* Adjust to your desired bottom padding */
+    height: 20px;
+    /* Adjust to your desired bottom padding */
     width: 100%;
-    background: transparent; /* Ensure it blends with the background */
+    background: transparent;
+    /* Ensure it blends with the background */
 }

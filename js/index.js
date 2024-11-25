@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('.nav-links a'); 
+    const navLinks = document.querySelectorAll('.nav-links a');
     const main = document.querySelector('main');
     const sections = document.querySelectorAll('section');
 
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault(); 
+            e.preventDefault();
 
             const targetSection = document.querySelector(this.getAttribute('href'));
             if (targetSection) {
