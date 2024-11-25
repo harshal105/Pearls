@@ -263,10 +263,14 @@ function openFilterMenu() {
     main.style.overflowY = 'hidden';
 
 
+
+
+
+
     // close modal when button clicked
     closeButton.onclick = function () {
         modal.style.display = 'none';
-
+        modal.style.overflowY='none'
         main.style.overflowY = 'auto';
     }
 
@@ -274,7 +278,7 @@ function openFilterMenu() {
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = 'none';
-
+            modal.style.overflowY='none'
             main.style.overflowY = 'auto';
         }
 
