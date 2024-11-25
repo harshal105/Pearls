@@ -330,6 +330,8 @@ main {
 }
 
 #active-filters {
+    display: flex;
+    flex-wrap: wrap;
     padding-top: 20px;
     display: none;
     gap: 10px;
