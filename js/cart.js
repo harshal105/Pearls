@@ -133,6 +133,8 @@ function loadCart() {
             updateQuantity(itemIndex, 1); // Increase quantity by 1
         });
     });
+
+    updatePlaceOrderButton();
 }
 
 function updateQuantity(index, change) {
@@ -207,6 +209,24 @@ function confirmOrder() {
         placeOrder();
         // redirect to place order page
         window.location.href = "checkout.html";
+    }
+}
+
+function updatePlaceOrderButton() {
+    const placeOrderButton = document.querySelector('.button-container .button:first-child');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const hasUnorderedItems = cart.some(item => !item.isOrdered);
+
+    if (cart.length === 0 || !hasUnorderedItems) {
+        placeOrderButton.disabled = true;
+        placeOrderButton.style.backgroundColor = "#cccccc"; // Greyed out
+        placeOrderButton.style.color = "#666666"; // Subdued text color
+        placeOrderButton.style.cursor = "not-allowed"; // Non-interactive cursor
+    } else {
+        placeOrderButton.disabled = false;
+        placeOrderButton.style.backgroundColor = "#003349"; // Original button color
+        placeOrderButton.style.color = "white"; // Original text color
+        placeOrderButton.style.cursor = "pointer"; // Pointer cursor
     }
 }
 
