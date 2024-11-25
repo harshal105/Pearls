@@ -225,6 +225,9 @@ main {
     height: auto;
     object-fit: cover;
     display: block;
+    height: 100%;
+    flex: 1;
+    aspect-ratio: 5 / 3;
 }
 
 .dish-info {
