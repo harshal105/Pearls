@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (targetSection) {
                 manualOverride = true;
                 main.scrollTo({
-                    top: targetSection.offsetTop - main.offsetTop, // Adjust for main container
+                    top: targetSection.offsetTop,
                     behavior: 'smooth',
                 });
 
