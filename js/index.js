@@ -1,27 +1,40 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('a');
+    const navLinks = document.querySelectorAll('.nav-links a'); 
     const main = document.querySelector('main');
     const sections = document.querySelectorAll('section');
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            // Remove 'active' class from all links
-            navLinks.forEach(link => link.classList.remove('active'));
+    let manualOverride = false; // Track if a click has temporarily overridden the scroll logic
 
-            // Add 'active' class to the clicked link
-            this.classList.add('active');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault(); 
+
+            const targetSection = document.querySelector(this.getAttribute('href'));
+            if (targetSection) {
+                manualOverride = true;
+                main.scrollTo({
+                    top: targetSection.offsetTop - main.offsetTop, // Adjust for main container
+                    behavior: 'smooth',
+                });
+
+                navLinks.forEach(link => link.classList.remove('active'));
+                this.classList.add('active');
+                setTimeout(() => (manualOverride = false), 500);
+            }
         });
     });
 
+    // Function to highlight active section during scrolling
     function highlightActiveSection(offset = -100) {
-        const scrollPosition = main.scrollTop; // Use the scroll position of the main container
+        if (manualOverride) return; // Skip if a click is overriding scroll behavior
 
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop - main.offsetTop; // Adjust for the main container
+        const scrollPosition = main.scrollTop;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - main.offsetTop;
             const sectionHeight = section.clientHeight;
 
             if (scrollPosition >= sectionTop - offset && scrollPosition < sectionTop + sectionHeight - offset) {
-                navLinks.forEach((link) => link.classList.remove('active'));
+                navLinks.forEach(link => link.classList.remove('active'));
                 const activeLink = document.querySelector(`.nav-links a[href="#${section.id}"]`);
                 if (activeLink) {
                     activeLink.classList.add('active');
