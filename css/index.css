@@ -368,3 +368,9 @@ main {
 .remove-scroll{
     overflow-y: hidden;
 }
+
+.spacer {
+    height: 20px; /* Adjust to your desired bottom padding */
+    width: 100%;
+    background: transparent; /* Ensure it blends with the background */
+}
