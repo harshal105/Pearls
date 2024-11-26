@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('.nav-links a'); 
+    const navLinks = document.querySelectorAll('.nav-links a');
     const main = document.querySelector('main');
     const sections = document.querySelectorAll('section');
 
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault(); 
+            e.preventDefault();
 
             const targetSection = document.querySelector(this.getAttribute('href'));
             if (targetSection) {
@@ -73,12 +73,12 @@ function generateMenuItem(item, index) {
             <div class="item-info">
                 <div class="item-header">
                     <h3>${item.name}</h3>
-                    <span class="price">${item.price}</span>
-                </div>
-                <div class="item-action">
                     <span class="item-description">
                         ${item.description}
-                    </span>
+                    </span>  
+                </div>
+                <div class="item-action">
+                    <span class="price">${item.price}</span>
                     <button class="add-button" onclick="addToCart(${item.id}, 1)"></button>
                 </div>
             </div>

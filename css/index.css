@@ -41,9 +41,11 @@ main {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.2);
     }
+
     100% {
         transform: scale(1);
     }
@@ -141,34 +143,34 @@ main {
     color: #003349;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: start;
     height: 100%;
 }
 
 .item-info h3 {
     font-size: 32px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     margin-top: 10px
 }
 
 .item-info .price {
     font-size: 24px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .item-header {
     display: flex;
-    justify-content: space-between;
     align-items: last baseline;
-
+    flex-direction: column;
     padding-right: 15px;
 }
 
 .item-action {
     flex: 1;
     padding-top: 15px;
-
+    flex-direction: column;
     display: flex;
 }
 
@@ -223,6 +225,9 @@ main {
     height: auto;
     object-fit: cover;
     display: block;
+    height: 100%;
+    flex: 1;
+    aspect-ratio: 5 / 3;
 }
 
 .dish-info {
@@ -271,9 +276,8 @@ main {
 }
 
 .popup-content .add-button {
-    background-image: url('../icons/add-button.png');
-    min-width: 55px;
-    min-height: 55px;
+    width: 55px;
+    height: 55px;
     margin: 0;
 }
 
@@ -326,6 +330,8 @@ main {
 }
 
 #active-filters {
+    display: flex;
+    flex-wrap: wrap;
     padding-top: 20px;
     display: none;
     gap: 10px;
@@ -365,12 +371,14 @@ main {
     border: none;
 }
 
-.remove-scroll{
+.remove-scroll {
     overflow-y: hidden;
 }
 
 .spacer {
-    height: 20px; /* Adjust to your desired bottom padding */
+    height: 20px;
+    /* Adjust to your desired bottom padding */
     width: 100%;
-    background: transparent; /* Ensure it blends with the background */
+    background: transparent;
+    /* Ensure it blends with the background */
 }

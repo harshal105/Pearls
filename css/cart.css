@@ -73,14 +73,22 @@ nav span {
 }
 
 .button-container .button:disabled {
-    background-color: #d3d3d3; /* Lighter grey for a clearer disabled state */
-    color: #9e9e9e; /* Muted text color */
-    border: 1px solid #b5b5b5; /* Subtle border to define the button */
-    cursor: not-allowed; /* Non-interactive cursor */
-    opacity: 0.6; /* Reduce opacity to make it less prominent */
-    box-shadow: none; /* Remove shadow for a flat look */
-    transform: none; /* Disable any transform effects */
-    text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.1); /* Subtle text shadow for less focus */
+    background-color: #d3d3d3;
+    /* Lighter grey for a clearer disabled state */
+    color: #9e9e9e;
+    /* Muted text color */
+    border: 1px solid #b5b5b5;
+    /* Subtle border to define the button */
+    cursor: not-allowed;
+    /* Non-interactive cursor */
+    opacity: 0.6;
+    /* Reduce opacity to make it less prominent */
+    box-shadow: none;
+    /* Remove shadow for a flat look */
+    transform: none;
+    /* Disable any transform effects */
+    text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.1);
+    /* Subtle text shadow for less focus */
 }
 
 /* Individual button styling */
@@ -244,7 +252,6 @@ nav span {
 
 .confirmation-popup {
     width: 50%;
-    height: 40%;
 
     min-width: 625px;
     min-height: 275px;
@@ -254,7 +261,7 @@ nav span {
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
 
     padding: 25px;
@@ -279,8 +286,12 @@ nav span {
 }
 
 .small-button {
-    width: 200px;
+    /* width: 200px; */
     height: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
 
     flex-shrink: 0;
     background-color: #003349;

@@ -8,7 +8,7 @@
         "price": 19.99,
         "imageUrl": "food-images/specials/mushroom-pizza.png",
         "dietaryPreferences": "vegetarian, nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 2,
@@ -19,7 +19,7 @@
         "price": 10.99,
         "imageUrl": "food-images/specials/tomato-soup.png",
         "dietaryPreferences": "vegetarian",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 3,
@@ -30,7 +30,7 @@
         "price": 23.59,
         "imageUrl": "food-images/specials/chicken-pasta.png",
         "dietaryPreferences": "nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 4,
@@ -41,7 +41,7 @@
         "price": 18.99,
         "imageUrl": "food-images/specials/tuna-poke.png",
         "dietaryPreferences": "dairy-free, gluten-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 5,
@@ -52,7 +52,7 @@
         "price": 13.99,
         "imageUrl": "food-images/appetizers/calamari.png",
         "dietaryPreferences": "nut-free",
-        "palette": "salty, savoury"
+        "palate": "salty, savoury"
     },
     {
         "id": 6,
@@ -63,7 +63,7 @@
         "price": 9.99,
         "imageUrl": "food-images/appetizers/truffle-fries.png",
         "dietaryPreferences": "vegetarian, nut-free",
-        "palette": "salty, savoury"
+        "palate": "salty, savoury"
     },
     {
         "id": 7,
@@ -74,7 +74,7 @@
         "price": 25.99,
         "imageUrl": "food-images/entrees/chicken-marsala.png",
         "dietaryPreferences": "nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 8,
@@ -85,7 +85,7 @@
         "price": 28.99,
         "imageUrl": "food-images/entrees/oven-roasted-salmon.png",
         "dietaryPreferences": "gluten-free, dairy-free, nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 9,
@@ -96,7 +96,7 @@
         "price": 39.99,
         "imageUrl": "food-images/entrees/lobster-tail-dinner.png",
         "dietaryPreferences": "gluten-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 10,
@@ -107,7 +107,7 @@
         "price": 26.99,
         "imageUrl": "food-images/entrees/bbq-pork-ribs.png",
         "dietaryPreferences": "",
-        "palette": "savoury, salty"
+        "palate": "savoury, salty"
     },
     {
         "id": 11,
@@ -118,7 +118,7 @@
         "price": 29.99,
         "imageUrl": "food-images/entrees/top-sirloin.png",
         "dietaryPreferences": "gluten-free, nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 12,
@@ -129,7 +129,7 @@
         "price": 16.99,
         "imageUrl": "food-images/entrees/coconut-rice-bowl.png",
         "dietaryPreferences": "vegan, gluten-free, vegetarian",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 13,
@@ -140,7 +140,7 @@
         "price": 17.99,
         "imageUrl": "food-images/entrees/lentil-bolognese.png",
         "dietaryPreferences": "vegan, vegetarian, nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 14,
@@ -151,7 +151,7 @@
         "price": 14.99,
         "imageUrl": "food-images/entrees/tomato-pasta.png",
         "dietaryPreferences": "vegan, nut-free, vegetarian",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 15,
@@ -162,7 +162,7 @@
         "price": 21.99,
         "imageUrl": "food-images/entrees/gluten-free-pizza.png",
         "dietaryPreferences": "gluten-free, vegetarian, nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 16,
@@ -173,7 +173,7 @@
         "price": 8.99,
         "imageUrl": "food-images/desserts/chocolate-lava-cake.png",
         "dietaryPreferences": "",
-        "palette": "sweet"
+        "palate": "sweet"
     },
     {
         "id": 17,
@@ -184,7 +184,7 @@
         "price": 7.59,
         "imageUrl": "food-images/desserts/pecan-pie.png",
         "dietaryPreferences": "vegetarian",
-        "palette": "sweet, savoury"
+        "palate": "sweet, savoury"
     },
     {
         "id": 18,
@@ -195,7 +195,7 @@
         "price": 9.99,
         "imageUrl": "food-images/desserts/cheesecake.png",
         "dietaryPreferences": "vegetarian, nut-free",
-        "palette": "sweet"
+        "palate": "sweet"
     },
     {
         "id": 19,
@@ -206,7 +206,7 @@
         "price": 2.99,
         "imageUrl": "food-images/drinks/fountain-drink.png",
         "dietaryPreferences": "nut-free, vegetarian",
-        "palette": "sweet"
+        "palate": "sweet"
     },
     {
         "id": 20,
@@ -217,7 +217,7 @@
         "price": 3.99,
         "imageUrl": "food-images/drinks/lemonade.png",
         "dietaryPreferences": "vegan, gluten-free, vegetarian, nut-free",
-        "palette": "sweet"
+        "palate": "sweet"
     },
     {
         "id": 21,
@@ -228,7 +228,7 @@
         "price": 8.99,
         "imageUrl": "food-images/drinks/margarita.png",
         "dietaryPreferences": "gluten-free, nut-free, vegetarian",
-        "palette": "salty"
+        "palate": "salty"
     },
     {
         "id": 22,
@@ -239,7 +239,7 @@
         "price": 6.99,
         "imageUrl": "food-images/drinks/strawberry-smoothie.png",
         "dietaryPreferences": "vegetarian, nut-free",
-        "palette": "sweet"
+        "palate": "sweet"
     },
     {
         "id": 23,
@@ -250,7 +250,7 @@
         "price": 7.59,
         "imageUrl": "food-images/drinks/red-wine.png",
         "dietaryPreferences": "gluten-free, vegan, vegetarian, nut-free",
-        "palette": "sweet, savoury"
+        "palate": "sweet, savoury"
     },
     {
         "id": 24,
@@ -261,7 +261,7 @@
         "price": 14.99,
         "imageUrl": "food-images/appetizers/spicy-tuna-roll.png",
         "dietaryPreferences": "dairy-free",
-        "palette": "savoury, spicy"
+        "palate": "savoury, spicy"
     },
     {
         "id": 25,
@@ -272,7 +272,7 @@
         "price": 32.99,
         "imageUrl": "food-images/entrees/beef-wellington.png",
         "dietaryPreferences": "nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 26,
@@ -283,7 +283,7 @@
         "price": 8.99,
         "imageUrl": "food-images/appetizers/stuffed-mushrooms.png",
         "dietaryPreferences": "vegetarian, nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 27,
@@ -294,7 +294,7 @@
         "price": 12.99,
         "imageUrl": "food-images/appetizers/buffalo-wings.png",
         "dietaryPreferences": "nut-free",
-        "palette": "spicy, savoury"
+        "palate": "spicy, savoury"
     },
     {
         "id": 28,
@@ -305,7 +305,7 @@
         "price": 18.99,
         "imageUrl": "food-images/entrees/pasta-primavera.png",
         "dietaryPreferences": "vegetarian, nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 29,
@@ -316,7 +316,7 @@
         "price": 15.99,
         "imageUrl": "food-images/entrees/vegan-burger.png",
         "dietaryPreferences": "vegan, gluten-free, nut-free",
-        "palette": "savoury"
+        "palate": "savoury"
     },
     {
         "id": 30,
@@ -327,7 +327,7 @@
         "price": 7.59,
         "imageUrl": "food-images/desserts/carrot-cake.png",
         "dietaryPreferences": "vegetarian, nut-free",
-        "palette": "sweet, spicy"
+        "palate": "sweet, spicy"
     },
     {
         "id": 31,
@@ -338,7 +338,7 @@
         "price": 8.59,
         "imageUrl": "food-images/desserts/apple-pie.png",
         "dietaryPreferences": "vegetarian, nut-free",
-        "palette": "sweet"
+        "palate": "sweet"
     },
     {
         "id": 32,
@@ -349,7 +349,7 @@
         "price": 4.99,
         "imageUrl": "food-images/drinks/iced-coffee.png",
         "dietaryPreferences": "vegetarian, gluten-free",
-        "palette": "sweet"
+        "palate": "sweet"
     },
     {
         "id": 33,
@@ -360,6 +360,6 @@
         "price": 3.99,
         "imageUrl": "food-images/drinks/hot-chocolate.png",
         "dietaryPreferences": "vegetarian, nut-free",
-        "palette": "sweet"
+        "palate": "sweet"
     }
 ]
