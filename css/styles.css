@@ -72,7 +72,6 @@ nav {
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-
 }
 
 main {
@@ -173,6 +172,10 @@ button {
 
 .minus-btn,
 .plus-btn {
+    /* changes for iPad */
+    padding: 0px;
+    color: #F9F9F9;
+
     flex: 1;
     background-color: #819AA1;
     height: 75%;
