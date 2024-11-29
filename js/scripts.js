@@ -1,5 +1,20 @@
 let popupTimeout;
 
+// Adjust the height of the main container based on the viewport height
+// needed to account for keyboard popup on iPad
+function adjustHeight() {
+    console.debug('Adjusting height...');
+    const main = document.getElementById('main');
+
+    const viewportHeight = window.innerHeight;
+
+    main.style.height = `${viewportHeight - 185}px`;
+}
+
+window.addEventListener('resize', adjustHeight);
+document.addEventListener('DOMContentLoaded', adjustHeight);
+
+
 function createCallServerPopup(message) {
     // Remove existing pop-up if any
     const existingPopup = document.getElementById('call-server-popup');

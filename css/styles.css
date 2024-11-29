@@ -75,8 +75,12 @@ nav {
 }
 
 main {
-    margin-top: 185px;
     max-height: calc(100vh - 185px);
+    /* 20px padding on each side */
+    width: calc(100vw - 40px);
+    position: absolute;
+    top: 185px;
+    right: 0px;
 }
 
 h1 {
