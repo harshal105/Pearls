@@ -20,6 +20,10 @@ window.onload = function () {
     }
 }
 
+// clear cart when tab closed 
+// means the cart is empty when the user comes back
+window.onbeforeunload = clearCart;
+
 function createCallServerPopup(message) {
     // Remove existing pop-up if any
     const existingPopup = document.getElementById('call-server-popup');

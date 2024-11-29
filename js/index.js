@@ -11,8 +11,11 @@ function adjustHeight() {
     main.style.height = `${viewportHeight - 185}px`;
 }
 
+let i = 0;
+
 window.addEventListener('resize', adjustHeight);
 document.addEventListener('DOMContentLoaded', adjustHeight);
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-links a');
