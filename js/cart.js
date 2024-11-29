@@ -1,16 +1,35 @@
- // clear the cart on refresh
- window.onload = function () {
-     const entries = performance.getEntriesByType("navigation");
-     if (entries.length > 0 && entries[0].type === "reload") {
-         clearCart();
-     }
- }
+import { updateCartCount } from './index.js';
 
+export function clearCart() {
+    console.log("Clearing cart");
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    loadCart();
+    updateCartCount();
+
+    // Get the current cart from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    // Calculate the total count by summing up the quantity of each cart item
+    const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+    // Update the badge with the current count
+    const cartBadge = document.getElementById('cart-count-badge');
+    if (cartBadge) {
+        cartBadge.textContent = cartCount;
+
+        // Hide the badge if there are no items in the cart
+        cartBadge.style.display = cartCount > 0 ? 'inline' : 'none';
+    }
+}
 
 // Function to load and display cart items
-function loadCart() {
+export function loadCart() {
     const cartContainer = document.getElementById('cart-items-container');
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    if (cartContainer === null) {
+        return;
+    }
 
     // Clear the container first
     cartContainer.innerHTML = '';
@@ -21,12 +40,12 @@ function loadCart() {
 
         const orderedItems = [];
         const notOrderedItems = [];
-        
+
         // Loop through each item in the cart
-        cart.forEach((item, index) => {        
+        cart.forEach((item, index) => {
             const itemTotal = item.price * item.quantity;
             totalPrice += itemTotal;
-        
+
             // Separate ordered and not-ordered items
             if (item.isOrdered) {
                 orderedItems.push({ item, itemTotal, index });
@@ -39,7 +58,7 @@ function loadCart() {
             const titleElement = document.createElement('div');
             titleElement.innerHTML = "<h3>Already Ordered:</h3>";
             cartContainer.appendChild(titleElement);
-        
+
             orderedItems.forEach(({ item, itemTotal }) => {
                 const orderedItemElem = document.createElement('div');
                 orderedItemElem.classList.add('totalAndTax');
@@ -52,7 +71,7 @@ function loadCart() {
                 `;
                 cartContainer.appendChild(orderedItemElem);
             });
-            
+
             // Add a line separator
             const separator = document.createElement('hr');
             separator.classList.add('separator');
@@ -80,7 +99,7 @@ function loadCart() {
             `;
             cartContainer.appendChild(itemElement);
         });
-        
+
         const taxAmount = totalPrice * 0.05;
         const totalElement = document.createElement('div');
         totalElement.classList.add('totalAndTax');
@@ -137,7 +156,7 @@ function loadCart() {
     updatePlaceOrderButton();
 }
 
-function updateQuantity(index, change) {
+export function updateQuantity(index, change) {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     if (change === -1 && cart[index].quantity > 1) {
@@ -154,28 +173,20 @@ function updateQuantity(index, change) {
 }
 
 // Function to remove an item from the cart by its index
-function removeFromCart(index) {
+export function removeFromCart(index) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.splice(index, 1); // Remove the item at the specified index
     localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
     loadCart(); // Reload the cart display
 }
 
-function clearCart() {
-    console.log("Clearing cart");
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart = [];
-    localStorage.setItem('cart', JSON.stringify(cart));
-    loadCart();
-}
-
 // Run loadCart function when the page loads
 document.addEventListener('DOMContentLoaded', loadCart);
 
-function confirmOrder() {
+export function confirmOrder() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    const hasUnorderedItems = cart.some(item => !item.isOrdered); 
+    const hasUnorderedItems = cart.some(item => !item.isOrdered);
     if (cart.length == 0 || !hasUnorderedItems) {
         return; // Don't show the popup if cart is empty or all items are already ordered
     }
@@ -212,7 +223,7 @@ function confirmOrder() {
     }
 }
 
-function updatePlaceOrderButton() {
+export function updatePlaceOrderButton() {
     const placeOrderButton = document.querySelector('.button-container .button:first-child');
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const hasUnorderedItems = cart.some(item => !item.isOrdered);
@@ -230,7 +241,7 @@ function updatePlaceOrderButton() {
     }
 }
 
-function placeOrder() {
+export function placeOrder() {
     console.log("Placing order");
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart = cart.filter((item, index) => {

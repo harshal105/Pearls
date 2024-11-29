@@ -1,3 +1,19 @@
+// Adjust the height of the main container based on the viewport height
+// needed to account for keyboard popup on iPad
+function adjustHeight() {
+    console.debug('Adjusting height...');
+    const main = document.getElementById('main');
+
+    if (!main) return;
+
+    const viewportHeight = window.innerHeight;
+
+    main.style.height = `${viewportHeight - 185}px`;
+}
+
+window.addEventListener('resize', adjustHeight);
+document.addEventListener('DOMContentLoaded', adjustHeight);
+
 document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-links a');
     const main = document.querySelector('main');
@@ -49,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Fetch menuItems from menuItems.json and display them on the page
-function fetchMenuItems() {
+function fetchMenuItems1() {
     fetch('js/menuItems.json')
         .then(response => response.json())
         .then(data => {
@@ -89,7 +105,7 @@ function generateMenuItem(item, index) {
 let numberToAdd = 1;
 
 
-function createPopup(index) {
+export function createPopup(index) {
     // Get the item from localStorage
     const menuItems = JSON.parse(localStorage.getItem('menuItems'));
     const item = menuItems[index];
@@ -167,7 +183,7 @@ function increase() {
 }
 
 // Dynamically insert the menu items into the DOM
-function displayMenuItems(items) {
+export function displayMenuItems(items) {
 
     // Containers for each section
     const specialsMenu = document.querySelector('#specials .menu-items');
@@ -175,6 +191,11 @@ function displayMenuItems(items) {
     const entréesMenu = document.querySelector('#entrées .menu-items');
     const dessertsMenu = document.querySelector('#desserts .menu-items');
     const drinksMenu = document.querySelector('#drinks .menu-items');
+
+    if (!specialsMenu || !appetizerMenu || !entréesMenu || !dessertsMenu || !drinksMenu) {
+        // console.error('Menu sections not found.');
+        return;
+    }
 
     specialsMenu.innerHTML = '';
     entréesMenu.innerHTML = '';
@@ -205,7 +226,7 @@ function displayMenuItems(items) {
 }
 
 // Handle pop-up functionality
-function setupPopupListeners() {
+export function setupPopupListeners() {
     document.querySelectorAll('.open-popup').forEach(button => {
         button.addEventListener('click', (e) => {
             const itemId = button.getAttribute('data-item-id');
@@ -309,7 +330,7 @@ function initializeCart() {
 }
 
 // Function to add an item to the cart
-function addToCart(itemId, quantityNum) {
+export function addToCart(itemId, quantityNum) {
     console.log(`Adding item ${itemId} to cart with quantity ${quantityNum}`);
 
     // Get the current cart from localStorage
@@ -345,7 +366,7 @@ function addToCart(itemId, quantityNum) {
 
 
 // Attach the addToCart function to the add button in each menu item
-function setupAddToCartButtons() {
+export function setupAddToCartButtons() {
     // Listen for clicks on Add to Cart buttons within the menu
     document.querySelectorAll('.add-btn').forEach(button => {
         button.addEventListener('click', (e) => {
@@ -377,13 +398,14 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchMenuItems();
 });
 
-function updateCartCount() {
+export function updateCartCount() {
     // Get the current cart from localStorage
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     // Calculate the total count by summing up the quantity of each cart item
     const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
     // Update the badge with the current count
     const cartBadge = document.getElementById('cart-count-badge');
+    if (!cartBadge) return;
     cartBadge.textContent = cartCount;
 
     // Hide the badge if there are no items in the cart

@@ -1,3 +1,5 @@
+import { setupPopupListeners, setupAddToCartButtons } from "./index.js";
+
 // Filter panel JS
 
 // Get elements
@@ -78,36 +80,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Listen to ingredient input changes
-    includeInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && includeInput.value) {
-            const value = includeInput.value.trim().toLowerCase();
-            filters.include.push(value); // Add to filters
-            addCheckboxToFilterPanel('Include', value);
-            addFilterTag('Include', value); // Add to UI
-            includeInput.value = ''; // Clear the input
-            applyFilters();
-        }
-    });
+    if (includeInput) {
+        includeInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && includeInput.value) {
+                const value = includeInput.value.trim().toLowerCase();
+                filters.include.push(value); // Add to filters
+                addCheckboxToFilterPanel('Include', value);
+                addFilterTag('Include', value); // Add to UI
+                includeInput.value = ''; // Clear the input
+                applyFilters();
+            }
+        });
+    }
 
-    excludeInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && excludeInput.value) {
-            const value = excludeInput.value.trim().toLowerCase();
-            filters.exclude.push(value); // Add to filters
-            addCheckboxToFilterPanel('Exclude', value); // Add checkbox
-            addFilterTag('Exclude', value); // Add to UI
-            excludeInput.value = ''; // Clear the input
-            applyFilters();
-        }
-    });
+    if (excludeInput) {
+        excludeInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && excludeInput.value) {
+                const value = excludeInput.value.trim().toLowerCase();
+                filters.exclude.push(value); // Add to filters
+                addCheckboxToFilterPanel('Exclude', value); // Add checkbox
+                addFilterTag('Exclude', value); // Add to UI
+                excludeInput.value = ''; // Clear the input
+                applyFilters();
+            }
+        });
+    }
 
     // Event listeners for dietary buttons
-    dietaryButtons.forEach(button => {
-        button.addEventListener('click', (e) => handleButtonToggle(e.target, 'dietaryPreferences', "Dietary Preferences"));
-    });
+    if (dietaryButtons) {
+        dietaryButtons.forEach(button => {
+            button.addEventListener('click', (e) => handleButtonToggle(e.target, 'dietaryPreferences', "Dietary Preferences"));
+        });
+    }
 
-    palateButtons.forEach(button => {
-        button.addEventListener('click', (e) => handleButtonToggle(e.target, 'palate', "Palate"));
-    });
+    if (palateButtons) {
+        palateButtons.forEach(button => {
+            button.addEventListener('click', (e) => handleButtonToggle(e.target, 'palate', "Palate"));
+        })
+    };
 
     // Function to handle button toggle
     function handleButtonToggle(button, filterType, description) {
@@ -264,7 +274,19 @@ function applyFilters() {
 
 }
 
-function openFilterMenu() {
+// Creates a dropdown menu
+function createQuantityDropdown(itemId) {
+    let dropdownHTML = `
+        <select id="itemCount-${itemId}">
+    `;
+    for (let i = 1; i <= 9; i++) {
+        dropdownHTML += `<option value="${i}">${i}</option>`;
+    }
+    dropdownHTML += '</select>';
+    return dropdownHTML;
+}
+
+export function openFilterMenu() {
     const modal = document.getElementById('filter-modal');
     const closeButton = document.getElementById('close-filter');
 
