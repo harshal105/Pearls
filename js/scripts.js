@@ -18,13 +18,14 @@ window.removeSearch = removeSearch;
 window.onload = function () {
     const entries = performance.getEntriesByType("navigation");
     if (entries.length > 0 && entries[0].type === "reload") {
+        console.log("page reloaded");
         clearCart();
     }
 }
 
 // clear cart when tab closed 
 // means the cart is empty when the user comes back
-window.onbeforeunload = clearCart;
+// window.onbeforeunload = clearCart;
 
 function createCallServerPopup(message) {
     // Remove existing pop-up if any

@@ -7,13 +7,12 @@ const searchInput = document.getElementById('search-input');
 const filterTagsContainer = document.getElementById('filter-tags'); // Assuming you have this for filter tags
 
 // Show the search container when clicking the search icon
-searchIcon.addEventListener('click', (e) => {
+searchIcon != null ? searchIcon.addEventListener('click', (e) => {
     e.stopPropagation(); // Prevent closing the search container immediately
     searchContainer.style.display = 'block';
     searchInput.focus(); // Focus on the input field for convenience
     console.log("Search icon clicked"); // Add this line to confirm the event is firing
-
-});
+}) : null;
 
 // Hide the search container when clicking outside
 document.addEventListener('click', (e) => {
@@ -30,7 +29,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Handle search input and add a filter tag when pressing "Enter"
-searchInput.addEventListener('keydown', (e) => {
+searchInput != null ? searchInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && searchInput.value.trim() !== '') {
         const searchTerm = searchInput.value.trim();
 
@@ -44,7 +43,7 @@ searchInput.addEventListener('keydown', (e) => {
         searchInput.value = '';
         searchContainer.style.display = 'none';
     }
-});
+}) : null;
 
 // Function to add a filter tag with "x" for removal
 function addFilterTag(value) {
