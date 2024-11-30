@@ -88,7 +88,7 @@ function fetchMenuItems1() {
 function generateMenuItem(item, index) {
     return `
         <div class="menu-item">
-            <img src="${item.imageUrl}" alt="${item.name}" onclick="createPopup(${index})">
+            <img src="${item.imageUrl}" alt="${item.name}" onclick="createPopup(${item.id})">
             <div class="item-info">
                 <div class="item-header">
                     <h3>${item.name}</h3>
@@ -111,7 +111,7 @@ let numberToAdd = 1;
 export function createPopup(index) {
     // Get the item from localStorage
     const menuItems = JSON.parse(localStorage.getItem('menuItems'));
-    const item = menuItems[index];
+    const item = menuItems[index - 1];
 
     // get main to disable scrolling
     const main = document.querySelector('main');
