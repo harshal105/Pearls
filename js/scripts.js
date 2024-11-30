@@ -1,6 +1,7 @@
 import { clearCart, confirmOrder } from './cart.js';
 import { createPopup, displayMenuItems, addToCart } from './index.js';
 import { openFilterMenu } from './filter.js';
+import { removeSearch } from './search.js';
 
 let popupTimeout;
 
@@ -11,6 +12,7 @@ window.openFilterMenu = openFilterMenu;
 window.addToCart = addToCart;
 window.confirmOrder = confirmOrder;
 window.callServerPopup = callServerPopup;
+window.removeSearch = removeSearch;
 
 // clear the cart on refresh
 window.onload = function () {

@@ -9,7 +9,7 @@ const closeFilterBtn = document.getElementById('close-filter');
 const backdrop = document.querySelector('.filter-panel-backdrop');
 
 // Store selected filters
-let filters = {
+export let filters = {
     search: '',
     include: [],
     exclude: [],
@@ -228,7 +228,7 @@ function toggleFilterVisibility() {
 }
 
 
-function applyFilters() {
+export function applyFilters() {
     const menuItems = JSON.parse(localStorage.getItem('menuItems')) || [];
     const filteredItems = menuItems.filter(item => {
         if (filters.search && !item.name.toLowerCase().includes(filters.search.toLowerCase()) &&

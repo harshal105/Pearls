@@ -1,3 +1,4 @@
+import { filters, applyFilters } from './filter.js';
 
 // Get the elements
 const searchIcon = document.getElementById('search-icon');
@@ -63,7 +64,7 @@ function addFilterTag(value) {
     applyFilters();
 }
 
-function removeSearch() {
+export function removeSearch() {
     filterTagsContainer.innerHTML = '';
     filters.search = '';
     applyFilters();
